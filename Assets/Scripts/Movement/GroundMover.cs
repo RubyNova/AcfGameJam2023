@@ -18,6 +18,15 @@ namespace Movement
         private float _horizontalSpeed;
         private float _jumpForce;
 
+        private void Awake()
+        {
+            _isGrounded = false;
+            _speedFromLastFrame = 0;
+            _directionForFrame = Vector2.zero;
+            _horizontalSpeed = 0;
+            _jumpForce = 0;
+        }
+
         // Update is called once per frame
         private void Update()
         {
