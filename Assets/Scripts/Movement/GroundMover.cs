@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Movement
@@ -32,7 +30,6 @@ namespace Movement
         {
             Vector2 directionVector = _directionForFrame;
             float finalSpeed = 0;
-
 
             if (_isGrounded)
             {
