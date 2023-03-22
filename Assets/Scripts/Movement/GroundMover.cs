@@ -55,7 +55,7 @@ namespace Movement
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.tag != _groundTagName)
+            if (!collision.gameObject.CompareTag(_groundTagName))
             {
                 return;
             }
@@ -66,7 +66,7 @@ namespace Movement
 
         private void OnCollisionExit2D(Collision2D collision)
         {
-            if (collision.gameObject.tag != _groundTagName)
+            if (!collision.gameObject.CompareTag(_groundTagName))
             {
                 return;
             }
