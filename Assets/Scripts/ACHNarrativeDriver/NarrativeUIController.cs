@@ -91,7 +91,6 @@ namespace ACHNarrativeDriver
                     listNextEvent.Invoke();
                     _isCurrentlyExecuting = false;
                     _currentNarrativeSequence = null;
-                    ApplyBackground();
                     return;
                 }
 
@@ -136,19 +135,8 @@ namespace ACHNarrativeDriver
                 StartCoroutine(
                     PerformRollingText(characterDialogueInfo));
             _currentDialogueIndex++;
-            
-            ApplyBackground();
         }
         
-        private void ApplyBackground()
-        {
-            if (_currentNarrativeSequence is null || _currentNarrativeSequence.BackgroundSprite is null || _backgroundRenderer.sprite == _currentNarrativeSequence.BackgroundSprite) return;
-            
-            _backgroundRenderer.sprite = _currentNarrativeSequence.BackgroundSprite;
-            _backgroundRenderer.enabled = true;
-            _characterRenderer.enabled = false;
-        }
-
         private void ResetRollingTextRoutine()
         {
             StopCoroutine(_rollingTextRoutine);

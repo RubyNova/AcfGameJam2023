@@ -14,7 +14,7 @@ namespace ACHNarrativeDriver.Api
     {
         #if UNITY_EDITOR
         public List<NarrativeSequence.CharacterDialogueInfo> Interpret(string sourceScript,
-            PredefinedVariables predefinedVariables, int musicFilesCount, int soundEffectsCount)
+            PredefinedVariables predefinedVariables, int musicFilesCount, int soundEffectsCount, int customEffectsCount)
         {
             var characterPaths = AssetDatabase.FindAssets("t:Character").Select(AssetDatabase.GUIDToAssetPath);
             var characterAssets = characterPaths.Select(AssetDatabase.LoadAssetAtPath<Character>);
@@ -102,6 +102,21 @@ namespace ACHNarrativeDriver.Api
                         $"Sound effect index was outside the bounds of the sound effects collection. Length: {soundEffectsCount}, Index: {playSoundEffectIndex}. Line number: {index + 1}");
                 }
 
+                var executeCustomEffectIndexString = splitLines.FirstOrDefault(x => x.Contains("%%"));
+                int? executeCustomEffectIndex = null;
+                
+                if (!string.IsNullOrWhiteSpace(executeCustomEffectIndexString))
+                {
+                    playSoundEffectIndexString = ResolvePredefinedVariables(executeCustomEffectIndexString, predefinedVariables);
+                    playSoundEffectIndex = int.Parse(playSoundEffectIndexString.Replace("%%", string.Empty));
+                }
+
+                if (playSoundEffectIndex >= customEffectsCount)
+                {
+                    throw new IndexOutOfRangeException(
+                        $"Custom effect index was outside the bounds of the custom effects collection. Length: {customEffectsCount}, Index: {executeCustomEffectIndex}. Line number: {index + 1}");
+                }
+
                 var text = splitLines.Last();
                 text = ResolvePredefinedVariables(text, predefinedVariables);
 
@@ -111,6 +126,7 @@ namespace ACHNarrativeDriver.Api
                     PoseIndex = poseIndex,
                     PlayMusicIndex = playMusicIndex,
                     PlaySoundEffectIndex = playSoundEffectIndex,
+                    ExecuteCustomEffectIndex = executeCustomEffectIndex,
                     Text = text
                 };
 

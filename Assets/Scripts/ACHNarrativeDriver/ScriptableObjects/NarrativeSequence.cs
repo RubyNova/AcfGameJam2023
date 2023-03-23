@@ -18,6 +18,8 @@ namespace ACHNarrativeDriver.ScriptableObjects
             [SerializeField] private int _playMusicIndex;
             [SerializeField] private bool _hasPlaySoundEffectIndex;
             [SerializeField] private int _playSoundEffectIndex;
+            [SerializeField] private bool _hasExecuteCustomEffectIndex;
+            [SerializeField] private int _executeCustomEffectIndex;
             [SerializeField] private string _text;
 
             public Character Character
@@ -76,6 +78,23 @@ namespace ACHNarrativeDriver.ScriptableObjects
                     }
                 }
             }
+            
+            public int? ExecuteCustomEffectIndex
+            {
+                get => _hasExecuteCustomEffectIndex ? _executeCustomEffectIndex : null;
+                set
+                {
+                    if (value.HasValue)
+                    {
+                        _executeCustomEffectIndex = value.Value;
+                        _hasExecuteCustomEffectIndex = true;
+                    }
+                    else
+                    {
+                        _hasExecuteCustomEffectIndex = false;
+                    }
+                }
+            }
 
             public string Text
             {
@@ -108,7 +127,6 @@ namespace ACHNarrativeDriver.ScriptableObjects
             }
         }
         
-        [SerializeField] private Sprite _backgroundSprite;
         [SerializeField] private NarrativeSequence _nextSequence;
         [SerializeField] private List<AudioClip> _musicFiles;
         [SerializeField] private List<AudioClip> _soundEffectFiles;
@@ -143,12 +161,6 @@ namespace ACHNarrativeDriver.ScriptableObjects
         {
             get => _characterDialoguePairs;
             set => _characterDialoguePairs = value;
-        }
-
-        public Sprite BackgroundSprite
-        {
-            get => _backgroundSprite;
-            set => _backgroundSprite = value;
         }
 
         [field: SerializeField, HideInInspector]

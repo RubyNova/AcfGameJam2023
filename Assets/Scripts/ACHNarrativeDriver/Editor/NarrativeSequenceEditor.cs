@@ -41,12 +41,7 @@ namespace ACHNarrativeDriver.Editor
             _predefinedVariables = (PredefinedVariables)EditorGUILayout.ObjectField(
                 "Predefined Variables", _predefinedVariables, typeof(PredefinedVariables),
                 false);
-
-            var previousSprite = _currentNarrativeSequence.BackgroundSprite;
-            _currentNarrativeSequence.BackgroundSprite = (Sprite)EditorGUILayout.ObjectField("Background Image",
-                _currentNarrativeSequence.BackgroundSprite, typeof(Sprite), false);
-            var backgroundSpriteChanged = _currentNarrativeSequence.BackgroundSprite != previousSprite;
-            
+ 
             GUILayout.Label("Music files", EditorStyles.label);
 
             bool musicCollectionModified = false;
@@ -166,7 +161,7 @@ namespace ACHNarrativeDriver.Editor
             if (GUILayout.Button("Save Source Script"))
             {
                 compiledScriptChanged = true;
-                var listOfStuff = _interpreter.Interpret(_currentNarrativeSequence.SourceScript, _predefinedVariables, _currentNarrativeSequence.MusicFiles.Count, _currentNarrativeSequence.SoundEffectFiles.Count);
+                var listOfStuff = _interpreter.Interpret(_currentNarrativeSequence.SourceScript, _predefinedVariables, _currentNarrativeSequence.MusicFiles.Count, _currentNarrativeSequence.SoundEffectFiles.Count, 0); //TODO: Change the 0 with the actual count
                 _currentNarrativeSequence.CharacterDialoguePairs = listOfStuff;
 
                 if (_currentNarrativeSequence.Choices is not null && _predefinedVariables is not null)
@@ -180,7 +175,7 @@ namespace ACHNarrativeDriver.Editor
             }
 
             if (sourceScriptChanged || musicCollectionModified || soundEffectCollectionModified || nextNarrativeSequenceModified ||
-                compiledScriptChanged || backgroundSpriteChanged)
+                compiledScriptChanged)
             {
                 EditorUtility.SetDirty(_currentNarrativeSequence);
             }
