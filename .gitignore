@@ -2,3 +2,12 @@
 .idea/*
 .vs/*
 .vscode/*
+.vsconfig
+
+# Unity and C# build nonsense
+obj/*
+UserSettings/*
+Logs/*
+*.csproj
+*.sln
+[Ll]ibrary/
