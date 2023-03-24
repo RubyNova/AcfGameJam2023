@@ -130,6 +130,7 @@ namespace ACHNarrativeDriver.ScriptableObjects
         [SerializeField] private NarrativeSequence _nextSequence;
         [SerializeField] private List<AudioClip> _musicFiles;
         [SerializeField] private List<AudioClip> _soundEffectFiles;
+        [SerializeField] private List<GameObject> _customEffectPrefabs;
         [SerializeField] private List<CharacterDialogueInfo> _characterDialoguePairs;
         [SerializeField] private List<ChoiceInfo> _choices;
 
@@ -155,6 +156,12 @@ namespace ACHNarrativeDriver.ScriptableObjects
         {
             get => _soundEffectFiles;
             set => _soundEffectFiles = value;
+        }
+
+        public List<GameObject> CustomEffectPrefabs 
+        {
+            get => _customEffectPrefabs;
+            set => _customEffectPrefabs = value;
         }
 
         public List<CharacterDialogueInfo> CharacterDialoguePairs

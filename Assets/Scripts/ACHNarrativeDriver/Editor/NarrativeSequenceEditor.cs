@@ -100,6 +100,35 @@ namespace ACHNarrativeDriver.Editor
                 soundEffectCollectionModified = true;
             }
 
+            GUILayout.Label("Custom effect prefabs", EditorStyles.label);
+
+            bool customEffectCollectionModified = false;
+
+            for (int index = 0; index < _currentNarrativeSequence.CustomEffectPrefabs.Count; index++)
+            {
+                var previousEffect = _currentNarrativeSequence.CustomEffectPrefabs[index];
+                _currentNarrativeSequence.CustomEffectPrefabs[index] =
+                    (GameObject)EditorGUILayout.ObjectField($"Custom Effect {index}",
+                        _currentNarrativeSequence.CustomEffectPrefabs[index], typeof(GameObject), false);
+
+                if (previousEffect != _currentNarrativeSequence.CustomEffectPrefabs[index])
+                {
+                    customEffectCollectionModified = true;
+                }
+            }
+            
+            if (GUILayout.Button("Add new"))
+            {
+                _currentNarrativeSequence.CustomEffectPrefabs.Add(null);
+                customEffectCollectionModified = true;
+            }
+
+            if (GUILayout.Button("Remove last") && _currentNarrativeSequence.CustomEffectPrefabs.Count > 0)
+            {
+                _currentNarrativeSequence.CustomEffectPrefabs.RemoveAt(_currentNarrativeSequence.CustomEffectPrefabs.Count - 1);
+                customEffectCollectionModified = true;
+            }
+
             GUILayout.Label("Source Script", EditorStyles.label);
             var previousSourceScript = _currentNarrativeSequence.SourceScript;
             _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos);
@@ -175,7 +204,7 @@ namespace ACHNarrativeDriver.Editor
             }
 
             if (sourceScriptChanged || musicCollectionModified || soundEffectCollectionModified || nextNarrativeSequenceModified ||
-                compiledScriptChanged)
+                compiledScriptChanged || customEffectCollectionModified)
             {
                 EditorUtility.SetDirty(_currentNarrativeSequence);
             }
