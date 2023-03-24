@@ -5,7 +5,7 @@ using UnityEngine;
 public class Exits : MonoBehaviour
 {
     public GameObject roomToEnter;
-    
+
     // Start is called before the first frame update
     void Start()
     {
