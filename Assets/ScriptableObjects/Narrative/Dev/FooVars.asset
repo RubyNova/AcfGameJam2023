@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb8c36d8f0ea8a488be1bd8bae7eed3, type: 3}
   m_Name: FooVars
   m_EditorClassIdentifier: 
-  _variables: []
+  _variables:
+  - _key: Age
+    _value: 25
+  - _key: Fruit
+    _value: Banana

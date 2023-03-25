@@ -13,9 +13,34 @@ MonoBehaviour:
   m_Name: Hi
   m_EditorClassIdentifier: 
   _nextSequence: {fileID: 0}
-  _musicFiles: []
-  _soundEffectFiles: []
-  _customEffectPrefabs: []
+  _musicFiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _soundEffectFiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _customEffectPrefabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _characterDialoguePairs: []
   _choices: []
-  <SourceScript>k__BackingField: 
+  <SourceScript>k__BackingField: 'Bob: Hello world!
+
+    I am talking from a narrative
+    sequence! Wow golly I am so cool!
+
+    Loving the multi line usage for separate
+    sections of narrative but from the same character, nice!
+
+
+    I even support
+    an empty line to make multi line entries easier to read!
+
+    >>0: Now I play
+    music. This tune slaps.'

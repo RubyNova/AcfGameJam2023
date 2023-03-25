@@ -1,4 +1,5 @@
 using Movement;
+using Player;
 using UnityEngine;
 
 namespace AI
@@ -7,6 +8,9 @@ namespace AI
     {
         [Header("Dependencies"), SerializeField]
         private GroundMover _mover;
+
+        [SerializeField]
+        private LayerMask _raycastConfig;
 
         [SerializeField]
         private string _playerTag;
@@ -54,6 +58,7 @@ namespace AI
         private SuspicionSubState _suspicionSubState;
         private bool _visualSuspicionIsTracked;
         private bool _audioSuspicionIsTracked;
+        PlayerController _foundPlayerController;
 
         private void Awake()
         {
@@ -136,6 +141,13 @@ namespace AI
 
             void HandleSuspicionTick()
             {
+                if (_identificationState == PlayerIdentificationState.Identified)
+                {
+                    _suspicionTimeRemaining = 0;
+                    _currentState = BehaviourState.Chasing;
+                    return;
+                }
+
                 bool waitTimeIsDone = Mathf.Approximately(_suspicionTimeRemaining, 0) || _suspicionTimeRemaining < 0;
                 
                 switch (_suspicionSubState)
@@ -173,14 +185,7 @@ namespace AI
                                 return;
                             }
                         }
-
-                        if (_identificationState == PlayerIdentificationState.Identified)
-                        {
-                            _suspicionTimeRemaining = 0;
-                            _currentState = BehaviourState.Chasing;
-                            return;
-                        }
-                        
+ 
                         _suspicionTimeRemaining -= Time.deltaTime;
 
                         var position = transform.position;
@@ -202,12 +207,29 @@ namespace AI
             {
                 var position = transform.position;
                 var target = _lastPointOfInterest;
-                float distance = Vector2.Distance(position, target);
 
-                if (!_visualSuspicionIsTracked)
+                if (_foundPlayerController != null && !_visualSuspicionIsTracked)
                 {
-                    _currentState = BehaviourState.Searching;
+                    var hitData = Physics2D.Raycast(position, (_foundPlayerController.transform.position - position).normalized, Mathf.Infinity, _raycastConfig);
+                    if (hitData.collider != null)
+                    {
+                        if (hitData.transform == _foundPlayerController.transform)
+                        {
+                            _lastPointOfInterest = _foundPlayerController.transform.position;
+                            target = _lastPointOfInterest;
+                        }
+                        else
+                        {
+                            _currentState = BehaviourState.Searching; // TODO: holy hell what is this duplicated code aaaaaaaa
+                        }
+                    }
+                    else
+                    {
+                        _currentState = BehaviourState.Searching;
+                    }
                 }
+
+                float distance = Vector2.Distance(position, target);
 
                 if (distance < _proximityLimit)
                 {
@@ -250,6 +272,12 @@ namespace AI
                 return;
             }
 
+            if (_foundPlayerController == null)
+            {
+                var finalComponent = collision.GetComponent<PlayerController>() ?? collision.GetComponentInChildren<PlayerController>(true);
+                _foundPlayerController = finalComponent;
+            }
+
             _visualSuspicionIsTracked = true;
 
             var playerPosition = collision.transform.position;
@@ -260,7 +288,8 @@ namespace AI
             switch (_currentState)
             {
                 case BehaviourState.IdleOrPatrolling:
-                    if (distance > _immediateAlertVisionSubRange && distance > _immediateAlertVisionSubRange)
+                case BehaviourState.Suspicious:
+                    if (distance > _immediateAlertVisionSubRange)
                     {
                         _identificationState = PlayerIdentificationState.Uncertain;
                     }
@@ -271,6 +300,7 @@ namespace AI
                     break;
                 case BehaviourState.Chasing:
                 case BehaviourState.Searching:
+
                     break;
             }
         }
