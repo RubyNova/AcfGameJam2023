@@ -66,7 +66,7 @@ namespace ACHNarrativeDriver.Api
                     poseIndex = int.Parse(poseIndexString);
                 }
                 
-                if (poseIndex >= character.Poses.Count)
+                if (poseIndex != null && poseIndex >= character.Poses.Count)
                 {
                     throw new IndexOutOfRangeException(
                         $"Character Pose Index was outside the bounds of the Poses collection. Length: {character.Poses.Count}, Index: {poseIndex}. Line number: {index + 1}");
@@ -81,7 +81,7 @@ namespace ACHNarrativeDriver.Api
                     playMusicIndex = int.Parse(playMusicIndexString.Replace(">>", string.Empty));
                 }
 
-                if (playMusicIndex >= musicFilesCount)
+                if (playMusicIndex != null && playMusicIndex >= musicFilesCount)
                 {
                     throw new IndexOutOfRangeException(
                         $"Music index was outside the bounds of the music collection. Length: {musicFilesCount}, Index: {playMusicIndex}. Line number: {index + 1}");
@@ -96,7 +96,7 @@ namespace ACHNarrativeDriver.Api
                     playSoundEffectIndex = int.Parse(playSoundEffectIndexString.Replace("#", string.Empty));
                 }
 
-                if (playSoundEffectIndex >= soundEffectsCount)
+                if (playSoundEffectIndex != null && playSoundEffectIndex >= soundEffectsCount)
                 {
                     throw new IndexOutOfRangeException(
                         $"Sound effect index was outside the bounds of the sound effects collection. Length: {soundEffectsCount}, Index: {playSoundEffectIndex}. Line number: {index + 1}");
@@ -111,7 +111,7 @@ namespace ACHNarrativeDriver.Api
                     playSoundEffectIndex = int.Parse(playSoundEffectIndexString.Replace("%%", string.Empty));
                 }
 
-                if (playSoundEffectIndex >= customEffectsCount)
+                if (executeCustomEffectIndex != null && executeCustomEffectIndex >= customEffectsCount)
                 {
                     throw new IndexOutOfRangeException(
                         $"Custom effect index was outside the bounds of the custom effects collection. Length: {customEffectsCount}, Index: {executeCustomEffectIndex}. Line number: {index + 1}");
