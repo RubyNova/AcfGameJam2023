@@ -1,4 +1,5 @@
 using Movement;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,27 +22,48 @@ namespace Player
         [SerializeField]
         private float _jumpForce;
 
-        private Vector2 _inputData;
-        private bool _shouldSprint;
+        private InputInfo _inputInfo;
+        private List<PlayerAbilityBehaviour> _abilities;
+        private Dictionary<string, Coroutine> _activeAbilityCoroutines;
 
         private void Awake()
         {
-            _inputData = Vector2.zero;
-            _shouldSprint = false;
+            _inputInfo = new(Vector2.zero, false);
+            _abilities = new();
+            _activeAbilityCoroutines = new();
+        }
+
+        private void Start()
+        {
+            _abilities.AddRange(gameObject.GetComponents<PlayerAbilityBehaviour>());
         }
 
         // Update is called once per frame
         private void Update()
         {
+            PlayerContextObject context = new(this, _mover, _inputInfo, false, false, _activeAbilityCoroutines);
+            foreach (var ability in _abilities)
+            {
+                if (_activeAbilityCoroutines.ContainsKey(ability.Name))
+                {
+                    continue;
+                }
+
+                if (ability.TryExecute(context, out var abilityRoutine))
+                {
+                    _activeAbilityCoroutines.Add(ability.Name, abilityRoutine);
+                }
+            }
+
             float finalMovementSpeed = _walkingSpeed;
             bool modifyInputSpeed = false;
-            var finalInputData = _inputData;
+            var finalInputData = _inputInfo.InputAxes;
 
-            if (_shouldSprint && _inputData.y >= 0)
+            if (_inputInfo.InputSprintModifier && _inputInfo.InputAxes.y >= 0)
             {
                 finalMovementSpeed = _runningSpeed;
             }
-            else if (_inputData.y < -0.1f)
+            else if (_inputInfo.InputAxes.y < -0.1f)
             {
                 finalMovementSpeed = _crawlingSpeed;
                 modifyInputSpeed = true;
@@ -52,17 +74,29 @@ namespace Player
                 finalInputData.y = 0;
             }
 
-            _mover.ApplyMove(finalInputData, finalMovementSpeed, _jumpForce);
+            _mover.ApplyMove(finalInputData, finalMovementSpeed, _jumpForce, context.ForceJump);
+
+            if (Mathf.Approximately(_inputInfo.InputAxes.y, 1))
+            {
+                var copy = _inputInfo.InputAxes;
+                copy.y = 0;
+                _inputInfo.InputAxes = copy;
+            }
         }
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            _inputData = context.ReadValue<Vector2>();
+            _inputInfo.InputAxes = context.ReadValue<Vector2>();
         }
 
         public void OnSprint(InputAction.CallbackContext context)
         {
-            _shouldSprint = context.ReadValueAsButton();
+            _inputInfo.InputSprintModifier = context.ReadValueAsButton();
+        }
+
+        public void RegisterAbility<TAbility>() where TAbility : PlayerAbilityBehaviour
+        {
+            _abilities.Add(gameObject.AddComponent<TAbility>());
         }
     }
 }

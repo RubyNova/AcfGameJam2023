@@ -15,6 +15,11 @@ namespace Movement
         private Vector2 _directionForFrame;
         private float _horizontalSpeed;
         private float _jumpForce;
+        private bool _forceJump;
+        private bool _overrideMover;
+        private float _gravityScale;
+
+        public bool IsGrounded => _isGrounded;
 
         private void Awake()
         {
@@ -23,11 +28,23 @@ namespace Movement
             _directionForFrame = Vector2.zero;
             _horizontalSpeed = 0;
             _jumpForce = 0;
+            _forceJump = false;
+            _overrideMover = false;
+        }
+
+        private void Start()
+        {
+            _gravityScale = _rigidbody.gravityScale;
         }
 
         // Update is called once per frame
         private void Update()
         {
+            if (_overrideMover)
+            {
+                return;
+            }
+
             Vector2 directionVector = _directionForFrame;
             float finalSpeed = 0;
 
@@ -39,7 +56,15 @@ namespace Movement
             else
             {
                 finalSpeed = _speedFromLastFrame;
-                directionVector.y = 0;
+
+                if (_forceJump)
+                {
+                    directionVector.y *= _jumpForce;
+                }
+                else
+                {
+                    directionVector.y = 0;
+                }
             }
 
             directionVector.x *= finalSpeed;
@@ -74,11 +99,21 @@ namespace Movement
             _isGrounded = false;
         }
 
-        public void ApplyMove(Vector2 directionInput, float horizontalSpeed, float jumpForce)
+        public void ApplyMove(Vector2 directionInput, float horizontalSpeed, float jumpForce, bool forceJump = false)
         {
+            _overrideMover = false;
+            _rigidbody.gravityScale = _gravityScale;
+            _forceJump = forceJump;
             _directionForFrame = directionInput;
             _horizontalSpeed = horizontalSpeed;
             _jumpForce = jumpForce;
+        }
+
+        public void ApplyRawDirection(Vector2 directionAndSpeed)
+        {
+            _overrideMover = true;
+            _rigidbody.gravityScale = 0;
+            _rigidbody.velocity = directionAndSpeed;
         }
     }
 }
