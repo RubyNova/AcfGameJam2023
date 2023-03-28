@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 1086286504}
   - component: {fileID: 1086286505}
   - component: {fileID: 1086286506}
+  - component: {fileID: 1086286507}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -457,6 +458,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c7a4316c-2b0f-4dfb-944c-2bb34879be36
     m_ActionName: Player/Movement Modifier[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1086286503}
+        m_TargetAssemblyTypeName: Player.PlayerController, Assembly-CSharp
+        m_MethodName: OnAbilityTriggerZero
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5697bb0d-0972-4350-a224-ee4b7acd87f1
+    m_ActionName: Player/Ability Modifier[/Keyboard/leftCtrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -477,10 +494,37 @@ MonoBehaviour:
   _inputTrigger:
     _inputAxes: {x: 0, y: 1}
     _inputSprintModifier: 0
+    _inputAbilityTriggerZero: 0
     _shouldCareAboutXAxis: 0
     _shouldCareAboutYAxis: 1
     _shouldCareAboutSprintModifier: 0
+    _shouldCareAboutAbilityTriggerZero: 0
+  _overridesNormalMovement: 0
   _groundTagName: Ground
+--- !u!114 &1086286507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086286498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e69548a8c5179f44cb9fab5e0bf736b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputTrigger:
+    _inputAxes: {x: 0, y: 0}
+    _inputSprintModifier: 0
+    _inputAbilityTriggerZero: 1
+    _shouldCareAboutXAxis: 0
+    _shouldCareAboutYAxis: 0
+    _shouldCareAboutSprintModifier: 0
+    _shouldCareAboutAbilityTriggerZero: 1
+  _overridesNormalMovement: 1
+  _groundTagName: Ground
+  _dashSpeed: 30
+  _dashDuration: 0.1
 --- !u!1 &1351803674
 GameObject:
   m_ObjectHideFlags: 0

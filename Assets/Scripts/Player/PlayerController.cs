@@ -26,9 +26,11 @@ namespace Player
         private List<PlayerAbilityBehaviour> _abilities;
         private Dictionary<string, Coroutine> _activeAbilityCoroutines;
 
+        public bool MovementIsOverridden { get; set; }
+
         private void Awake()
         {
-            _inputInfo = new(Vector2.zero, false);
+            _inputInfo = new(Vector2.zero, false, false);
             _abilities = new();
             _activeAbilityCoroutines = new();
         }
@@ -41,7 +43,7 @@ namespace Player
         // Update is called once per frame
         private void Update()
         {
-            PlayerContextObject context = new(this, _mover, _inputInfo, false, false, _activeAbilityCoroutines);
+            PlayerContextObject context = new(this, _mover, _inputInfo, false, _activeAbilityCoroutines);
             foreach (var ability in _abilities)
             {
                 if (_activeAbilityCoroutines.ContainsKey(ability.Name))
@@ -55,32 +57,41 @@ namespace Player
                 }
             }
 
-            float finalMovementSpeed = _walkingSpeed;
-            bool modifyInputSpeed = false;
-            var finalInputData = _inputInfo.InputAxes;
-
-            if (_inputInfo.InputSprintModifier && _inputInfo.InputAxes.y >= 0)
+            if (!MovementIsOverridden)
             {
-                finalMovementSpeed = _runningSpeed;
-            }
-            else if (_inputInfo.InputAxes.y < -0.1f)
-            {
-                finalMovementSpeed = _crawlingSpeed;
-                modifyInputSpeed = true;
+                float finalMovementSpeed = _walkingSpeed;
+                bool modifyInputSpeed = false;
+                var finalInputData = _inputInfo.InputAxes;
+
+                if (_inputInfo.InputSprintModifier && _inputInfo.InputAxes.y >= 0)
+                {
+                    finalMovementSpeed = _runningSpeed;
+                }
+                else if (_inputInfo.InputAxes.y < -0.1f)
+                {
+                    finalMovementSpeed = _crawlingSpeed;
+                    modifyInputSpeed = true;
+                }
+
+                if (modifyInputSpeed)
+                {
+                    finalInputData.y = 0;
+                }
+
+                _mover.ApplyMove(finalInputData, finalMovementSpeed, _jumpForce, context.ForceJump);
             }
 
-            if (modifyInputSpeed)
-            {
-                finalInputData.y = 0;
-            }
-
-            _mover.ApplyMove(finalInputData, finalMovementSpeed, _jumpForce, context.ForceJump);
 
             if (Mathf.Approximately(_inputInfo.InputAxes.y, 1))
             {
                 var copy = _inputInfo.InputAxes;
                 copy.y = 0;
                 _inputInfo.InputAxes = copy;
+            }
+
+            if (_inputInfo.InputAbilityTriggerZero)
+            {
+                _inputInfo.InputAbilityTriggerZero = false;
             }
         }
 
@@ -92,6 +103,11 @@ namespace Player
         public void OnSprint(InputAction.CallbackContext context)
         {
             _inputInfo.InputSprintModifier = context.ReadValueAsButton();
+        }
+        
+        public void OnAbilityTriggerZero(InputAction.CallbackContext context)
+        {
+            _inputInfo.InputAbilityTriggerZero = context.ReadValueAsButton();
         }
 
         public void RegisterAbility<TAbility>() where TAbility : PlayerAbilityBehaviour

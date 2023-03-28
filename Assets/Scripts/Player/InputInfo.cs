@@ -13,6 +13,9 @@ namespace Player
         private bool _inputSprintModifier;
 
         [SerializeField]
+        private bool _inputAbilityTriggerZero;        
+
+        [SerializeField]
         private bool _shouldCareAboutXAxis;
         
         [SerializeField]
@@ -20,6 +23,9 @@ namespace Player
         
         [SerializeField]
         private bool _shouldCareAboutSprintModifier;
+
+        [SerializeField]
+        private bool _shouldCareAboutAbilityTriggerZero;
 
         public Vector2 InputAxes
         { 
@@ -33,10 +39,17 @@ namespace Player
             set => _inputSprintModifier = value;
         }
 
-        public InputInfo(Vector2 inputAxes, bool inputSprintModifier)
+        public bool InputAbilityTriggerZero
+        {
+            get => _inputAbilityTriggerZero;
+            set => _inputAbilityTriggerZero = value;
+        }
+
+        public InputInfo(Vector2 inputAxes, bool inputSprintModifier, bool inputAbilityTriggerZero)
         {
             InputAxes = inputAxes;
             InputSprintModifier = inputSprintModifier;
+            InputAbilityTriggerZero = inputAbilityTriggerZero;
         }
 
         public bool TestInput(InputInfo incomingInput)
@@ -44,6 +57,7 @@ namespace Player
             bool xInputAxisMatches = true;
             bool yInputAxisMatches = true;
             bool sprintModifierMatches = true;
+            bool abilityTriggerZeroMatches = true;
 
             if (_shouldCareAboutXAxis)
             {
@@ -60,7 +74,12 @@ namespace Player
                 sprintModifierMatches = InputSprintModifier == incomingInput.InputSprintModifier;
             }
 
-            return xInputAxisMatches && yInputAxisMatches && sprintModifierMatches;
+            if (_shouldCareAboutAbilityTriggerZero)
+            {
+                abilityTriggerZeroMatches = InputAbilityTriggerZero == incomingInput.InputAbilityTriggerZero;
+            }
+
+            return xInputAxisMatches && yInputAxisMatches && sprintModifierMatches && abilityTriggerZeroMatches;
         }
     }
 }

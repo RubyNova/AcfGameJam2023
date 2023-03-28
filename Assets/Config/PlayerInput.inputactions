@@ -1,5 +1,5 @@
 {
-    "name": "AcfGameJam2023",
+    "name": "PlayerInput",
     "maps": [
         {
             "name": "Player",
@@ -36,6 +36,15 @@
                     "name": "Movement Modifier",
                     "type": "Button",
                     "id": "c7a4316c-2b0f-4dfb-944c-2bb34879be36",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Ability Modifier",
+                    "type": "Button",
+                    "id": "5697bb0d-0972-4350-a224-ee4b7acd87f1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -271,6 +280,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Movement Modifier",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0a1f4470-4da4-4329-b6e0-3b6d2e6b9694",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Ability Modifier",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

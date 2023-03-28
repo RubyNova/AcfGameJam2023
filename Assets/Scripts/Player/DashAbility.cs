@@ -3,29 +3,41 @@ using UnityEngine;
 
 namespace Player
 {
-    public class DoubleJumpAbility : PlayerAbilityBehaviour
+    public class DashAbility : PlayerAbilityBehaviour
     {
         [Header("Dependencies"), SerializeField]
         private string _groundTagName;
+
+        [Header("Configuration"), SerializeField]
+        private float _dashSpeed;
+
+        [SerializeField]
+        private float _dashDuration;
 
         private bool _hasBeenUsed;
 
         private void Awake()
         {
-            Name = "DoubleJump";
+            Name = "Dash";
             _hasBeenUsed = false;
         }
 
         protected override bool ValidateExecution(PlayerContextObject context)
         {
-            return !context.Mover.IsGrounded && !_hasBeenUsed && !context.Controller.MovementIsOverridden;
+            return !_hasBeenUsed;
         }
 
         protected override IEnumerator ExecuteAbility(PlayerContextObject context)
         {
+            float timeRemaining = _dashDuration;
             _hasBeenUsed = true;
-            context.ForceJump = true;
-            yield break;
+
+            while (timeRemaining > 0)
+            {
+                context.Mover.ApplyRawDirection(new(context.PlayerInput.InputAxes.x * _dashSpeed, 0));
+                yield return null;
+                timeRemaining -= Time.deltaTime;
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
