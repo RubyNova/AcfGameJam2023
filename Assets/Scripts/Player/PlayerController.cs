@@ -1,4 +1,5 @@
 using Movement;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,9 @@ namespace Player
     {
         [Header("Dependencies"), SerializeField]
         private GroundMover _mover;
+
+        [SerializeField]
+        private AnimationDataPipe _pipe;
 
         [Header("Configuration"), SerializeField]
         private float _walkingSpeed;
@@ -33,6 +37,7 @@ namespace Player
             _inputInfo = new(Vector2.zero, false, false);
             _abilities = new();
             _activeAbilityCoroutines = new();
+            MovementIsOverridden = false;
         }
 
         private void Start()
@@ -44,6 +49,8 @@ namespace Player
         private void Update()
         {
             PlayerContextObject context = new(this, _mover, _inputInfo, false, _activeAbilityCoroutines);
+            _pipe.InputBasedUpdates(_inputInfo);
+
             foreach (var ability in _abilities)
             {
                 if (_activeAbilityCoroutines.ContainsKey(ability.Name))
