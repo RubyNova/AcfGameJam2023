@@ -26,6 +26,9 @@ namespace Player
         [SerializeField]
         private float _jumpForce;
 
+        [SerializeField]
+        private bool _hasAnimations;
+
         private InputInfo _inputInfo;
         private List<PlayerAbilityBehaviour> _abilities;
         private Dictionary<string, Coroutine> _activeAbilityCoroutines;
@@ -49,7 +52,11 @@ namespace Player
         private void Update()
         {
             PlayerContextObject context = new(this, _mover, _inputInfo, false, _activeAbilityCoroutines);
-            _pipe.InputBasedUpdates(_inputInfo);
+
+            if (_hasAnimations)
+            {
+                _pipe.InputBasedUpdates(_inputInfo);
+            }
 
             foreach (var ability in _abilities)
             {
