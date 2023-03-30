@@ -1,6 +1,7 @@
 using Movement;
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +17,12 @@ namespace Player
 
         [SerializeField]
         private Camera _targetCamera;
+
+        [SerializeField]
+        private Transform _aimTransform;
+
+        [SerializeField]
+        private LineRenderer _aimRenderer;
 
         [Header("Configuration"), SerializeField]
         private float _walkingSpeed;
@@ -59,6 +66,8 @@ namespace Player
         private void Update()
         {
             PlayerContextObject context = new(this, _mover, _inputInfo, false, _activeAbilityCoroutines);
+
+            UpdateAimUI();
 
             if (_hasAnimations)
             {
@@ -114,6 +123,22 @@ namespace Player
             {
                 _inputInfo.InputAbilityTriggerZero = false;
             }
+        }
+
+        private void UpdateAimUI()
+        {
+            if (_isMouse)
+            {
+                var diff = (Vector3)_aimData - _aimTransform.position;
+                float angle = (Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg) - 90;
+                _aimTransform.rotation = Quaternion.Euler(0, 0, angle);
+            }
+            else
+            {
+                _aimTransform.up = _aimData;
+            }
+
+            _aimRenderer.SetPositions(new Vector3[] { _aimTransform.position, _aimTransform.position + (_aimTransform.up * 3) });
         }
 
         public void OnMove(InputAction.CallbackContext context)

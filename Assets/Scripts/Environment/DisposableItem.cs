@@ -8,22 +8,23 @@ namespace Environment
         [Header("Dependencies"), SerializeField]
         private NoiseCreator _noiseCreator;
 
-        [SerializeField]
-        private float _noiseRadius;
+        [SerializeField] private SpriteRenderer _spriteRenderer;
 
         [SerializeField]
-        private float _maxRadiusDuration;
+        private DisposableItemConfig _config;
 
-        [SerializeField]
-        private float _reductionTime;
+        private void Start()
+        {
+            _spriteRenderer.sprite = _config.ItemImage;
+        }
 
         private IEnumerator MakeBangNoise()
         {
-            _noiseCreator.AdjustNoiseRadius(_noiseRadius);
+            _noiseCreator.AdjustNoiseRadius(_config.NoiseRadius);
 
-            yield return new WaitForSeconds(_maxRadiusDuration);
+            yield return new WaitForSeconds(_config.MaxRadiusDuration);
 
-            _noiseCreator.AdjustNoiseRadius(0.0001f, _reductionTime);
+            _noiseCreator.AdjustNoiseRadius(0.0001f, _config.ReductionTime);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
