@@ -14,6 +14,9 @@ namespace Player
         [SerializeField]
         private AnimationDataPipe _pipe;
 
+        [SerializeField]
+        private Camera _targetCamera;
+
         [Header("Configuration"), SerializeField]
         private float _walkingSpeed;
 
@@ -32,6 +35,8 @@ namespace Player
         private InputInfo _inputInfo;
         private List<PlayerAbilityBehaviour> _abilities;
         private Dictionary<string, Coroutine> _activeAbilityCoroutines;
+        private Vector2 _aimData;
+        private bool _isMouse;
 
         public bool MovementIsOverridden { get; set; }
 
@@ -41,6 +46,8 @@ namespace Player
             _abilities = new();
             _activeAbilityCoroutines = new();
             MovementIsOverridden = false;
+            _aimData = Vector2.zero;
+            _isMouse = true;
         }
 
         private void Start()
@@ -122,6 +129,21 @@ namespace Player
         public void OnAbilityTriggerZero(InputAction.CallbackContext context)
         {
             _inputInfo.InputAbilityTriggerZero = context.ReadValueAsButton();
+        }
+
+        public void OnAim(InputAction.CallbackContext context)
+        {
+            // TODO: I hate this SO much
+            if (context.control.device is Gamepad)
+            {
+                _isMouse = false;
+                _aimData = context.ReadValue<Vector2>();
+            }
+            else if (context.control.device is Mouse)
+            {
+                _isMouse = true;
+                _aimData = _targetCamera.ScreenToWorldPoint(context.ReadValue<Vector2>());
+            }
         }
 
         public void RegisterAbility<TAbility>() where TAbility : PlayerAbilityBehaviour

@@ -336,6 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mover: {fileID: 1086286504}
   _pipe: {fileID: 0}
+  _targetCamera: {fileID: 0}
   _walkingSpeed: 7
   _runningSpeed: 15
   _crawlingSpeed: 3
@@ -754,7 +755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _noiseCreator: {fileID: 1113087074}
   _noiseRadius: 5
-  _maxRadiusDuration: 3
+  _maxRadiusDuration: 0.1
   _reductionTime: 0.3
 --- !u!1 &1351803674
 GameObject:
