@@ -1,3 +1,4 @@
+using Environment;
 using Movement;
 using System;
 using System.Collections.Generic;
@@ -39,11 +40,15 @@ namespace Player
         [SerializeField]
         private bool _hasAnimations;
 
+        [SerializeField]
+        private float _itemThrowForce;
+
         private InputInfo _inputInfo;
         private List<PlayerAbilityBehaviour> _abilities;
         private Dictionary<string, Coroutine> _activeAbilityCoroutines;
         private Vector2 _aimData;
         private bool _isMouse;
+        private DisposableItem _item;
 
         public bool MovementIsOverridden { get; set; }
 
@@ -141,6 +146,17 @@ namespace Player
             _aimRenderer.SetPositions(new Vector3[] { _aimTransform.position, _aimTransform.position + (_aimTransform.up * 3) });
         }
 
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            
+            if (!collision.gameObject.TryGetComponent<DisposableItem>(out var item))
+            {
+                return;
+            }
+
+            _item = item;
+        }
+
         public void OnMove(InputAction.CallbackContext context)
         {
             _inputInfo.InputAxes = context.ReadValue<Vector2>();
@@ -169,6 +185,16 @@ namespace Player
                 _isMouse = true;
                 _aimData = _targetCamera.ScreenToWorldPoint(context.ReadValue<Vector2>());
             }
+        }
+
+        public void OnFire(InputAction.CallbackContext context)
+        {
+            if (!context.ReadValueAsButton() || _item == null)
+            {
+                return;
+            }
+
+            _item.Throw(_aimTransform.up, _itemThrowForce);
         }
 
         public void RegisterAbility<TAbility>() where TAbility : PlayerAbilityBehaviour

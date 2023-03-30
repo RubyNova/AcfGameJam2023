@@ -274,7 +274,12 @@ namespace AI
 
             if (_foundPlayerController == null)
             {
-                var finalComponent = collision.GetComponent<PlayerController>() ?? collision.GetComponentInChildren<PlayerController>(true);
+                
+                if (!collision.TryGetComponent<PlayerController>(out var finalComponent))
+                {
+                    finalComponent = collision.GetComponentInChildren<PlayerController>(true);
+                }
+
                 _foundPlayerController = finalComponent;
             }
 
