@@ -20,6 +20,7 @@ namespace Player
             _animator.SetFloat("Speed", Mathf.Abs(input.InputAxes.x));
             _animator.SetBool("IsJumping", !_mover.IsGrounded);
             _animator.SetBool("IsCrawling", Mathf.Approximately(input.InputAxes.y, -1) && _mover.IsGrounded);
+            _animator.SetFloat("YAxisVelocity", _rigidbody.velocity.y);
         }
     }
 }
