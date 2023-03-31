@@ -1,3 +1,4 @@
+using Environment;
 using Movement;
 using Player;
 using UnityEngine;
@@ -58,7 +59,7 @@ namespace AI
         private SuspicionSubState _suspicionSubState;
         private bool _visualSuspicionIsTracked;
         private bool _audioSuspicionIsTracked;
-        PlayerController _foundPlayerController;
+        private PlayerController _foundPlayerController;
 
         private void Awake()
         {
@@ -160,7 +161,7 @@ namespace AI
                             return;
                         }
 
-                        if (!_visualSuspicionIsTracked)
+                        if (!_visualSuspicionIsTracked && !_audioSuspicionIsTracked)
                         {
                             _currentState = BehaviourState.IdleOrPatrolling;
                             return;
@@ -173,6 +174,7 @@ namespace AI
                     case SuspicionSubState.Investigate:
                         if (waitTimeIsDone)
                         {
+                            _audioSuspicionIsTracked = false;
                             if (_visualSuspicionIsTracked)
                             {
                                 _currentState = BehaviourState.Chasing;
@@ -184,6 +186,9 @@ namespace AI
                                 _currentState = BehaviourState.Searching;
                                 return;
                             }
+
+                            _currentState = BehaviourState.IdleOrPatrolling;
+                            return;
                         }
  
                         _suspicionTimeRemaining -= Time.deltaTime;
@@ -265,6 +270,22 @@ namespace AI
             }
         }
 
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (!collision.gameObject.TryGetComponent<DisposableItem>(out var itemComponent))
+            {
+                return;
+            }
+
+            _lastPointOfInterest = itemComponent.transform.position;
+
+            if (_currentState == BehaviourState.IdleOrPatrolling)
+            {
+                _currentState = BehaviourState.Suspicious;
+                _audioSuspicionIsTracked = true;
+            }
+        }
+
         private void OnTriggerStay2D(Collider2D collision)
         {
             if (!collision.CompareTag(_playerTag))
@@ -274,7 +295,6 @@ namespace AI
 
             if (_foundPlayerController == null)
             {
-                
                 if (!collision.TryGetComponent<PlayerController>(out var finalComponent))
                 {
                     finalComponent = collision.GetComponentInChildren<PlayerController>(true);
