@@ -27,6 +27,8 @@ namespace Environment
 
         private bool _isThrownByPlayer;
 
+        public bool IsThrownByPlayer => _isThrownByPlayer;
+
         private void Awake()
         {
             _isThrownByPlayer = false;

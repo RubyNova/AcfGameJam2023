@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace AI
 {
-    public class NPCCore : MonoBehaviour
+    public class NPCCore : RoomEntityBehaviour
     {
         [Header("Dependencies"), SerializeField]
         private GroundMover _mover;
@@ -49,6 +49,9 @@ namespace AI
         [SerializeField]
         private float _proximityLimit;
 
+        [SerializeField]
+        private Vector2 _roomStartPos;
+
         private BehaviourState _currentState;
         private PlayerIdentificationState _identificationState;
         private int _currentPatrolRouteIndex;
@@ -60,7 +63,6 @@ namespace AI
         private bool _visualSuspicionIsTracked;
         private bool _audioSuspicionIsTracked;
         private PlayerController _foundPlayerController;
-        private Vector3 _roomStartPos;
 
         private void Awake()
         {
@@ -85,7 +87,7 @@ namespace AI
             _visualSuspicionIsTracked = false;
             _audioSuspicionIsTracked = false;
             _foundPlayerController = null;
-            transform.position = _roomStartPos;
+            transform.SetPositionAndRotation(_roomStartPos, Quaternion.Euler(Vector3.zero));
         }
 
         private void Update()
@@ -289,7 +291,7 @@ namespace AI
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.gameObject.TryGetComponent<DisposableItem>(out var itemComponent))
+            if (!collision.gameObject.TryGetComponent<DisposableItem>(out var itemComponent) || !itemComponent.IsThrownByPlayer)
             {
                 return;
             }
@@ -355,6 +357,19 @@ namespace AI
             }
 
             _visualSuspicionIsTracked = false;
+        }
+
+        public override void NotifyActiveStatus(bool isActiveRoom)
+        {
+            if (!isActiveRoom)
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                SetUpInitialAIState();
+                gameObject.SetActive(true);
+            }
         }
     }
 }
