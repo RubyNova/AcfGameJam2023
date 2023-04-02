@@ -20,10 +20,14 @@ namespace Environment
         [SerializeField]
         private float _timeToDeletionPostThrow;
 
+        [SerializeField]
+        private float _itemWeight;
+
         public float NoiseRadius => _noiseRadius;
         public float MaxRadiusDuration => _maxRadiusDuration;
         public float ReductionTime => _reductionTime;
         public Sprite ItemImage => _itemImage;
         public float TimeToDeletionPostThrow => _timeToDeletionPostThrow;
+        public float ItemWeight => _itemWeight;
     }
 }

@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Utilities;
 
 namespace Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoSingleton<PlayerController> 
     {
         [Header("Dependencies"), SerializeField]
         private GroundMover _mover;

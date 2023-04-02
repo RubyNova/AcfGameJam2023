@@ -1,23 +1,21 @@
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Exits : MonoBehaviour
 {
-    public GameObject roomToEnter;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private GameObject _roomToEnter;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (this.gameObject.GetComponent<Collider2D>().IsTouching(GameObject.Find("Player").GetComponent<Collider2D>()))
+        var player = PlayerController.Instance;
+        if (collision.gameObject != player.gameObject)
         {
-            GameObject.Find("Player").transform.position = roomToEnter.transform.position;
+            return;
         }
+
+        player.transform.position = _roomToEnter.transform.position;
     }
 }

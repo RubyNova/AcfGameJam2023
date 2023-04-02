@@ -5,6 +5,7 @@
         IdleOrPatrolling,
         Suspicious,
         Chasing,
-        Searching
+        Searching,
+        Dead
     }
 }

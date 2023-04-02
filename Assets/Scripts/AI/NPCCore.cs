@@ -60,8 +60,19 @@ namespace AI
         private bool _visualSuspicionIsTracked;
         private bool _audioSuspicionIsTracked;
         private PlayerController _foundPlayerController;
+        private Vector3 _roomStartPos;
 
         private void Awake()
+        {
+            SetUpInitialAIState();
+        }
+
+        private void Start()
+        {
+            _roomStartPos = transform.position;
+        }
+
+        private void SetUpInitialAIState()
         {
             _currentState = BehaviourState.IdleOrPatrolling;
             _identificationState = PlayerIdentificationState.Unaware;
@@ -72,6 +83,9 @@ namespace AI
             _suspicionTimeRemaining = 0;
             _suspicionSubState = SuspicionSubState.GracePeriod;
             _visualSuspicionIsTracked = false;
+            _audioSuspicionIsTracked = false;
+            _foundPlayerController = null;
+            transform.position = _roomStartPos;
         }
 
         private void Update()
@@ -89,6 +103,9 @@ namespace AI
                     break;
                 case BehaviourState.Searching:
                     HandleSearchingTick();
+                    break;
+                case BehaviourState.Dead:
+                    
                     break;
             }
 
