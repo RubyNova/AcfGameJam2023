@@ -10,12 +10,11 @@ public class Exits : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var player = PlayerController.Instance;
-        if (collision.gameObject != player.gameObject)
+        if (!collision.TryGetComponent<PlayerController>(out var controller))
         {
             return;
         }
 
-        player.transform.position = _roomToEnter.transform.position;
+        controller.transform.position = _roomToEnter.transform.position;
     }
 }

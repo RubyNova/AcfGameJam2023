@@ -1,15 +1,12 @@
 using Environment;
 using Movement;
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Utilities;
 
 namespace Player
 {
-    public class PlayerController : MonoSingleton<PlayerController> 
+    public class PlayerController : MonoBehaviour
     {
         [Header("Dependencies"), SerializeField]
         private GroundMover _mover;
