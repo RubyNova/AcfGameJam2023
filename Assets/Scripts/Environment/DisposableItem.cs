@@ -26,12 +26,16 @@ namespace Environment
         private DisposableItemConfig _config;
 
         private bool _isThrownByPlayer;
+        private Vector2 _throwLocation;
 
         public bool IsThrownByPlayer => _isThrownByPlayer;
+        public DisposableItemConfig Config => _config;
+        public Vector2 ThrowLocation => _throwLocation;
 
         private void Awake()
         {
             _isThrownByPlayer = false;
+            _throwLocation = Vector2.zero;
         }
 
         private void Start()
@@ -71,6 +75,7 @@ namespace Environment
 
         public void Throw(Vector2 direction, float force)
         {
+            _throwLocation = transform.position;
             transform.SetParent(null);
             _isThrownByPlayer = true;
             gameObject.layer = LayerMask.NameToLayer(_thrownLayerName);

@@ -191,8 +191,8 @@ namespace Player
             {
                 return;
             }
-
             _item.Throw(_aimTransform.up, _itemThrowForce);
+            _item = null;
         }
 
         public void RegisterAbility<TAbility>() where TAbility : PlayerAbilityBehaviour

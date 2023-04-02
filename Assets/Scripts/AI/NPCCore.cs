@@ -52,6 +52,12 @@ namespace AI
         [SerializeField]
         private Vector2 _roomStartPos;
 
+        [SerializeField]
+        private float _itemWeightThreshold;
+
+        [SerializeField]
+        private float _searchTime;
+
         private BehaviourState _currentState;
         private PlayerIdentificationState _identificationState;
         private int _currentPatrolRouteIndex;
@@ -63,6 +69,8 @@ namespace AI
         private bool _visualSuspicionIsTracked;
         private bool _audioSuspicionIsTracked;
         private PlayerController _foundPlayerController;
+        private float _searchTimeLeft;
+        private bool _hasBeenHitByItem;
 
         private void Awake()
         {
@@ -87,6 +95,8 @@ namespace AI
             _visualSuspicionIsTracked = false;
             _audioSuspicionIsTracked = false;
             _foundPlayerController = null;
+            _searchTimeLeft = 0;
+            _hasBeenHitByItem = false;
             transform.SetPositionAndRotation(_roomStartPos, Quaternion.Euler(Vector3.zero));
         }
 
@@ -107,7 +117,7 @@ namespace AI
                     HandleSearchingTick();
                     break;
                 case BehaviourState.Dead:
-                    
+                    gameObject.SetActive(false);
                     break;
             }
 
@@ -163,6 +173,7 @@ namespace AI
             {
                 if (_identificationState == PlayerIdentificationState.Identified)
                 {
+                    _searchTimeLeft = _searchTime;
                     _suspicionTimeRemaining = 0;
                     _currentState = BehaviourState.Chasing;
                     return;
@@ -196,12 +207,14 @@ namespace AI
                             _audioSuspicionIsTracked = false;
                             if (_visualSuspicionIsTracked)
                             {
+                                _searchTimeLeft = _searchTime;
                                 _currentState = BehaviourState.Chasing;
                                 return;
                             }
 
                             if (_audioSuspicionIsTracked)
                             {
+                                _searchTimeLeft = _searchTime;
                                 _currentState = BehaviourState.Searching;
                                 return;
                             }
@@ -227,8 +240,13 @@ namespace AI
                 }
             }
 
-            void HandleChasingTick()
+            void HandleChasingTick(bool resetSearchTime = true) 
             {
+                if (resetSearchTime)
+                {
+                    _searchTimeLeft = _searchTime;
+                }
+
                 var position = transform.position;
                 var target = _lastPointOfInterest;
 
@@ -262,16 +280,27 @@ namespace AI
                 }
 
                 MoveTowardsTarget(position, target, true);
+
+                print($"PlayerPos: {GameObject.FindObjectOfType<PlayerController>().transform.position}");
+                print($"TargetPos: {target}");
             }
 
             void HandleSearchingTick()
             {
-                HandleChasingTick();
+                if (_searchTimeLeft <= 0)
+                {
+                    _hasBeenHitByItem = false;
+                    _currentState = BehaviourState.IdleOrPatrolling;
+                }
+
+                HandleChasingTick(false);
 
                 if (_visualSuspicionIsTracked)
                 {
                     _currentState = BehaviourState.Chasing;
                 }
+
+                _searchTimeLeft -= Time.deltaTime;
             }
 
             void MoveTowardsTarget(Vector3 position, Vector2 target, bool run = false)
@@ -289,9 +318,39 @@ namespace AI
             }
         }
 
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (!collision.gameObject.TryGetComponent<DisposableItem>(out var item) || !item.IsThrownByPlayer)
+            {
+                return;
+            }
+
+            if (item.Config.ItemWeight >= _itemWeightThreshold)
+            {
+                _currentState = BehaviourState.Dead;
+            }
+            else if (_currentState == BehaviourState.IdleOrPatrolling || _currentState == BehaviourState.Suspicious)
+            {
+                print("Hit from idle or sus!");
+                _currentState = BehaviourState.Searching;
+                ConfigureItemHitFlags();
+            }
+            else
+            {
+                print("Hit from searching or chasing!");
+                ConfigureItemHitFlags();
+            }
+
+            void ConfigureItemHitFlags()
+            {
+                _lastPointOfInterest = item.ThrowLocation;
+                _hasBeenHitByItem = true;
+            }
+        }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.gameObject.TryGetComponent<DisposableItem>(out var itemComponent) || !itemComponent.IsThrownByPlayer)
+            if (!collision.gameObject.TryGetComponent<DisposableItem>(out var itemComponent) || !itemComponent.IsThrownByPlayer || _currentState == BehaviourState.Dead || _hasBeenHitByItem)
             {
                 return;
             }
@@ -307,7 +366,7 @@ namespace AI
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (!collision.CompareTag(_playerTag))
+            if (!collision.CompareTag(_playerTag) || _currentState == BehaviourState.Dead)
             {
                 return;
             }
