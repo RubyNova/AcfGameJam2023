@@ -280,9 +280,6 @@ namespace AI
                 }
 
                 MoveTowardsTarget(position, target, true);
-
-                print($"PlayerPos: {GameObject.FindObjectOfType<PlayerController>().transform.position}");
-                print($"TargetPos: {target}");
             }
 
             void HandleSearchingTick()
@@ -331,13 +328,11 @@ namespace AI
             }
             else if (_currentState == BehaviourState.IdleOrPatrolling || _currentState == BehaviourState.Suspicious)
             {
-                print("Hit from idle or sus!");
                 _currentState = BehaviourState.Searching;
                 ConfigureItemHitFlags();
             }
             else
             {
-                print("Hit from searching or chasing!");
                 ConfigureItemHitFlags();
             }
 
