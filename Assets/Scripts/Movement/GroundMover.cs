@@ -12,7 +12,7 @@ namespace Movement
         [SerializeField]
         private string _groundTagName;
 
-        [Header("Configuration"), SerializeField]
+        [Header("Configuration"), SerializeField, Range(0, 1)]
         private float _groundZeroToleranceValue = 1;
 
         private bool _isGrounded;
@@ -97,12 +97,9 @@ namespace Movement
             {
                 var down = -transform.up;
                 var directionToPoint = (contact.point - (Vector2)transform.position).normalized;
-                var dot = Vector2.Dot(down, directionToPoint);
 
-                print(dot);
-                if (dot >= _groundZeroToleranceValue)
+                if (Vector2.Dot(down, directionToPoint) >= _groundZeroToleranceValue)
                 {
-                    print("STOP MOVING");
                     _rigidbody.velocity = Vector2.zero;
                     _isGrounded = true;
                     break;
