@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Movement
@@ -9,6 +11,9 @@ namespace Movement
 
         [SerializeField]
         private string _groundTagName;
+
+        [Header("Configuration"), SerializeField]
+        private float _groundZeroToleranceValue = 1;
 
         private bool _isGrounded;
         private float _speedFromLastFrame;
@@ -85,8 +90,24 @@ namespace Movement
                 return;
             }
 
-            _rigidbody.velocity = Vector2.zero;
-            _isGrounded = true;
+            List<ContactPoint2D> contacts = new();
+            _ = collision.GetContacts(contacts); // TODO: Unity APIs are questionable at best
+
+            foreach (ContactPoint2D contact in contacts)
+            {
+                var down = -transform.up;
+                var directionToPoint = (contact.point - (Vector2)transform.position).normalized;
+                var dot = Vector2.Dot(down, directionToPoint);
+
+                print(dot);
+                if (dot >= _groundZeroToleranceValue)
+                {
+                    print("STOP MOVING");
+                    _rigidbody.velocity = Vector2.zero;
+                    _isGrounded = true;
+                    break;
+                }
+            }
         }
 
         private void OnCollisionExit2D(Collision2D collision)
