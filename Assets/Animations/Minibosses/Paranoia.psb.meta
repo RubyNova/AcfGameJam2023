@@ -1,0 +1,730 @@
+fileFormatVersion: 2
+guid: 15d8df053c34e8d4cb0715c25a488a62
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: Paranoia Hair Fringe
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1312
+      width: 557
+      height: 404
+    spriteID: 7bdba79c748cdb04ba8b587c27e4c187
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1312}
+    spritePosition: {x: 787, y: 1361}
+  - name: Paranoia Eyes
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 298
+      y: 1830
+      width: 192
+      height: 138
+    spriteID: bbc144c1d6bd1134ab3440c1c7eb2abb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 298, y: 1830}
+    spritePosition: {x: 997, y: 1404}
+  - name: Paranoia Left Arm 3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 569
+      y: 1749
+      width: 205
+      height: 118
+    spriteID: 9f9b4d0435ae4ff4fac17a8ce765970f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 569, y: 1749}
+    spritePosition: {x: 370, y: 1172}
+  - name: Paranoia Left Arm 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1936
+      width: 259
+      height: 99
+    spriteID: 026ca344fb6af9a4ea2a8cbbe213d43b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1936}
+    spritePosition: {x: 504, y: 1198}
+  - name: Paranoia Left Arm 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1724
+      width: 286
+      height: 98
+    spriteID: 32db6b3d97ed3f74fb8b46fc6a779873
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1724}
+    spritePosition: {x: 665, y: 1201}
+  - name: Paranoia Head
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 826
+      y: 4
+      width: 456
+      height: 432
+    spriteID: d75ca5086adf08943b7b686790d1c3c9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 826, y: 4}
+    spritePosition: {x: 795, y: 1311}
+  - name: Paranoia Hair Dangle
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 569
+      y: 1312
+      width: 238
+      height: 429
+    spriteID: ba6599d7dad89e04b8dfd1df7abccc73
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 569, y: 1312}
+    spritePosition: {x: 1191, y: 1118}
+  - name: Paranoia Torso
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 826
+      y: 444
+      width: 324
+      height: 479
+    spriteID: 8b00a58cf7ee2594ca2bf6309aafd551
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 826, y: 444}
+    spritePosition: {x: 886, y: 917}
+  - name: Paranoia Skirt
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 915
+      width: 661
+      height: 389
+    spriteID: 8e393ec86dda21e4aabce26fa9e5418d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 915}
+    spritePosition: {x: 703, y: 666}
+  - name: Paranoia Right Arm 3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 569
+      y: 1875
+      width: 205
+      height: 118
+    spriteID: 223bac2addcc3374d9cc2920f6fddc66
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 569, y: 1875}
+    spritePosition: {x: 1483, y: 1167}
+  - name: Paranoia Right Arm 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1009
+      y: 1627
+      width: 259
+      height: 99
+    spriteID: 6380e9b754769434bbe2662f57f606ea
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1009, y: 1627}
+    spritePosition: {x: 1295, y: 1193}
+  - name: Paranoia Right Arm 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1830
+      width: 286
+      height: 98
+    spriteID: 6518e7041444fd04ead9c6aa4a741ea5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1830}
+    spritePosition: {x: 1107, y: 1196}
+  - name: Paranoia Left Leg 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 826
+      y: 931
+      width: 175
+      height: 434
+    spriteID: 4c059752119304a4aaf756b3b126505e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 826, y: 931}
+    spritePosition: {x: 865, y: 446}
+  - name: Paranoia Left Leg 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1009
+      y: 931
+      width: 147
+      height: 340
+    spriteID: 2a60dd8a7b5cda44085e04c3ba01109f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1009, y: 931}
+    spritePosition: {x: 888, y: 253}
+  - name: Paranoia Left Leg 3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 826
+      y: 1815
+      width: 140
+      height: 111
+    spriteID: 1612af9f73ff4f34481c8eac70aed65a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 826, y: 1815}
+    spritePosition: {x: 904, y: 228}
+  - name: Paranoia Right Leg 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 826
+      y: 1373
+      width: 175
+      height: 434
+    spriteID: b46338a5e3667db41b111200926eb151
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 826, y: 1373}
+    spritePosition: {x: 1043, y: 446}
+  - name: Paranoia Right Leg 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1009
+      y: 1279
+      width: 147
+      height: 340
+    spriteID: 760877f511c98ac44a3c86729b44437b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1009, y: 1279}
+    spritePosition: {x: 1066, y: 253}
+  - name: Paranoia Right Leg 3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1009
+      y: 1734
+      width: 140
+      height: 111
+    spriteID: b0c9e08c82d42c4498c3b45591538997
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1009, y: 1734}
+    spritePosition: {x: 1082, y: 228}
+  - name: Paranoia Hair Back
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 814
+      height: 903
+    spriteID: 401ad96583dda7a42907c3583a55a078
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 548, y: 926}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  skeletonAssetReferenceID: 
+  padding: 4
+  spriteSizeExpand: 0
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: Paranoia Hair Fringe
+    spriteName: Paranoia Hair Fringe
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7bdba79c748cdb04ba8b587c27e4c187
+    layerID: 450
+    mosaicPosition: {x: 4, y: 1312}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Eyes
+    spriteName: Paranoia Eyes
+    isGroup: 0
+    parentIndex: -1
+    spriteID: bbc144c1d6bd1134ab3440c1c7eb2abb
+    layerID: 449
+    mosaicPosition: {x: 298, y: 1830}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Left Arm 3
+    spriteName: Paranoia Left Arm 3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 9f9b4d0435ae4ff4fac17a8ce765970f
+    layerID: 448
+    mosaicPosition: {x: 569, y: 1749}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Left Arm 2
+    spriteName: Paranoia Left Arm 2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 026ca344fb6af9a4ea2a8cbbe213d43b
+    layerID: 447
+    mosaicPosition: {x: 4, y: 1936}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Left Arm 1
+    spriteName: Paranoia Left Arm 1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 32db6b3d97ed3f74fb8b46fc6a779873
+    layerID: 446
+    mosaicPosition: {x: 4, y: 1724}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Head
+    spriteName: Paranoia Head
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d75ca5086adf08943b7b686790d1c3c9
+    layerID: 445
+    mosaicPosition: {x: 826, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Hair Dangle
+    spriteName: Paranoia Hair Dangle
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ba6599d7dad89e04b8dfd1df7abccc73
+    layerID: 444
+    mosaicPosition: {x: 569, y: 1312}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Torso
+    spriteName: Paranoia Torso
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8b00a58cf7ee2594ca2bf6309aafd551
+    layerID: 443
+    mosaicPosition: {x: 826, y: 444}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Skirt
+    spriteName: Paranoia Skirt
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8e393ec86dda21e4aabce26fa9e5418d
+    layerID: 442
+    mosaicPosition: {x: 4, y: 915}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Right Arm 3
+    spriteName: Paranoia Right Arm 3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 223bac2addcc3374d9cc2920f6fddc66
+    layerID: 441
+    mosaicPosition: {x: 569, y: 1875}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Right Arm 2
+    spriteName: Paranoia Right Arm 2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6380e9b754769434bbe2662f57f606ea
+    layerID: 440
+    mosaicPosition: {x: 1009, y: 1627}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Right Arm 1
+    spriteName: Paranoia Right Arm 1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6518e7041444fd04ead9c6aa4a741ea5
+    layerID: 439
+    mosaicPosition: {x: 4, y: 1830}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Left Leg 1
+    spriteName: Paranoia Left Leg 1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 4c059752119304a4aaf756b3b126505e
+    layerID: 438
+    mosaicPosition: {x: 826, y: 931}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Left Leg 2
+    spriteName: Paranoia Left Leg 2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 2a60dd8a7b5cda44085e04c3ba01109f
+    layerID: 437
+    mosaicPosition: {x: 1009, y: 931}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Left Leg 3
+    spriteName: Paranoia Left Leg 3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 1612af9f73ff4f34481c8eac70aed65a
+    layerID: 436
+    mosaicPosition: {x: 826, y: 1815}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Right Leg 1
+    spriteName: Paranoia Right Leg 1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b46338a5e3667db41b111200926eb151
+    layerID: 435
+    mosaicPosition: {x: 826, y: 1373}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Right Leg 2
+    spriteName: Paranoia Right Leg 2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 760877f511c98ac44a3c86729b44437b
+    layerID: 434
+    mosaicPosition: {x: 1009, y: 1279}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Right Leg 3
+    spriteName: Paranoia Right Leg 3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b0c9e08c82d42c4498c3b45591538997
+    layerID: 433
+    mosaicPosition: {x: 1009, y: 1734}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paranoia Hair Back
+    spriteName: Paranoia Hair Back
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 401ad96583dda7a42907c3583a55a078
+    layerID: 432
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
