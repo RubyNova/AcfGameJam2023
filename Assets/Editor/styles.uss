@@ -1,0 +1,16 @@
+.header {
+    position: relative;
+    opacity: 1;
+    align-items: auto;
+    justify-content: flex-start;
+    align-self: center;
+    color: rgb(65, 100, 118);
+    -unity-text-align: upper-center;
+    font-size: 24px;
+    -unity-text-outline-width: -8px;
+    -unity-font: url('project://database/Assets/Editor/AtkinsonHyperlegible-Regular.ttf?fileID=12800000&guid=c55de01201d5718449d2f2759ef344cd&type=3#AtkinsonHyperlegible-Regular');
+}
+
+.health {
+    -unity-font: url('project://database/Assets/Editor/Noto-COLRv1-emojicompat.ttf?fileID=12800000&guid=2b9667e393d3318408395c254105b1cb&type=3#Noto-COLRv1-emojicompat');
+}

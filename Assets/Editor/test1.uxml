@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Editor/styles.uss?fileID=7433441132597879392&amp;guid=23b0849a47331d746a958e7af0d8ee5f&amp;type=3#styles" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" class="header" />
+    </ui:VisualElement>
+</ui:UXML>
