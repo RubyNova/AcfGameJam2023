@@ -1,10 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Editor/styles.uss?fileID=7433441132597879392&amp;guid=23b0849a47331d746a958e7af0d8ee5f&amp;type=3#styles" />
-    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); opacity: 1; visibility: visible; overflow: visible;">
-        <ui:Label tabindex="-1" text="Paused" display-tooltip-when-elided="true" class="header" style="-unity-font-style: bold; color: rgb(86, 156, 192); -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(0, 0, 0); font-size: 34px; padding-top: 18px;" />
-        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: stretch; align-self: center; margin-left: 0; margin-right: 0;">
+    <ui:VisualElement style="align-items: center; flex-direction: column; align-self: auto; height: 588px; width: 1038px; background-color: rgb(51, 46, 46);">
+        <ui:Label tabindex="-1" text="Paused" display-tooltip-when-elided="true" class="header" />
+        <ui:VisualElement name="Buttons" class="buttons">
+            <ui:Button display-tooltip-when-elided="true" text="Save" name="Save" />
             <ui:Button text="Diary" display-tooltip-when-elided="true" name="Diary" />
-            <ui:Button display-tooltip-when-elided="true" text="Save" name="Save" style="-unity-font: url(&apos;project://database/Assets/Editor/Noto-COLRv1-emojicompat.ttf?fileID=12800000&amp;guid=2b9667e393d3318408395c254105b1cb&amp;type=3#Noto-COLRv1-emojicompat&apos;);" />
+            <ui:Button text="Settings" display-tooltip-when-elided="true" name="Settings" />
             <ui:Button text="Quit to Main Menu" display-tooltip-when-elided="true" name="MainMenu" />
         </ui:VisualElement>
     </ui:VisualElement>
