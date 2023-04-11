@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Editor/styles.uss?fileID=7433441132597879392&amp;guid=23b0849a47331d746a958e7af0d8ee5f&amp;type=3#styles" />
-    <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-        <ui:Label tabindex="-1" text="❤❤❤❤❤" display-tooltip-when-elided="true" name="Health" class="health" style="margin-top: 14px; margin-left: 12px; -unity-text-outline-width: 2px; font-size: 35px; -unity-text-outline-color: rgb(0, 0, 0); color: rgb(200, 98, 139); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0); -unity-font: url(&apos;project://database/Assets/Editor/Noto-COLRv1-emojicompat.ttf?fileID=12800000&amp;guid=2b9667e393d3318408395c254105b1cb&amp;type=3#Noto-COLRv1-emojicompat&apos;);" />
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 100%; height: 100%; font-size: 16px;">
+        <ui:Label tabindex="-1" text="❤❤❤❤❤" display-tooltip-when-elided="true" name="Health" focusable="false" class="health" />
     </ui:VisualElement>
 </ui:UXML>
