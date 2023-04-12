@@ -8,7 +8,7 @@
     font-size: 63px;
     -unity-text-outline-width: 2px;
     -unity-font-style: bold;
-    padding-bottom: 0;
+    padding-bottom: 6px;
     -unity-font-definition: url('project://database/Assets/Editor/Fonts/AtkinsonHyperlegible-Regular%20SDF.asset?fileID=11400000&guid=32f7bcaa7520e6c44a3cb11ebb5cd522&type=2#AtkinsonHyperlegible-Regular SDF');
     padding-left: 42px;
     border-left-color: rgba(164, 164, 164, 0.41);
@@ -16,18 +16,21 @@
     border-top-color: rgba(164, 164, 164, 0.41);
     border-bottom-color: rgba(164, 164, 164, 0.41);
     border-bottom-width: 3px;
+    padding-top: 6px;
 }
 
 .health {
     -unity-font-definition: url('project://database/Assets/Editor/Fonts/Noto-COLRv1-emojicompat%20SDF.asset?fileID=11400000&guid=c84cdc6ccbb0f814ca76de6c1cac6130&type=2#Noto-COLRv1-emojicompat SDF');
-    -unity-font-style: bold;
-    font-size: 51px;
-    color: rgb(180, 94, 150);
-    -unity-text-outline-width: 1px;
+    -unity-font-style: normal;
+    font-size: 20px;
+    color: rgb(226, 42, 162);
     -unity-text-outline-color: rgba(0, 0, 0, 0.72);
-    margin-left: 33px;
-    margin-top: 16px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.96);
+    padding-top: 17px;
+    padding-left: 20px;
+    padding-right: 0;
+    width: 220px;
+    -unity-text-outline-width: 0.5px;
 }
 
 .surround-button {
@@ -58,4 +61,7 @@
     transition-delay: 0s;
     -unity-font-style: bold;
     -unity-font-definition: url('project://database/Assets/Editor/Fonts/AtkinsonHyperlegible-Regular%20SDF.asset?fileID=11400000&guid=32f7bcaa7520e6c44a3cb11ebb5cd522&type=2#AtkinsonHyperlegible-Regular SDF');
+}
+
+.menu-tab-content {
 }
