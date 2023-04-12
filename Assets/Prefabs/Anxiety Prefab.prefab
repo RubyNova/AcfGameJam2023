@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -8927512978287955978, guid: d3336a5913534d14aa1bd755e6f9388d, type: 3}
+    - target: {fileID: 1649460507806482553, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1206506656491606480, guid: d3336a5913534d14aa1bd755e6f9388d, type: 3}
     - target: {fileID: 1651863886863626096, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -54,8 +58,12 @@ PrefabInstance:
       objectReference: {fileID: 7618482984332158908, guid: d3336a5913534d14aa1bd755e6f9388d, type: 3}
     - target: {fileID: 4900800268865684204, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_BoneTransforms.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4900800268865684204, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+      propertyPath: m_BoneTransforms.Array.data[2]
+      value: 
+      objectReference: {fileID: 5629532639334305635}
     - target: {fileID: 5182818551895953756, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_Name
       value: Anxiety Prefab
@@ -64,13 +72,17 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -5914473624627792918, guid: d3336a5913534d14aa1bd755e6f9388d, type: 3}
+    - target: {fileID: 5634226818371243913, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7974411655271097441, guid: d3336a5913534d14aa1bd755e6f9388d, type: 3}
     - target: {fileID: 5744177251028356367, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1113920215210295789, guid: d3336a5913534d14aa1bd755e6f9388d, type: 3}
     - target: {fileID: 5781904980067476590, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_BoneTransforms.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6063416038497612527, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_LocalRotation.w
@@ -146,12 +158,12 @@ PrefabInstance:
       objectReference: {fileID: 4171168123234305374}
     - target: {fileID: 6889431923759339908, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_BoneTransforms.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6889431923759339908, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_BoneTransforms.Array.data[2]
       value: 
-      objectReference: {fileID: 6888838554757693764}
+      objectReference: {fileID: 4608849705415177070}
     - target: {fileID: 6936612020688750572, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -207,8 +219,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5846224271763064490, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
   m_PrefabInstance: {fileID: 7548878838284157940}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6888838554757693764 stripped
+--- !u!4 &4608849705415177070 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3988240267164320432, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6284471110290075802, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+  m_PrefabInstance: {fileID: 7548878838284157940}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5629532639334305635 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2802117843801934999, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
   m_PrefabInstance: {fileID: 7548878838284157940}
   m_PrefabAsset: {fileID: 0}
