@@ -39,23 +39,50 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
+  - name: BG1
+    uniqueID: 3591428441
+    locked: 0
+  - name: BG2
     uniqueID: 2337123127
     locked: 0
-  - name: Decoration BG
+  - name: BG3
+    uniqueID: 1295610313
+    locked: 0
+  - name: Background Black
+    uniqueID: 1200378573
+    locked: 0
+  - name: Tiles BG1
+    uniqueID: 1727423337
+    locked: 0
+  - name: Tiles BG2
+    uniqueID: 1747546991
+    locked: 0
+  - name: Decoration BG1
     uniqueID: 3452569075
     locked: 0
-  - name: Decoration BG 2
+  - name: Decoration BG2
     uniqueID: 3043689459
     locked: 0
-  - name: Decoration BG 3
+  - name: Decoration BG3
     uniqueID: 2781215911
     locked: 0
-  - name: Platforms
+  - name: Ground
     uniqueID: 1832558215
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player FG
+    uniqueID: 4191798879
+    locked: 0
+  - name: Platform Mask
+    uniqueID: 3467622627
+    locked: 0
+  - name: Platform Mask 2
+    uniqueID: 1330123273
+    locked: 0
+  - name: Platform Mask 3
+    uniqueID: 2523944423
     locked: 0
   - name: Water
     uniqueID: 732216609
@@ -63,12 +90,15 @@ TagManager:
   - name: Black Mask
     uniqueID: 583347817
     locked: 0
-  - name: Player FG
-    uniqueID: 4191798879
-    locked: 0
-  - name: Decoration FG
+  - name: Decoration FG1
     uniqueID: 536784993
     locked: 0
-  - name: Decoration FG 2
+  - name: Decoration FG2
     uniqueID: 1435561371
+    locked: 0
+  - name: FG Dark
+    uniqueID: 833461225
+    locked: 0
+  - name: FG Black
+    uniqueID: 4026545527
     locked: 0
