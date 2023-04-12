@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<engine:UXML
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:engine="UnityEngine.UIElements"
-    xmlns:editor="UnityEditor.UIElements"
-    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
->
-    
-</engine:UXML>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Editor/styles.uss?fileID=7433441132597879392&amp;guid=23b0849a47331d746a958e7af0d8ee5f&amp;type=3#styles" />
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgb(38, 33, 33);">
+        <ui:Label tabindex="-1" text="Main Menu" display-tooltip-when-elided="true" class="header" />
+        <ui:VisualElement name="Buttons" class="Buttons buttons">
+            <ui:Button text="New Game" display-tooltip-when-elided="true" name="NewGame" />
+            <ui:Button text="Resume Save" display-tooltip-when-elided="true" name="ResumeGame" />
+            <ui:Button text="Settings" display-tooltip-when-elided="true" name="Settings" />
+            <ui:Button text="Credits" display-tooltip-when-elided="true" name="Credits" />
+            <ui:Button text="Quit" display-tooltip-when-elided="true" name="Quit" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
