@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7420145384389227205
+--- !u!1001 &8994808006313212501
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,9 +8,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2545038511659667527, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3570670977085096980, guid: c7097b4707fbcba4588586624278bbcd, type: 3}
     - target: {fileID: 5182818551895953756, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_Name
-      value: Character Rig 1 Variant
+      value: Endgame Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744177251028356367, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2825627333891696455, guid: c7097b4707fbcba4588586624278bbcd, type: 3}
+    - target: {fileID: 6063416038497612527, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99963564
+      objectReference: {fileID: 0}
+    - target: {fileID: 6063416038497612527, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.026995432
       objectReference: {fileID: 0}
     - target: {fileID: 6279438276530751807, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_RootOrder
@@ -55,6 +71,38 @@ PrefabInstance:
     - target: {fileID: 6279438276530751807, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830046853940792242, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+      propertyPath: m_BoneTransforms.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974105760708529336, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99956584
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974105760708529336, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.02946495
+      objectReference: {fileID: 0}
+    - target: {fileID: 8289667291106253394, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.007328866
+      objectReference: {fileID: 0}
+    - target: {fileID: 8289667291106253394, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.9999732
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395691979024075856, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.00092378515
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395691979024075856, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.9999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527461794028105087, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+      propertyPath: m_BoneTransforms.Array.size
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
