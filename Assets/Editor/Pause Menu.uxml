@@ -6,6 +6,7 @@
             <ui:VisualElement name="Buttons" class="surround-button" style="width: 30%; border-left-color: rgb(164, 164, 164); border-right-color: rgb(164, 164, 164); border-top-color: rgb(164, 164, 164); border-bottom-color: rgb(164, 164, 164); border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px;">
                 <ui:Button display-tooltip-when-elided="true" text="Return to Game" name="Return" class="menu-button" />
                 <ui:Button text="Items" display-tooltip-when-elided="true" name="Items" class="menu-button" />
+                <ui:Button text="Abilities" display-tooltip-when-elided="true" name="Abilities" class="menu-button" />
                 <ui:Button text="Diary Entries" display-tooltip-when-elided="true" name="Diary" class="menu-button" />
                 <ui:Button text="Options" display-tooltip-when-elided="true" name="Options" class="menu-button" />
                 <ui:Button text="Quit" display-tooltip-when-elided="true" name="Quit" class="menu-button" />
