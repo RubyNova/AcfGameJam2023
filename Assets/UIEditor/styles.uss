@@ -9,7 +9,7 @@
     -unity-text-outline-width: 2px;
     -unity-font-style: bold;
     padding-bottom: 6px;
-    -unity-font-definition: url('project://database/Assets/Editor/Fonts/AtkinsonHyperlegible-Regular%20SDF.asset?fileID=11400000&guid=32f7bcaa7520e6c44a3cb11ebb5cd522&type=2#AtkinsonHyperlegible-Regular SDF');
+    -unity-font-definition: url('project://database/Assets/UIEditor/Fonts/AtkinsonHyperlegible-Regular%20SDF.asset?fileID=11400000&guid=32f7bcaa7520e6c44a3cb11ebb5cd522&type=2#AtkinsonHyperlegible-Regular SDF');
     padding-left: 42px;
     border-left-color: rgba(164, 164, 164, 0.41);
     border-right-color: rgba(164, 164, 164, 0.41);
@@ -20,30 +20,28 @@
 }
 
 .health {
-    -unity-font-definition: url('project://database/Assets/Editor/Fonts/Noto-COLRv1-emojicompat%20SDF.asset?fileID=11400000&guid=c84cdc6ccbb0f814ca76de6c1cac6130&type=2#Noto-COLRv1-emojicompat SDF');
+    -unity-font-definition: url('project://database/Assets/UIEditor/Fonts/Noto-COLRv1-emojicompat%20SDF.asset?fileID=11400000&guid=c84cdc6ccbb0f814ca76de6c1cac6130&type=2#Noto-COLRv1-emojicompat SDF');
     -unity-font-style: normal;
     font-size: 20px;
     color: rgb(226, 42, 162);
     -unity-text-outline-color: rgba(0, 0, 0, 0.72);
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.96);
-    padding-top: 17px;
-    padding-left: 20px;
-    padding-right: 0;
     width: 220px;
     -unity-text-outline-width: 0.5px;
+    margin-top: 9px;
 }
 
 .surround-button {
     align-items: flex-start;
     justify-content: center;
-    -unity-font-definition: url('project://database/Assets/Editor/Fonts/AtkinsonHyperlegible-Regular%20SDF.asset?fileID=11400000&guid=32f7bcaa7520e6c44a3cb11ebb5cd522&type=2#AtkinsonHyperlegible-Regular SDF');
+    -unity-font-definition: url('project://database/Assets/UIEditor/Fonts/AtkinsonHyperlegible-Regular%20SDF.asset?fileID=11400000&guid=32f7bcaa7520e6c44a3cb11ebb5cd522&type=2#AtkinsonHyperlegible-Regular SDF');
 }
 
 .menu-button {
     transition-duration: 0.5s;
     color: rgb(255, 255, 255);
     font-size: 26px;
-    -unity-font-definition: url('project://database/Assets/Editor/Fonts/AtkinsonHyperlegible-Regular%20SDF.asset?fileID=11400000&guid=32f7bcaa7520e6c44a3cb11ebb5cd522&type=2#AtkinsonHyperlegible-Regular SDF');
+    -unity-font-definition: url('project://database/Assets/UIEditor/Fonts/AtkinsonHyperlegible-Regular%20SDF.asset?fileID=11400000&guid=32f7bcaa7520e6c44a3cb11ebb5cd522&type=2#AtkinsonHyperlegible-Regular SDF');
     padding-left: 23px;
     background-color: rgba(255, 255, 255, 0);
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0);
@@ -60,7 +58,7 @@
     transition-timing-function: ease;
     transition-delay: 0s;
     -unity-font-style: bold;
-    -unity-font-definition: url('project://database/Assets/Editor/Fonts/AtkinsonHyperlegible-Regular%20SDF.asset?fileID=11400000&guid=32f7bcaa7520e6c44a3cb11ebb5cd522&type=2#AtkinsonHyperlegible-Regular SDF');
+    -unity-font-definition: url('project://database/Assets/UIEditor/Fonts/AtkinsonHyperlegible-Regular%20SDF.asset?fileID=11400000&guid=32f7bcaa7520e6c44a3cb11ebb5cd522&type=2#AtkinsonHyperlegible-Regular SDF');
 }
 
 .currentlySelectedTab {
@@ -74,7 +72,7 @@
     transition-duration: 0.5s;
     color: rgb(255, 255, 255);
     font-size: 26px;
-    -unity-font-definition: url('project://database/Assets/Editor/Fonts/AtkinsonHyperlegible-Regular%20SDF.asset?fileID=11400000&guid=32f7bcaa7520e6c44a3cb11ebb5cd522&type=2#AtkinsonHyperlegible-Regular SDF');
+    -unity-font-definition: url('project://database/Assets/UIEditor/Fonts/AtkinsonHyperlegible-Regular%20SDF.asset?fileID=11400000&guid=32f7bcaa7520e6c44a3cb11ebb5cd522&type=2#AtkinsonHyperlegible-Regular SDF');
     padding-left: 23px;
     background-color: rgba(255, 255, 255, 0);
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0);
