@@ -1,34 +1,32 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <Style src="project://database/Assets/UIEditor/styles.uss?fileID=7433441132597879392&amp;guid=23b0849a47331d746a958e7af0d8ee5f&amp;type=3#styles" />
-    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.67); border-left-color: rgba(255, 255, 255, 0.57); border-right-color: rgba(255, 255, 255, 0.57); border-top-color: rgba(255, 255, 255, 0.57); border-bottom-color: rgba(255, 255, 255, 0.57); border-left-width: 4px; border-right-width: 4px; border-top-width: 4px; border-bottom-width: 4px;">
-        <ui:Label tabindex="-1" text="Paused" display-tooltip-when-elided="true" name="Header" class="header" style="border-left-width: 4px; border-right-width: 4px; border-top-width: 4px; border-bottom-width: 4px; border-left-color: rgb(164, 164, 164); border-right-color: rgb(164, 164, 164); border-top-color: rgb(164, 164, 164); border-bottom-color: rgb(164, 164, 164); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
-        <ui:VisualElement name="Menu" style="width: 100%; height: 100%; flex-direction: row; flex-wrap: nowrap; flex-grow: 1;">
-            <ui:VisualElement name="tabs" class="surround-button" style="width: 30%; border-left-color: rgb(164, 164, 164); border-right-color: rgb(164, 164, 164); border-top-color: rgb(164, 164, 164); border-bottom-color: rgb(164, 164, 164); border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; height: 100%;">
-                <ui:Button display-tooltip-when-elided="true" text="Return to Game" name="Return" class="menu-button" />
-                <ui:Button text="Items" display-tooltip-when-elided="true" name="ItemsTab" class="menu-button tab currentlySelectedTab" />
-                <ui:Button text="Abilities" display-tooltip-when-elided="true" name="AbilitiesTab" class="menu-button tab" />
-                <ui:Button text="Diary Entries" display-tooltip-when-elided="true" name="DiaryTab" class="menu-button tab" />
-                <ui:Button text="Options" display-tooltip-when-elided="true" name="OptionsTab" class="menu-button tab" />
-                <ui:Button text="Quit" display-tooltip-when-elided="true" name="Quit" class="menu-button" />
-            </ui:VisualElement>
-            <ui:VisualElement name="tabContent" class="menu-tab-content" style="align-self: auto; width: 100%; align-items: center; height: 100%; color: rgb(255, 255, 255); font-size: 27px; -unity-font-definition: url(&apos;project://database/Assets/UIEditor/Fonts/AtkinsonHyperlegible-Regular%20SDF.asset?fileID=11400000&amp;guid=32f7bcaa7520e6c44a3cb11ebb5cd522&amp;type=2#AtkinsonHyperlegible-Regular SDF&apos;); border-left-color: rgb(164, 164, 164); border-right-color: rgb(164, 164, 164); border-top-color: rgb(164, 164, 164); border-bottom-color: rgb(164, 164, 164); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
-                <ui:GroupBox name="ItemsContent">
-                    <ui:Label tabindex="-1" text="Items" display-tooltip-when-elided="true" name="Label" />
-                </ui:GroupBox>
-                <ui:GroupBox name="AbilitiesContent" class="unselectedContent">
-                    <ui:Label tabindex="-1" text="Abilities" display-tooltip-when-elided="true" />
-                </ui:GroupBox>
-                <ui:GroupBox name="DiaryContent" class="unselectedContent">
-                    <ui:Label tabindex="-1" text="Diary Entries" display-tooltip-when-elided="true" />
-                    <ui:Label tabindex="-1" text="Diary entry things will go here" display-tooltip-when-elided="true" name="Text" />
-                </ui:GroupBox>
-                <ui:GroupBox name="OptionsContent" class="unselectedContent">
-                    <ui:Label tabindex="-1" text="Options" display-tooltip-when-elided="true" />
-                    <ui:Toggle label="Global Mute" name="Mute" value="false" />
-                    <ui:Slider picking-mode="Ignore" label="Music Volume" value="42" high-value="100" name="MusicVol" style="width: 437px;" />
-                    <ui:Slider picking-mode="Ignore" label="Sound Effects" value="42" high-value="100" name="SoundEffVol" />
-                </ui:GroupBox>
-            </ui:VisualElement>
+    <ui:Label tabindex="-1" text="Paused" display-tooltip-when-elided="true" name="Header" class="header" style="border-left-width: 4px; border-right-width: 4px; border-top-width: 4px; border-bottom-width: 4px; border-left-color: rgb(164, 164, 164); border-right-color: rgb(164, 164, 164); border-top-color: rgb(164, 164, 164); border-bottom-color: rgb(164, 164, 164); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; background-color: rgba(0, 0, 0, 0.57);" />
+    <ui:VisualElement name="Menu" style="width: 100%; height: 100%; flex-direction: row; flex-wrap: nowrap; flex-grow: 1; background-color: rgba(0, 0, 0, 0.57);">
+        <ui:VisualElement name="tabs" class="surround-button" style="width: 30%; border-left-color: rgb(164, 164, 164); border-right-color: rgb(164, 164, 164); border-top-color: rgb(164, 164, 164); border-bottom-color: rgb(164, 164, 164); border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; height: 100%; align-items: flex-start;">
+            <ui:Button display-tooltip-when-elided="true" text="Return to Game" name="Return" class="menu-button" />
+            <ui:Label tabindex="-1" text="Items" display-tooltip-when-elided="true" name="ItemsTab" class="menu-button currentlySelectedTab tab" />
+            <ui:Label tabindex="-1" text="Abilities" display-tooltip-when-elided="true" name="AbilitiesTab" class="menu-button tab" />
+            <ui:Label tabindex="-1" text="Diary Entries" display-tooltip-when-elided="true" name="DiaryTab" class="menu-button tab" />
+            <ui:Label tabindex="-1" text="Options" display-tooltip-when-elided="true" name="OptionsTab" class="menu-button tab" />
+            <ui:Button text="Quit" display-tooltip-when-elided="true" name="Quit" class="menu-button" />
+        </ui:VisualElement>
+        <ui:VisualElement name="tabContent" class="menu-tab-content" style="align-self: auto; width: 100%; align-items: center; height: 100%; color: rgb(255, 255, 255); font-size: 27px; -unity-font-definition: url(&apos;project://database/Assets/UIEditor/Fonts/AtkinsonHyperlegible-Regular%20SDF.asset?fileID=11400000&amp;guid=32f7bcaa7520e6c44a3cb11ebb5cd522&amp;type=2#AtkinsonHyperlegible-Regular SDF&apos;); border-left-color: rgb(164, 164, 164); border-right-color: rgb(164, 164, 164); border-top-color: rgb(164, 164, 164); border-bottom-color: rgb(164, 164, 164); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px;">
+            <ui:GroupBox name="ItemsContent">
+                <ui:Label tabindex="-1" text="Items" display-tooltip-when-elided="true" name="Label" />
+            </ui:GroupBox>
+            <ui:GroupBox name="AbilitiesContent" class="unselectedContent">
+                <ui:Label tabindex="-1" text="Abilities" display-tooltip-when-elided="true" />
+            </ui:GroupBox>
+            <ui:GroupBox name="DiaryContent" class="unselectedContent">
+                <ui:Label tabindex="-1" text="Diary Entries" display-tooltip-when-elided="true" />
+                <ui:Label tabindex="-1" text="Diary entry things will go here" display-tooltip-when-elided="true" name="Text" />
+            </ui:GroupBox>
+            <ui:GroupBox name="OptionsContent" class="unselectedContent">
+                <ui:Label tabindex="-1" text="Options" display-tooltip-when-elided="true" />
+                <ui:Toggle label="Global Mute" name="Mute" value="false" />
+                <ui:Slider picking-mode="Ignore" label="Music Volume" value="42" high-value="100" name="MusicVol" style="width: 437px;" />
+                <ui:Slider picking-mode="Ignore" label="Sound Effects" value="42" high-value="100" name="SoundEffVol" />
+            </ui:GroupBox>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
