@@ -191,6 +191,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 7522063700902493722}
   _groundTagName: Ground
+  _selfTagName: Player
+  _groundZeroToleranceValue: 0.95
 --- !u!114 &644439014674750054
 MonoBehaviour:
   m_ObjectHideFlags: 0

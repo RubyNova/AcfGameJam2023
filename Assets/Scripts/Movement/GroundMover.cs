@@ -12,6 +12,9 @@ namespace Movement
         [SerializeField]
         private string _groundTagName;
 
+        [SerializeField]
+        private string _selfTagName;
+
         [Header("Configuration"), SerializeField, Range(0, 1)]
         private float _groundZeroToleranceValue = 1;
 
@@ -23,6 +26,7 @@ namespace Movement
         private bool _forceJump;
         private bool _overrideMover;
         private float _gravityScale;
+        private bool _inCollision;
 
         public bool IsGrounded => _isGrounded;
 
@@ -35,6 +39,7 @@ namespace Movement
             _jumpForce = 0;
             _forceJump = false;
             _overrideMover = false;
+            _inCollision = false;
         }
 
         private void Start()
@@ -71,6 +76,11 @@ namespace Movement
                     directionVector.y = 0;
                 }
             }
+            
+            if (_inCollision && !_isGrounded && VerifyConflictingVelocityInput(directionVector, _rigidbody.velocity))
+            {
+                directionVector.x = 0;
+            }
 
             directionVector.x *= finalSpeed;
             _speedFromLastFrame = finalSpeed;
@@ -81,10 +91,26 @@ namespace Movement
             }
 
             _rigidbody.velocity = directionVector;
+
+            bool VerifyConflictingVelocityInput(Vector2 directionVector, Vector2 currentVelocity)
+            {
+                var entity = Physics2D.Raycast(transform.position, directionVector, directionVector.x, LayerMask.NameToLayer(_selfTagName));
+
+                var directionToPosition = (entity.point - (Vector2)transform.position).normalized;
+                
+                if ((directionToPosition.x > 0 && directionVector.x > 0) || (directionToPosition.x < 0 && directionVector.x < 0))
+                {
+                    print($"conflict! Values: input dir: {directionVector.x} dirToPos: {directionToPosition.x}");
+                    return true;
+                }
+
+                return false;
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            _inCollision = true;
             if (!collision.gameObject.CompareTag(_groundTagName))
             {
                 return;
@@ -109,6 +135,7 @@ namespace Movement
 
         private void OnCollisionExit2D(Collision2D collision)
         {
+            _inCollision = false;
             if (!collision.gameObject.CompareTag(_groundTagName))
             {
                 return;
