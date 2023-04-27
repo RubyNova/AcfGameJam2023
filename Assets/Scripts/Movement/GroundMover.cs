@@ -98,7 +98,7 @@ namespace Movement
 
                 var directionToPosition = (entity.point - (Vector2)transform.position).normalized;
                 
-                if ((directionToPosition.x > 0 && directionVector.x > 0) || (directionToPosition.x < 0 && directionVector.x < 0))
+                if ((directionToPosition.x > 0 && directionVector.x > 0) || (directionToPosition.x < 0 && directionVector.x < 0))
                 {
                     return true;
                 }
