@@ -106,6 +106,13 @@ Shader "ACF/GaussianTile"
                 {
                     half4 result = blur(_MainTex, IN.texcoord, 0.005);
 
+                    if (result.a == 0.0)
+                    {
+                        discard;
+                    }
+
+                    result.a = 1.0;
+
                     //result.rgb *= c.a;
                     return result;
                 }
