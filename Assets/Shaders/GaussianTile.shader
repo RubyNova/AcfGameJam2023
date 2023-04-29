@@ -79,41 +79,51 @@ Shader "ACF/GaussianTile"
                 half4 blur(sampler2D tex, float2 uv, float blurAmount) {
                     //get our base color...
                     half4 col = tex2D(tex, uv);
-                    if (col.a == 0)
-                    {
-                        return col;
-                    }
+                    half3 rgb = col.rgb;
+                    half a = col.a;
+
+                    // todo: this is such a hack
+                    a += tex2D(tex, float2(uv.x + 1 * blurAmount, uv.y + 1 * blurAmount)).a * normpdf(float(1), 7);
+                    a += tex2D(tex, float2(uv.x - 1 * blurAmount, uv.y - 1 * blurAmount)).a * normpdf(float(-1), 7);
+                    a += tex2D(tex, float2(uv.x - 1 * blurAmount, uv.y - 1 * blurAmount)).a * normpdf(float(-1), 7);
+                    a += tex2D(tex, float2(uv.x + 1 * blurAmount, uv.y - 1 * blurAmount)).a * normpdf(float(1), 7);
+                    a += tex2D(tex, float2(uv.x - 1 * blurAmount, uv.y + 1 * blurAmount)).a * normpdf(float(1), 7);
+                    a /= 5;
+
+
 
                     //total width/height of our blur "grid":
                     const int mSize = 11;
+                    const int mSizeAlpha = 2;
                     //this gives the number of times we'll iterate our blur on each side 
                     //(up,down,left,right) of our uv coordinate;
                     //NOTE that this needs to be a const or you'll get errors about unrolling for loops
                     const int iter = (mSize - 1) / 2;
+                    const int iterAlpha = (mSizeAlpha - 1) / 2;
                     //run loops to do the equivalent of what's written out line by line above
                     //(number of blur iterations can be easily sized up and down this way)
                     for (int i = -iter; i <= iter; ++i) {
                         for (int j = -iter; j <= iter; ++j) {
-                            col += tex2D(tex, float2(uv.x + i * blurAmount, uv.y + j * blurAmount)) * normpdf(float(i), 7);
+                            rgb += tex2D(tex, float2(uv.x + i * blurAmount, uv.y + j * blurAmount)).rgb * normpdf(float(i), 7);
                         }
                     }
-                    //return blurred color
-                    return col / mSize;
-                }
 
+
+                    col.rgb = rgb / mSize;
+
+                    //return blurred color
+                    return col;
+                }
 
                 fixed4 frag(v2f IN) : SV_Target
                 {
-                    half4 result = blur(_MainTex, IN.texcoord, 0.005);
+                    half4 result = blur(_MainTex, IN.texcoord, 0.0075);
 
                     if (result.a == 0.0)
                     {
                         discard;
                     }
 
-                    result.a = 1.0;
-
-                    //result.rgb *= c.a;
                     return result;
                 }
             ENDCG
