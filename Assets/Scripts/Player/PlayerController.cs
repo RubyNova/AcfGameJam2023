@@ -47,6 +47,7 @@ namespace Player
         private Vector2 _aimData;
         private bool _isMouse;
         private DisposableItem _item;
+        private Vector2 _inputAxesRawFromLastInputUpdate;
 
         public bool MovementIsOverridden { get; set; }
 
@@ -58,6 +59,7 @@ namespace Player
             MovementIsOverridden = false;
             _aimData = Vector2.zero;
             _isMouse = true;
+            _inputAxesRawFromLastInputUpdate = Vector2.zero;
         }
 
         private void Start()
@@ -114,7 +116,6 @@ namespace Player
                 _mover.ApplyMove(finalInputData, finalMovementSpeed, _jumpForce, context.ForceJump);
             }
 
-
             if (Mathf.Approximately(_inputInfo.InputAxes.y, 1))
             {
                 var copy = _inputInfo.InputAxes;
@@ -156,8 +157,20 @@ namespace Player
         }
 
         public void OnMove(InputAction.CallbackContext context)
-        {
-            _inputInfo.InputAxes = context.ReadValue<Vector2>();
+        { 
+            var inputAxesRaw = context.ReadValue<Vector2>();
+            print($"Unsanitised input. values: LAST: {_inputAxesRawFromLastInputUpdate.y} CURRENT: {inputAxesRaw.y}");
+            _inputInfo.InputAxes = inputAxesRaw;
+
+            if (Mathf.Approximately(_inputAxesRawFromLastInputUpdate.y, 1.0f) && Mathf.Approximately(inputAxesRaw.y, 1.0f))
+            {
+                var copy = _inputInfo.InputAxes;
+                copy.y = 0;
+                _inputInfo.InputAxes = copy;
+                print($"Removing jump input. values: LAST: {_inputAxesRawFromLastInputUpdate.y} CURRENT: {inputAxesRaw.y}");
+            }
+
+            _inputAxesRawFromLastInputUpdate = inputAxesRaw;
         }
 
         public void OnSprint(InputAction.CallbackContext context)
