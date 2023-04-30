@@ -135,6 +135,11 @@ namespace Movement
             }
         }
 
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            _inCollision = true;
+        }
+
         private void OnCollisionExit2D(Collision2D collision)
         {
             _inCollision = false;
