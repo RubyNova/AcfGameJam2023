@@ -67,6 +67,7 @@ Material:
     m_Ints: []
     m_Floats:
     - PixelSnap: 0
+    - _BlurIntensity: 2
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -79,6 +80,8 @@ Material:
     - _Mode: 3
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _ScreenResolutionHeight: 1080
+    - _ScreenResolutionWidth: 1920
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
