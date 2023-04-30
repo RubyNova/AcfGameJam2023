@@ -161,7 +161,7 @@ namespace AI
                 if (Mathf.Approximately(distance, 0) || distance < 0.2)
                 {
                     _isCurrentlyMovingToPatrolPoint = false;
-                    _mover.ApplyMove(new(0, 0), 0, 0); // stops the NPC
+                    _mover.ApplyMove(new(0, 0), 0, false, 0); // stops the NPC
                     transform.position = target;
                     return;
                 }
@@ -184,7 +184,7 @@ namespace AI
                 switch (_suspicionSubState)
                 {
                     case SuspicionSubState.GracePeriod:
-                        _mover.ApplyMove(new(0, 0), 0, 0); // stops the NPC
+                        _mover.ApplyMove(new(0, 0), 0, false, 0); // stops the NPC
                         if (!waitTimeIsDone)
                         {
                             _suspicionTimeRemaining -= Time.deltaTime;
@@ -231,7 +231,7 @@ namespace AI
 
                         if (distance < 2)
                         {
-                            _mover.ApplyMove(new(0, 0), 0, 0); // stops the NPC
+                            _mover.ApplyMove(new(0, 0), 0, false, 0); // stops the NPC
                             return;
                         }
 
@@ -275,7 +275,7 @@ namespace AI
 
                 if (distance < _proximityLimit)
                 {
-                    _mover.ApplyMove(new(0, 0), 0, 0); // stops the NPC
+                    _mover.ApplyMove(new(0, 0), 0, false, 0); // stops the NPC
                     return;
                 }
 
@@ -311,7 +311,7 @@ namespace AI
 
                 int walkingDirection = horizontalValue > 0 ? -1 : 1;
 
-                _mover.ApplyMove(new(walkingDirection, 0), run ? _runningSpeed : _walkingSpeed, 0);
+                _mover.ApplyMove(new(walkingDirection, 0), run ? _runningSpeed : _walkingSpeed, false, 0);
             }
         }
 

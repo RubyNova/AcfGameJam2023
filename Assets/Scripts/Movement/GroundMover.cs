@@ -27,6 +27,7 @@ namespace Movement
         private bool _overrideMover;
         private float _gravityScale;
         private bool _inCollision;
+        private bool _jumpInput;
 
         public bool IsGrounded => _isGrounded;
 
@@ -40,6 +41,7 @@ namespace Movement
             _forceJump = false;
             _overrideMover = false;
             _inCollision = false;
+            _jumpInput = false;
         }
 
         private void Start()
@@ -56,6 +58,7 @@ namespace Movement
             }
 
             Vector2 directionVector = _directionForFrame;
+            directionVector.y = _jumpInput ? 1 : directionVector.y;
             float finalSpeed = 0;
 
             if (_isGrounded)
@@ -143,13 +146,14 @@ namespace Movement
             _isGrounded = false;
         }
 
-        public void ApplyMove(Vector2 directionInput, float horizontalSpeed, float jumpForce, bool forceJump = false)
+        public void ApplyMove(Vector2 directionInput, float horizontalSpeed, bool jumpInput, float jumpForce, bool forceJump = false)
         {
             _overrideMover = false;
             _rigidbody.gravityScale = _gravityScale;
             _forceJump = forceJump;
             _directionForFrame = directionInput;
             _horizontalSpeed = horizontalSpeed;
+            _jumpInput = jumpInput;
             _jumpForce = jumpForce;
         }
 
