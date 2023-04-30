@@ -8,9 +8,10 @@ Shader "ACF/GaussianTile"
         [PerRendererData] _MainTex("Sprite Texture", 2D) = "white" {}
         _Color("Tint", Color) = (1,1,1,1)
         [MaterialToggle] PixelSnap("Pixel snap", Float) = 0
-        _ScreenResolution("Screen Resolution", Vector) = (1920, 1080, 0)
+        _ScreenResolutionWidth("Screen Res Width", Float) = 1920
+        _ScreenResolutionHeight("Screen Res Height", Float) = 1080
+        _BlurIntensity("Blur Intensity", Float) = 7.0
     }
-
         SubShader
         {
 
@@ -74,57 +75,46 @@ Shader "ACF/GaussianTile"
                 }
 
                 sampler2D _MainTex;
-                float2 _ScreenResolution;
+                float _ScreenResolutionWidth;
+                float _ScreenResolutionHeight;
+                float _BlurIntensity;
 
-                half4 blur(sampler2D tex, float2 uv, float blurAmount) {
-                    //get our base color...
-                    half4 col = tex2D(tex, uv);
-                    half3 rgb = col.rgb;
-                    half a = col.a;
+                fixed4 frag(v2f IN) : SV_Target
+                {
+                    float2 screenRes = (_ScreenResolutionWidth, _ScreenResolutionHeight);
+                    float4 c = tex2D(_MainTex, IN.texcoord / screenRes);
+                    //declare stuff
+                    const int mSize = 31;
+                    const int kSize = (mSize - 1) / 2;
+                    float kernel[mSize];
+                    float4 final_colour = (0.0, 0.0, 0.0, 0.0);
 
-                    // todo: this is such a hack
-                    a += tex2D(tex, float2(uv.x + 1 * blurAmount, uv.y + 1 * blurAmount)).a * normpdf(float(1), 7);
-                    a += tex2D(tex, float2(uv.x - 1 * blurAmount, uv.y - 1 * blurAmount)).a * normpdf(float(-1), 7);
-                    a += tex2D(tex, float2(uv.x - 1 * blurAmount, uv.y - 1 * blurAmount)).a * normpdf(float(-1), 7);
-                    a += tex2D(tex, float2(uv.x + 1 * blurAmount, uv.y - 1 * blurAmount)).a * normpdf(float(1), 7);
-                    a += tex2D(tex, float2(uv.x - 1 * blurAmount, uv.y + 1 * blurAmount)).a * normpdf(float(1), 7);
-                    a /= 5;
+                    //create the 1-D kernel
+                    float sigma = _BlurIntensity;
+                    float Z = 0.0;
+                    for (int j = 0; j <= kSize; ++j)
+                    {
+                        kernel[kSize + j] = kernel[kSize - j] = normpdf(float(j), sigma);
+                    }
 
+                    //get the normalization factor (as the gaussian has been clamped)
+                    for (int j = 0; j < mSize; ++j)
+                    {
+                        Z += kernel[j];
+                    }
 
-
-                    //total width/height of our blur "grid":
-                    const int mSize = 11;
-                    const int mSizeAlpha = 2;
-                    //this gives the number of times we'll iterate our blur on each side 
-                    //(up,down,left,right) of our uv coordinate;
-                    //NOTE that this needs to be a const or you'll get errors about unrolling for loops
-                    const int iter = (mSize - 1) / 2;
-                    const int iterAlpha = (mSizeAlpha - 1) / 2;
-                    //run loops to do the equivalent of what's written out line by line above
-                    //(number of blur iterations can be easily sized up and down this way)
-                    for (int i = -iter; i <= iter; ++i) {
-                        for (int j = -iter; j <= iter; ++j) {
-                            rgb += tex2D(tex, float2(uv.x + i * blurAmount, uv.y + j * blurAmount)).rgb * normpdf(float(i), 7);
+                    //read out the texels
+                    for (int i = -kSize; i <= kSize; ++i)
+                    {
+                        for (int j = -kSize; j <= kSize; ++j)
+                        {
+                            float4 test = tex2D(_MainTex, (IN.texcoord + (float2(float(i), float(j)) / screenRes)));
+                            final_colour += kernel[kSize + j] * kernel[kSize + i] * test;
                         }
                     }
 
 
-                    col.rgb = rgb / mSize;
-
-                    //return blurred color
-                    return col;
-                }
-
-                fixed4 frag(v2f IN) : SV_Target
-                {
-                    half4 result = blur(_MainTex, IN.texcoord, 0.0075);
-
-                    if (result.a == 0.0)
-                    {
-                        discard;
-                    }
-
-                    return result;
+                    return fixed4(final_colour / (Z * Z));
                 }
             ENDCG
             }
