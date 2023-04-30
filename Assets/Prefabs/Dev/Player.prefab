@@ -338,6 +338,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5697bb0d-0972-4350-a224-ee4b7acd87f1
     m_ActionName: Player/Ability Modifier[/Keyboard/leftCtrl]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1192516721756157025}
+        m_TargetAssemblyTypeName: Player.PlayerController, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dad50471-687a-4685-bb98-d3fce45aa423
+    m_ActionName: Player/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -356,13 +372,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputTrigger:
-    _inputAxes: {x: 0, y: 1}
+    _inputAxes: {x: 0, y: 0}
     _inputSprintModifier: 0
     _inputAbilityTriggerZero: 0
+    _jumpInput: 1
     _shouldCareAboutXAxis: 0
-    _shouldCareAboutYAxis: 1
+    _shouldCareAboutYAxis: 0
     _shouldCareAboutSprintModifier: 0
     _shouldCareAboutAbilityTriggerZero: 0
+    _shouldCareAboutJumping: 1
   _overridesNormalMovement: 0
   _groundTagName: Ground
 --- !u!114 &1820051621578086624
@@ -381,10 +399,12 @@ MonoBehaviour:
     _inputAxes: {x: 0, y: 0}
     _inputSprintModifier: 0
     _inputAbilityTriggerZero: 1
+    _jumpInput: 0
     _shouldCareAboutXAxis: 0
     _shouldCareAboutYAxis: 0
     _shouldCareAboutSprintModifier: 0
     _shouldCareAboutAbilityTriggerZero: 1
+    _shouldCareAboutJumping: 0
   _overridesNormalMovement: 1
   _groundTagName: Ground
   _dashSpeed: 30

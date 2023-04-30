@@ -13,7 +13,10 @@ namespace Player
         private bool _inputSprintModifier;
 
         [SerializeField]
-        private bool _inputAbilityTriggerZero;        
+        private bool _inputAbilityTriggerZero;
+
+        [SerializeField]
+        private bool _jumpInput;
 
         [SerializeField]
         private bool _shouldCareAboutXAxis;
@@ -26,6 +29,9 @@ namespace Player
 
         [SerializeField]
         private bool _shouldCareAboutAbilityTriggerZero;
+
+        [SerializeField]
+        private bool _shouldCareAboutJumping;
 
         public Vector2 InputAxes
         { 
@@ -45,6 +51,12 @@ namespace Player
             set => _inputAbilityTriggerZero = value;
         }
 
+        public bool JumpInput
+        {
+            get => _jumpInput;
+            set => _jumpInput = value;
+        }
+
         public InputInfo(Vector2 inputAxes, bool inputSprintModifier, bool inputAbilityTriggerZero)
         {
             InputAxes = inputAxes;
@@ -58,6 +70,7 @@ namespace Player
             bool yInputAxisMatches = true;
             bool sprintModifierMatches = true;
             bool abilityTriggerZeroMatches = true;
+            bool jumpInputMatches = true;
 
             if (_shouldCareAboutXAxis)
             {
@@ -79,7 +92,12 @@ namespace Player
                 abilityTriggerZeroMatches = InputAbilityTriggerZero == incomingInput.InputAbilityTriggerZero;
             }
 
-            return xInputAxisMatches && yInputAxisMatches && sprintModifierMatches && abilityTriggerZeroMatches;
+            if (_shouldCareAboutJumping)
+            {
+                jumpInputMatches = JumpInput == incomingInput.JumpInput;
+            }
+
+            return xInputAxisMatches && yInputAxisMatches && sprintModifierMatches && abilityTriggerZeroMatches && jumpInputMatches;
         }
     }
 }
