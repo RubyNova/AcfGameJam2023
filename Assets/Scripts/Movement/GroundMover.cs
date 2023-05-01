@@ -28,6 +28,7 @@ namespace Movement
         private float _gravityScale;
         private bool _inCollision;
         private bool _jumpInput;
+        private Vector2 _directionOfLastCollision;
 
         public bool IsGrounded => _isGrounded;
 
@@ -42,6 +43,7 @@ namespace Movement
             _overrideMover = false;
             _inCollision = false;
             _jumpInput = false;
+            _directionOfLastCollision = Vector2.zero;
         }
 
         private void Start()
@@ -80,9 +82,14 @@ namespace Movement
                 }
             }
             
-            if (_inCollision && !_isGrounded && VerifyConflictingVelocityInput(directionVector, _rigidbody.velocity))
+            bool isConflicting = VerifyConflictingVelocityInput(directionVector, _rigidbody.velocity);
+            if (_inCollision && !_isGrounded && isConflicting)
             {
                 directionVector.x = 0;
+            }
+            else
+            {
+                print($"in collision: {_inCollision} is NOT grounded: {!_isGrounded} isConflictingInput: {isConflicting}");
             }
 
             directionVector.x *= finalSpeed;
@@ -100,8 +107,13 @@ namespace Movement
                 var entity = Physics2D.Raycast(transform.position, directionVector, directionVector.x, LayerMask.NameToLayer(_selfTagName));
 
                 var directionToPosition = (entity.point - (Vector2)transform.position).normalized;
-                
-                if ((directionToPosition.x > 0 && directionVector.x > 0) || (directionToPosition.x < 0 && directionVector.x < 0))
+
+                print($"directionVector: {directionVector} currentVelocity: {currentVelocity}");
+
+                bool isDirectlyConflictingVelocity = (directionToPosition.x > 0 && directionVector.x > 0) || (directionToPosition.x < 0 && directionVector.x < 0);
+                bool isTryingToPushThroughWall = (directionToPosition.x > 0 && _directionOfLastCollision.x > 0) || (directionToPosition.x < 0 && _directionOfLastCollision.x < 0);
+
+                if (isDirectlyConflictingVelocity || isTryingToPushThroughWall)
                 {
                     return true;
                 }
@@ -113,6 +125,7 @@ namespace Movement
         private void OnCollisionEnter2D(Collision2D collision)
         {
             _inCollision = true;
+            
             if (!collision.gameObject.CompareTag(_groundTagName))
             {
                 return;
@@ -132,12 +145,37 @@ namespace Movement
                     _isGrounded = true;
                     break;
                 }
+
+                _isGrounded = false;
             }
         }
 
         private void OnCollisionStay2D(Collision2D collision)
         {
-            _inCollision = true;
+            _inCollision = true;    
+            
+            if (!collision.gameObject.CompareTag(_groundTagName))
+            {
+                return;
+            }
+
+            List<ContactPoint2D> contacts = new();
+            _ = collision.GetContacts(contacts); // TODO: Unity APIs are questionable at best
+
+            foreach (ContactPoint2D contact in contacts)
+            {
+                var down = -transform.up;
+                var directionToPoint = (contact.point - (Vector2)transform.position).normalized;
+                _directionOfLastCollision = directionToPoint;
+
+                if (Vector2.Dot(down, directionToPoint) >= _groundZeroToleranceValue)
+                {
+                    _isGrounded = true;
+                    break;
+                }
+
+                _isGrounded = false;
+            }
         }
 
         private void OnCollisionExit2D(Collision2D collision)
