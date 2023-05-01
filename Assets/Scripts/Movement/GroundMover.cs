@@ -28,7 +28,7 @@ namespace Movement
         private float _gravityScale;
         private bool _inCollision;
         private bool _jumpInput;
-        private Vector2 _directionOfLastCollision;
+        private Dictionary<GameObject, List<Vector2>> _activeCollisionPointsPerGameObject;
 
         public bool IsGrounded => _isGrounded;
 
@@ -43,7 +43,7 @@ namespace Movement
             _overrideMover = false;
             _inCollision = false;
             _jumpInput = false;
-            _directionOfLastCollision = Vector2.zero;
+            _activeCollisionPointsPerGameObject = new();
         }
 
         private void Start()
@@ -82,14 +82,9 @@ namespace Movement
                 }
             }
             
-            bool isConflicting = VerifyConflictingVelocityInput(directionVector, _rigidbody.velocity);
-            if (_inCollision && !_isGrounded && isConflicting)
+            if (_inCollision && !_isGrounded && VerifyConflictingVelocityInput(directionVector, _rigidbody.velocity))
             {
                 directionVector.x = 0;
-            }
-            else
-            {
-                print($"in collision: {_inCollision} is NOT grounded: {!_isGrounded} isConflictingInput: {isConflicting}");
             }
 
             directionVector.x *= finalSpeed;
@@ -104,18 +99,17 @@ namespace Movement
 
             bool VerifyConflictingVelocityInput(Vector2 directionVector, Vector2 currentVelocity)
             {
-                var entity = Physics2D.Raycast(transform.position, directionVector, directionVector.x, LayerMask.NameToLayer(_selfTagName));
-
-                var directionToPosition = (entity.point - (Vector2)transform.position).normalized;
-
-                print($"directionVector: {directionVector} currentVelocity: {currentVelocity}");
-
-                bool isDirectlyConflictingVelocity = (directionToPosition.x > 0 && directionVector.x > 0) || (directionToPosition.x < 0 && directionVector.x < 0);
-                bool isTryingToPushThroughWall = (directionToPosition.x > 0 && _directionOfLastCollision.x > 0) || (directionToPosition.x < 0 && _directionOfLastCollision.x < 0);
-
-                if (isDirectlyConflictingVelocity || isTryingToPushThroughWall)
+                foreach(var (_, list) in _activeCollisionPointsPerGameObject)
                 {
-                    return true;
+                    foreach(var collisionDirection in list)
+                    {
+                        //var entity = Physics2D.Raycast(transform.position, collisionDirection, Mathf.Infinity, LayerMask.NameToLayer(_selfTagName));
+
+                        if ((collisionDirection.x > 0 && directionVector.x > 0) || (collisionDirection.x < 0 && directionVector.x < 0))
+                        {
+                            return true;
+                        }
+                    }
                 }
 
                 return false;
@@ -154,19 +148,20 @@ namespace Movement
         {
             _inCollision = true;    
             
+            List<ContactPoint2D> contacts = new();
+            _ = collision.GetContacts(contacts); // TODO: Unity APIs are questionable at best
+
+            _activeCollisionPointsPerGameObject[collision.otherCollider.gameObject] = contacts.Select(x => (x.point - (Vector2)transform.position).normalized).ToList();
+
             if (!collision.gameObject.CompareTag(_groundTagName))
             {
                 return;
             }
 
-            List<ContactPoint2D> contacts = new();
-            _ = collision.GetContacts(contacts); // TODO: Unity APIs are questionable at best
-
             foreach (ContactPoint2D contact in contacts)
             {
                 var down = -transform.up;
                 var directionToPoint = (contact.point - (Vector2)transform.position).normalized;
-                _directionOfLastCollision = directionToPoint;
 
                 if (Vector2.Dot(down, directionToPoint) >= _groundZeroToleranceValue)
                 {
@@ -181,6 +176,12 @@ namespace Movement
         private void OnCollisionExit2D(Collision2D collision)
         {
             _inCollision = false;
+
+            if (_activeCollisionPointsPerGameObject.ContainsKey(collision.otherCollider.gameObject))
+            {
+                _activeCollisionPointsPerGameObject.Remove(collision.otherCollider.gameObject);
+            }
+
             if (!collision.gameObject.CompareTag(_groundTagName))
             {
                 return;
