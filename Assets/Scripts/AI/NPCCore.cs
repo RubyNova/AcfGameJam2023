@@ -454,5 +454,10 @@ namespace AI
                 gameObject.SetActive(true);
             }
         }
+
+        public void ForceDeath()
+        {
+            _currentState = BehaviourState.Dead;
+        }
     }
 }
