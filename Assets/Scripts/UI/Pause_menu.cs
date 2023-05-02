@@ -1,25 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Pause_Button : MonoBehaviour
+public class Pause_Menu : MonoBehaviour
 {
-    
-    [SerializeField] private GameObject pauseMenuUI;
-    [SerializeField] private GameObject returnButton;
-    [SerializeField] private GameObject itemsButton;
-    [SerializeField] private GameObject abilitiesButton;
-    [SerializeField] private GameObject optionsButton;
-    [SerializeField] private GameObject quitButton;
-    // Start is called before the first frame update
-    void Start()
+    public static bool IsPointerOverUIObject()
     {
-        //Scene_Manager.Load_Scene("Pause_Menu");
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    //when hovering over the button named "*Button", the object "H_*Layer" will be visible
+    public void HoveringOverButton()
     {
+        if (IsPointerOverUIObject())
+        {
+            GameObject.Find("H_" + EventSystem.current.currentSelectedGameObject.name + "Layer").GetComponent<CanvasGroup>().alpha = 1;
+        }
         
+        else if (!IsPointerOverUIObject())
+        {
+            GameObject.Find("H_" + EventSystem.current.currentSelectedGameObject.name + "Layer").GetComponent<CanvasGroup>().alpha = 0;
+        }
     }
 }
