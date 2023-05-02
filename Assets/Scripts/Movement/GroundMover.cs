@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,6 +7,12 @@ namespace Movement
 {
     public class GroundMover : MonoBehaviour
     {
+        class CollisionDirectionDataBuffer
+        {
+            public int DataLength { get; set; } = 0;
+            public Vector2[] CollisionDirections { get; set; } = new Vector2[20];
+        }
+
         [Header("Dependencies"), SerializeField] 
         private Rigidbody2D _rigidbody;
 
@@ -28,7 +35,7 @@ namespace Movement
         private float _gravityScale;
         private bool _inCollision;
         private bool _jumpInput;
-        private Dictionary<GameObject, List<Vector2>> _activeCollisionPointsPerGameObject;
+        private Dictionary<GameObject, CollisionDirectionDataBuffer> _activeCollisionPointsPerGameObject;
 
         public bool IsGrounded => _isGrounded;
 
@@ -99,12 +106,12 @@ namespace Movement
 
             bool VerifyConflictingVelocityInput(Vector2 directionVector, Vector2 currentVelocity)
             {
-                foreach(var (_, list) in _activeCollisionPointsPerGameObject)
+                foreach(var (_, collisionData) in _activeCollisionPointsPerGameObject)
                 {
-                    foreach(var collisionDirection in list)
+                    for (int i = 0; i < collisionData.DataLength; i++)
                     {
-                        //var entity = Physics2D.Raycast(transform.position, collisionDirection, Mathf.Infinity, LayerMask.NameToLayer(_selfTagName));
-
+                        Vector2 collisionDirection = collisionData.CollisionDirections[i];
+                        
                         if ((collisionDirection.x > 0 && directionVector.x > 0) || (collisionDirection.x < 0 && directionVector.x < 0))
                         {
                             return true;
@@ -151,7 +158,25 @@ namespace Movement
             List<ContactPoint2D> contacts = new();
             _ = collision.GetContacts(contacts); // TODO: Unity APIs are questionable at best
 
-            _activeCollisionPointsPerGameObject[collision.otherCollider.gameObject] = contacts.Select(x => (x.point - (Vector2)transform.position).normalized).ToList();
+            CollisionDirectionDataBuffer buffer = null;
+
+            if (!_activeCollisionPointsPerGameObject.ContainsKey(collision.otherCollider.gameObject))
+            {
+                buffer = new CollisionDirectionDataBuffer();
+                _activeCollisionPointsPerGameObject[collision.otherCollider.gameObject] = buffer;
+            }
+            else
+            {
+                buffer = _activeCollisionPointsPerGameObject[collision.otherCollider.gameObject];
+            }
+
+            buffer.DataLength = contacts.Count;
+
+            for (int i = 0; i < contacts.Count; i++)
+            {
+                ContactPoint2D contact = contacts[i];
+                buffer.CollisionDirections[i] = (contact.point - (Vector2)transform.position).normalized;
+            }
 
             if (!collision.gameObject.CompareTag(_groundTagName))
             {
