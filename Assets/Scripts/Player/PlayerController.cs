@@ -172,6 +172,11 @@ namespace Player
             _inputInfo.InputAbilityTriggerZero = context.ReadValueAsButton();
         }
 
+        public void OnAbilityTriggerOne(InputAction.CallbackContext context)
+        {
+            _inputInfo.InputAbilityTriggerOne = context.ReadValueAsButton();
+        }
+
         public void OnAim(InputAction.CallbackContext context)
         {
             // TODO: I hate this SO much

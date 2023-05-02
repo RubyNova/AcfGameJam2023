@@ -17,7 +17,7 @@ namespace Environment
         private Collider2D _physicalCollider;
 
         [SerializeField]
-        private string _thrownLayerName;
+        private LayerMask _thrownLayer;
 
         [SerializeField]
         private Rigidbody2D _rigidbody;
@@ -78,7 +78,7 @@ namespace Environment
             _throwLocation = transform.position;
             transform.SetParent(null);
             _isThrownByPlayer = true;
-            gameObject.layer = LayerMask.NameToLayer(_thrownLayerName);
+            gameObject.layer = _thrownLayer;
             _physicalCollider.enabled = true;
             _rigidbody.simulated = true;
             _rigidbody.velocity = direction * force;
