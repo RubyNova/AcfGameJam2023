@@ -71,6 +71,7 @@ namespace AI
         private PlayerController _foundPlayerController;
         private float _searchTimeLeft;
         private bool _hasBeenHitByItem;
+        private Room _roomContext;
 
         private void Awake()
         {
@@ -123,6 +124,13 @@ namespace AI
 
             void HandlePatrolTick()
             {
+                if (_roomContext.OwningAreaState.IsOnAlert)
+                {
+                    _currentState = BehaviourState.Searching;
+                    _lastPointOfInterest = _roomContext.LastReportedPlayerPosition;
+                    return;
+                }
+
                 switch (_identificationState)
                 {
                     case PlayerIdentificationState.Uncertain:
@@ -171,11 +179,19 @@ namespace AI
 
             void HandleSuspicionTick()
             {
+                if (_roomContext.OwningAreaState.IsOnAlert)
+                {
+                    _currentState = BehaviourState.Searching;
+                    _lastPointOfInterest = _roomContext.LastReportedPlayerPosition;
+                    return;
+                }
+
                 if (_identificationState == PlayerIdentificationState.Identified)
                 {
                     _searchTimeLeft = _searchTime;
                     _suspicionTimeRemaining = 0;
                     _currentState = BehaviourState.Chasing;
+                    _roomContext.OwningAreaState.IsOnAlert = true;
                     return;
                 }
 
@@ -244,6 +260,7 @@ namespace AI
             {
                 if (resetSearchTime)
                 {
+                    _roomContext.OwningAreaState.IsOnAlert = true;
                     _searchTimeLeft = _searchTime;
                 }
 
@@ -259,6 +276,7 @@ namespace AI
                         {
                             _lastPointOfInterest = _foundPlayerController.transform.position;
                             target = _lastPointOfInterest;
+                            _roomContext.LastReportedPlayerPosition = _lastPointOfInterest;
                         }
                         else
                         {
@@ -394,6 +412,7 @@ namespace AI
                     else
                     {
                         _identificationState = PlayerIdentificationState.Identified;
+                        _roomContext.LastReportedPlayerPosition = playerPosition;
                     }
                     break;
                 case BehaviourState.Chasing:
@@ -413,8 +432,10 @@ namespace AI
             _visualSuspicionIsTracked = false;
         }
 
-        public override void NotifyActiveStatus(bool isActiveRoom)
+        public override void NotifyActiveStatus(bool isActiveRoom, Room roomContext, Vector2 playerEntryPosition = default)
         {
+            _roomContext = roomContext;
+
             if (!isActiveRoom)
             {
                 gameObject.SetActive(false);
@@ -422,6 +443,13 @@ namespace AI
             else
             {
                 SetUpInitialAIState();
+
+                if (roomContext.OwningAreaState.IsOnAlert)
+                {
+                    _currentState = BehaviourState.Searching;
+                    _lastPointOfInterest = playerEntryPosition;
+                }
+
                 gameObject.SetActive(true);
             }
         }

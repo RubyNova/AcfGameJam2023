@@ -193,6 +193,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 246212367700356773, guid: a7e6ccd79b1fb6c49a60209fd5a65070, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1068871175}
+    - targetCorrespondingSourceObject: {fileID: 246212367700356773, guid: a7e6ccd79b1fb6c49a60209fd5a65070, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1068871177}
   m_SourcePrefab: {fileID: 100100000, guid: a7e6ccd79b1fb6c49a60209fd5a65070, type: 3}
 --- !u!1 &163059646 stripped
 GameObject:
@@ -645,6 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startingRoom: {fileID: 1068871176}
+  _playerController: {fileID: 1086286503}
 --- !u!114 &1068871176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -659,6 +663,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ownedEntities:
   - {fileID: 1351803675}
+  _owningAreaState: {fileID: 1068871177}
+--- !u!114 &1068871177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068871173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88ea8596c8f1354398681f07d839a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _alertTimeout: 3
 --- !u!1 &1086286498
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,7 +712,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 1
-  m_Mass: 1.7853982
+  m_Mass: 1.5853982
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 7
@@ -805,7 +823,7 @@ Transform:
   m_GameObject: {fileID: 1086286498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.36, y: 3.41, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 913991514}
@@ -849,6 +867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1086286499}
   _groundTagName: Ground
+  _selfTagName: 
   _groundZeroToleranceValue: 0.95
 --- !u!114 &1086286505
 MonoBehaviour:
@@ -995,6 +1014,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5697bb0d-0972-4350-a224-ee4b7acd87f1
     m_ActionName: Player/Ability Modifier[/Keyboard/leftCtrl]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1086286503}
+        m_TargetAssemblyTypeName: Player.PlayerController, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dad50471-687a-4685-bb98-d3fce45aa423
+    m_ActionName: Player/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1016,10 +1051,12 @@ MonoBehaviour:
     _inputAxes: {x: 0, y: 0}
     _inputSprintModifier: 0
     _inputAbilityTriggerZero: 1
+    _jumpInput: 0
     _shouldCareAboutXAxis: 0
     _shouldCareAboutYAxis: 0
     _shouldCareAboutSprintModifier: 0
     _shouldCareAboutAbilityTriggerZero: 1
+    _shouldCareAboutJumping: 0
   _overridesNormalMovement: 1
   _groundTagName: Ground
   _dashSpeed: 30
@@ -1271,7 +1308,7 @@ GameObject:
   - component: {fileID: 1351803678}
   m_Layer: 3
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1453,6 +1490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1351803679}
   _groundTagName: Ground
+  _selfTagName: Enemy
   _groundZeroToleranceValue: 0
 --- !u!114 &1376747864
 MonoBehaviour:
@@ -1623,6 +1661,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3840563149217566163, guid: f98a804a541a01e42b3db875b171d381, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1436232365}
+    - targetCorrespondingSourceObject: {fileID: 3840563149217566163, guid: f98a804a541a01e42b3db875b171d381, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1436232367}
   m_SourcePrefab: {fileID: 100100000, guid: f98a804a541a01e42b3db875b171d381, type: 3}
 --- !u!1 &1436232362 stripped
 GameObject:
@@ -1642,6 +1683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ownedEntities: []
+  _owningAreaState: {fileID: 1436232367}
 --- !u!114 &1436232366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1655,6 +1697,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _owningRoom: {fileID: 1436232365}
+--- !u!114 &1436232367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436232362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88ea8596c8f1354398681f07d839a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _alertTimeout: 0
 --- !u!1 &1477972352
 GameObject:
   m_ObjectHideFlags: 0
