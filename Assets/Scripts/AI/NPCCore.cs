@@ -261,6 +261,7 @@ namespace AI
                 if (resetSearchTime)
                 {
                     _roomContext.OwningAreaState.IsOnAlert = true;
+                    _roomContext.LastReportedPlayerPosition = _lastPointOfInterest;
                     _searchTimeLeft = _searchTime;
                 }
 
