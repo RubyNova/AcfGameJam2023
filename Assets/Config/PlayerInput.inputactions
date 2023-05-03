@@ -42,9 +42,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Ability Modifier",
+                    "name": "Ability Trigger Zero",
                     "type": "Button",
                     "id": "5697bb0d-0972-4350-a224-ee4b7acd87f1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Ability Trigger One",
+                    "type": "Button",
+                    "id": "d296f45e-2429-4c74-b425-20036eb5e112",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -277,7 +286,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Ability Modifier",
+                    "action": "Ability Trigger Zero",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -300,6 +309,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b459a883-b89e-49ad-9930-46d2134644f9",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Ability Trigger One",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

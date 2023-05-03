@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -81,6 +82,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Hazards
+    uniqueID: 3418640313
+    locked: 0
   - name: Player FG
     uniqueID: 4191798879
     locked: 0
@@ -119,4 +123,13 @@ TagManager:
     locked: 0
   - name: FG Black 2
     uniqueID: 4026545527
+    locked: 0
+  - name: ui test
+    uniqueID: 4288316923
+    locked: 0
+  - name: UI test 2
+    uniqueID: 299112971
+    locked: 0
+  - name: New Layer 30
+    uniqueID: 3554458479
     locked: 0

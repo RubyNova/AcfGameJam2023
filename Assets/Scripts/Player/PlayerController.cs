@@ -23,6 +23,12 @@ namespace Player
         [SerializeField]
         private LineRenderer _aimRenderer;
 
+        [SerializeField]
+        private GameObject _itemPrefab;
+
+        [SerializeField]
+        private Inventory _inventory;
+
         [Header("Configuration"), SerializeField]
         private float _walkingSpeed;
 
@@ -47,6 +53,9 @@ namespace Player
         private Vector2 _aimData;
         private bool _isMouse;
         private DisposableItem _item;
+        private bool _heavyItemSelected;
+
+        public bool HasItemEquipped => _item != null;
 
         public bool MovementIsOverridden { get; set; }
 
@@ -58,6 +67,7 @@ namespace Player
             MovementIsOverridden = false;
             _aimData = Vector2.zero;
             _isMouse = true;
+            _heavyItemSelected = false;
         }
 
         private void Start()
@@ -140,14 +150,25 @@ namespace Player
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
-        {
-            
+        { 
             if (!collision.gameObject.TryGetComponent<DisposableItem>(out var item))
             {
                 return;
             }
 
-            _item = item;
+            if (item == null && ((item.Config.IsHeavyItem && _heavyItemSelected) || !(item.Config.IsHeavyItem && _heavyItemSelected)))
+            {
+                _item = item;
+            }
+
+            if (item.Config.IsHeavyItem)
+            {
+                _inventory.HeavyItems++;
+            }
+            else
+            {
+                _inventory.LightItems++;
+            }
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -172,6 +193,11 @@ namespace Player
             _inputInfo.InputAbilityTriggerZero = context.ReadValueAsButton();
         }
 
+        public void OnAbilityTriggerOne(InputAction.CallbackContext context)
+        {
+            _inputInfo.InputAbilityTriggerOne = context.ReadValueAsButton();
+        }
+
         public void OnAim(InputAction.CallbackContext context)
         {
             // TODO: I hate this SO much
@@ -193,8 +219,40 @@ namespace Player
             {
                 return;
             }
+
             _item.Throw(_aimTransform.up, _itemThrowForce);
-            _item = null;
+
+            if (_item.Config.IsHeavyItem)
+            {
+                _inventory.HeavyItems--;
+                if (_inventory.HeavyItems > 0)
+                {
+                    var newItem = Instantiate(_itemPrefab).GetComponent<DisposableItem>();
+                    newItem.ApplyPlayerParent(this);
+                    newItem.EnforceNewConfig(_item.Config);
+                    _item = newItem;
+                }
+                else
+                {
+                    _item = null;
+                }
+            }
+            else
+            {
+                _inventory.LightItems--;
+                if (_inventory.LightItems > 0)
+                {
+                    var newItem = Instantiate(_itemPrefab).GetComponent<DisposableItem>();
+                    newItem.ApplyPlayerParent(this);
+                    newItem.EnforceNewConfig(_item.Config);
+                    _item = newItem;
+                }
+                else
+                {
+                    _item = null;
+                }
+            }
+
         }
 
         public void OnJump(InputAction.CallbackContext context)
@@ -205,6 +263,19 @@ namespace Player
         public void RegisterAbility<TAbility>() where TAbility : PlayerAbilityBehaviour
         {
             _abilities.Add(gameObject.AddComponent<TAbility>());
+        }
+
+        public void EquipItem(DisposableItemConfig item)
+        {
+            if (item == null)
+            {
+                _item = Instantiate(_itemPrefab).GetComponent<DisposableItem>();
+                _item.ApplyPlayerParent(this);
+            }
+            else
+            {
+                _item.EnforceNewConfig(item);
+            }
         }
     }
 }

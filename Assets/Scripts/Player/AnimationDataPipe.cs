@@ -22,5 +22,10 @@ namespace Player
             _animator.SetBool("IsCrawling", Mathf.Approximately(input.InputAxes.y, -1) && _mover.IsGrounded);
             _animator.SetFloat("YAxisVelocity", _rigidbody.velocity.y);
         }
+
+        public void PerformDieAnim()
+        {
+            _animator.SetBool("IsDead", true);
+        }
     }
 }
