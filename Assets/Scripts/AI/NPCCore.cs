@@ -58,6 +58,12 @@ namespace AI
         [SerializeField]
         private float _searchTime;
 
+        [SerializeField]
+        private float _attackCooldown;
+
+        [SerializeField]
+        private int _attackDamage;
+
         private BehaviourState _currentState;
         private PlayerIdentificationState _identificationState;
         private int _currentPatrolRouteIndex;
@@ -72,6 +78,7 @@ namespace AI
         private float _searchTimeLeft;
         private bool _hasBeenHitByItem;
         private Room _roomContext;
+        private float _timeUntilAttackAvailable;
 
         private void Awake()
         {
@@ -99,10 +106,16 @@ namespace AI
             _searchTimeLeft = 0;
             _hasBeenHitByItem = false;
             transform.SetPositionAndRotation(_roomStartPos, Quaternion.Euler(Vector3.zero));
+            _timeUntilAttackAvailable = 0;
         }
 
         private void Update()
         {
+            if (_timeUntilAttackAvailable > 0)
+            {
+                _timeUntilAttackAvailable -= Time.deltaTime;
+            }
+            
             switch (_currentState)
             {
                 case BehaviourState.IdleOrPatrolling:
@@ -294,7 +307,12 @@ namespace AI
 
                 if (distance < _proximityLimit)
                 {
-                    _mover.ApplyMove(new(0, 0), 0, false, 0); // stops the NPC
+                    _mover.ApplyMove(new(0, 0), 0, false, 0); // stops the NPC and does the attack
+                    if (_timeUntilAttackAvailable <= 0)
+                    {
+                        _timeUntilAttackAvailable = _attackCooldown;
+                        _foundPlayerController.GetComponent<PlayerHealthController>().AdjustHealth(_attackDamage);
+                    }
                     return;
                 }
 
