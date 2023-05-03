@@ -12,10 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432ea7e311e77dd4e9f6fbe5b4f9e2e2, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  _backgroundSprite: {fileID: 0}
   _nextSequence: {fileID: 0}
   _musicFiles: []
-  _soundEffectFiles: []
-  _characterDialoguePairs: []
+  _soundEffectFiles:
+  - {fileID: 8300000, guid: fb8119495bae1574da6c47e7069bcd49, type: 3}
+  _customEffectPrefabs:
+  - {fileID: 4496128780392788344, guid: 7cbf709eaaf27e64cae97a154810fcc9, type: 3}
+  _characterDialoguePairs:
+  - _character: {fileID: 11400000, guid: 30d929bf559f941489fe70503f565960, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 1
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: 'HONK HONK I AM A GOOSE '
+  - _character: {fileID: 11400000, guid: 30d929bf559f941489fe70503f565960, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: A stupid goose called Rupert
   _choices: []
-  <SourceScript>k__BackingField: 
+  <SourceScript>k__BackingField: "Rupert: #0: HONK HONK I AM A GOOSE \nA stupid goose
+    called Rupert\n"
