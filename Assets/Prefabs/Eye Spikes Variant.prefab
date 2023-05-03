@@ -106,12 +106,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToFollow: {fileID: 0}
-  _eyeballIris: {fileID: 0}
-  _squishPointTop: 0.5
+  _eyeballIris: {fileID: 5619079840795979423}
+  _minorRadius: 0.5
+  _majorRadius: 0.5
   _squishModifierTop: {x: 0, y: 0, z: 0}
-  _squishPointBot: -0.5
   _squishModifierBot: {x: 0, y: 0, z: 0}
-  _squishPointLeft: -0.5
   _squishModifierLeft: {x: 0, y: 0, z: 0}
-  _squishPointRight: 0.5
   _squishModifierRight: {x: 0, y: 0, z: 0}
+--- !u!4 &5619079840795979423 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8078847899713035290, guid: 639571984a635a749aa098c60490ab33, type: 3}
+  m_PrefabInstance: {fileID: 4762787484394474873}
+  m_PrefabAsset: {fileID: 0}
