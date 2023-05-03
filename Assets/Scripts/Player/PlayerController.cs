@@ -125,7 +125,7 @@ namespace Player
                 {
                     finalMovementSpeed = _walkingSpeed;
                     forceSetVelocity = true;
-                    print($"finalMovementSped: {finalMovementSpeed} allowMomentumBasedJumping: {_allowMomentumBasedJumping} isGrounded: {_mover.IsGrounded} shouldJump: {shouldJump}");
+                    //print($"finalMovementSped: {finalMovementSpeed} allowMomentumBasedJumping: {_allowMomentumBasedJumping} isGrounded: {_mover.IsGrounded} shouldJump: {shouldJump}");
                 }
 
                 _mover.ApplyMove(finalInputData, finalMovementSpeed, shouldJump, _jumpForce, context.ForceJump, forceSetVelocity);
