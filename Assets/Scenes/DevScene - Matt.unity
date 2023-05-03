@@ -857,6 +857,7 @@ MonoBehaviour:
   _jumpForce: 23
   _hasAnimations: 0
   _itemThrowForce: 15
+  _allowMomentumBasedJumping: 0
 --- !u!114 &1086286504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -871,7 +872,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1086286499}
   _groundTagName: Ground
-  _selfTagName: 
+  _selfTagName: Player
   _groundZeroToleranceValue: 0.95
 --- !u!114 &1086286505
 MonoBehaviour:
@@ -1150,7 +1151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1113087069
 Rigidbody2D:
   serializedVersion: 4

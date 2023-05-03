@@ -47,6 +47,9 @@ namespace Player
         [SerializeField]
         private float _itemThrowForce;
 
+        [SerializeField]
+        private bool _allowMomentumBasedJumping = true;
+
         private InputInfo _inputInfo;
         private List<PlayerAbilityBehaviour> _abilities;
         private Dictionary<string, Coroutine> _activeAbilityCoroutines;
@@ -103,7 +106,6 @@ namespace Player
             if (!MovementIsOverridden)
             {
                 float finalMovementSpeed = _walkingSpeed;
-                bool modifyInputSpeed = false;
                 var finalInputData = _inputInfo.InputAxes;
                 bool shouldJump = _inputInfo.JumpInput;
 
@@ -114,15 +116,19 @@ namespace Player
                 else if (_inputInfo.InputAxes.y < -0.1f)
                 {
                     finalMovementSpeed = _crawlingSpeed;
-                    modifyInputSpeed = true;
-                }
-
-                if (modifyInputSpeed)
-                {
                     shouldJump = false;
                 }
 
-                _mover.ApplyMove(finalInputData, finalMovementSpeed, shouldJump, _jumpForce, context.ForceJump);
+                bool forceSetVelocity = false;
+
+                if (!_allowMomentumBasedJumping && ((_mover.IsGrounded && shouldJump) || !_mover.IsGrounded))
+                {
+                    finalMovementSpeed = _walkingSpeed;
+                    forceSetVelocity = true;
+                    print($"finalMovementSped: {finalMovementSpeed} allowMomentumBasedJumping: {_allowMomentumBasedJumping} isGrounded: {_mover.IsGrounded} shouldJump: {shouldJump}");
+                }
+
+                _mover.ApplyMove(finalInputData, finalMovementSpeed, shouldJump, _jumpForce, context.ForceJump, forceSetVelocity);
             }
 
             _inputInfo.JumpInput = false;

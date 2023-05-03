@@ -215,7 +215,7 @@ namespace Movement
             _isGrounded = false;
         }
 
-        public void ApplyMove(Vector2 directionInput, float horizontalSpeed, bool jumpInput, float jumpForce, bool forceJump = false)
+        public void ApplyMove(Vector2 directionInput, float horizontalSpeed, bool jumpInput, float jumpForce, bool forceJump = false, bool forceSetVelocity = false)
         {
             _overrideMover = false;
             _rigidbody.gravityScale = _gravityScale;
@@ -224,6 +224,11 @@ namespace Movement
             _horizontalSpeed = horizontalSpeed;
             _jumpInput = jumpInput;
             _jumpForce = jumpForce;
+
+            if (forceSetVelocity)
+            {
+                _speedFromLastFrame = horizontalSpeed;
+            }
         }
 
         public void ApplyRawDirection(Vector2 directionAndSpeed)
