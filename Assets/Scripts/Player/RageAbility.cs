@@ -8,7 +8,6 @@ namespace Player
 {
     class RageAbility : PlayerAbilityBehaviour
     {
-
         [Header("Dependencies"), SerializeField]
         private LayerMask _enemyLayer;
         
