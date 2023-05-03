@@ -16,9 +16,6 @@ namespace Player
         private float _pushBackRadius = 2;
 
         [SerializeField]
-        private string _groundLayerTag = "Ground";
-
-        [SerializeField]
         private float _pushForce = 7;
 
         public bool HasBeenConsumedUntilNextRest { get; set; }

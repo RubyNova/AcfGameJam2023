@@ -694,6 +694,7 @@ GameObject:
   - component: {fileID: 1086286505}
   - component: {fileID: 1086286507}
   - component: {fileID: 1086286508}
+  - component: {fileID: 1086286509}
   m_Layer: 7
   m_Name: Capsule
   m_TagString: Player
@@ -1111,6 +1112,22 @@ MonoBehaviour:
   _pushBackRadius: 2
   _groundLayerTag: Ground
   _pushForce: 7
+--- !u!114 &1086286509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086286498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca294bbba07aa194fb3cc66f2e8d53c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerController: {fileID: 1086286503}
+  _pipe: {fileID: 0}
+  _hasAnimations: 0
+  _startingHealth: 100
 --- !u!1 &1113087068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,6 +1415,8 @@ MonoBehaviour:
   _roomStartPos: {x: 5.51, y: -3.94}
   _itemWeightThreshold: 10
   _searchTime: 5
+  _attackCooldown: 0.5
+  _attackDamage: 25
 --- !u!212 &1351803676
 SpriteRenderer:
   m_ObjectHideFlags: 0
