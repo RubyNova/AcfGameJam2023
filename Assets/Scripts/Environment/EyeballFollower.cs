@@ -40,7 +40,7 @@ namespace Environment
         private void Update()
         {
             var directionAndLength = (Vector2)_objectToFollow.position - _irisGlobalOrigin;
-            float angle = Vector2.Angle(directionAndLength, Vector2.right) * Mathf.Deg2Rad;
+            float angle = Vector2.Angle(directionAndLength, Vector2.right) * Mathf.Deg2Rad; // fuck my life this is so fucking stupid
 
             var sinComponent = Mathf.Pow(_majorRadius, 2) * Mathf.Pow(Mathf.Sin(angle), 2);
             var cosComponent = Mathf.Pow(_minorRadius, 2) * Mathf.Pow(Mathf.Cos(angle), 2);
