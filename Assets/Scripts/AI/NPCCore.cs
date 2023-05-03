@@ -53,9 +53,6 @@ namespace AI
         private Vector2 _roomStartPos;
 
         [SerializeField]
-        private float _itemWeightThreshold;
-
-        [SerializeField]
         private float _searchTime;
 
         [SerializeField]
@@ -359,7 +356,7 @@ namespace AI
                 return;
             }
 
-            if (item.Config.ItemWeight >= _itemWeightThreshold)
+            if (item.Config.IsHeavyItem)
             {
                 _currentState = BehaviourState.Dead;
             }
