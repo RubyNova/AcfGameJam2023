@@ -8,7 +8,6 @@ namespace Player
 {
     class RageAbility : PlayerAbilityBehaviour
     {
-
         [Header("Dependencies"), SerializeField]
         private LayerMask _enemyLayer;
         
@@ -34,8 +33,14 @@ namespace Player
 
         protected override IEnumerator ExecuteAbility(PlayerContextObject context)
         {
-            HasBeenConsumedUntilNextRest = true;
             var enemies = Physics2D.OverlapCircleAll(transform.position, _pushBackRadius, _enemyLayer);
+
+            if (enemies.Length == 0)
+            {
+                yield break;
+            }
+
+            HasBeenConsumedUntilNextRest = true;
 
             foreach(var enemy in enemies)
             {
@@ -50,8 +55,6 @@ namespace Player
                 enemy.GetComponent<GroundMover>().ApplyRawDirection(direction * _pushForce);
                 enemy.AddComponent<DieOnCollision>(); 
             }
-
-            yield return null;
         }
     }
 }
