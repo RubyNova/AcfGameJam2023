@@ -1,8 +1,8 @@
 using AI;
+using Movement;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Analytics;
 
 namespace Player
 {
@@ -46,8 +46,8 @@ namespace Player
                     continue;
                 }
 
-                enemy.GetComponent<Rigidbody2D>().velocity = direction * _pushForce;
                 core.enabled = false;
+                enemy.GetComponent<GroundMover>().ApplyRawDirection(direction * _pushForce);
                 enemy.AddComponent<DieOnCollision>(); 
             }
 

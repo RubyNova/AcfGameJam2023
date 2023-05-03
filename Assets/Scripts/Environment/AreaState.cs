@@ -27,7 +27,6 @@ namespace Environment
             set
             {
                 _isActiveArea = value;
-                print($"IsActiveArea for area {gameObject.name} set to {_isActiveArea}");
                 ActiveAreaStateChanged?.Invoke(_isActiveArea);
             }
         }
@@ -56,7 +55,6 @@ namespace Environment
                 }
 
                 _isOnAlert = value;
-                print($"IsOnAlert for area {gameObject.name} set to {_isOnAlert}");
                 AlertStateChanged?.Invoke(_isOnAlert);
                 
                 IEnumerator ExecuteAlertCooldown()
@@ -68,7 +66,6 @@ namespace Environment
                     }
 
                     _isOnAlert = false;
-                    print($"IsOnAlert for area {gameObject.name} set to {_isOnAlert} COROUTINE");
                     _alertRoutine = null;
                 }
             }
