@@ -108,11 +108,9 @@ MonoBehaviour:
   _objectToFollow: {fileID: 0}
   _eyeballIris: {fileID: 5619079840795979423}
   _minorRadius: 0.5
-  _majorRadius: 0.5
-  _squishModifierTop: {x: 0, y: 0, z: 0}
-  _squishModifierBot: {x: 0, y: 0, z: 0}
-  _squishModifierLeft: {x: 0, y: 0, z: 0}
-  _squishModifierRight: {x: 0, y: 0, z: 0}
+  _majorRadius: 1
+  _squishModifierY: {x: 1, y: 0.825, z: 1}
+  _squishModifierX: {x: 0.8625, y: 1, z: 1}
 --- !u!4 &5619079840795979423 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8078847899713035290, guid: 639571984a635a749aa098c60490ab33, type: 3}

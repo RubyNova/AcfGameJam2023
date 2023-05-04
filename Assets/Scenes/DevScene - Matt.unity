@@ -3900,32 +3900,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7684042190842062210, guid: 67750633adf8c644fa376174fabe28e0, type: 3}
-      propertyPath: _eyeballIris
-      value: 
-      objectReference: {fileID: 1873329648}
-    - target: {fileID: 7684042190842062210, guid: 67750633adf8c644fa376174fabe28e0, type: 3}
-      propertyPath: _majorRadius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7684042190842062210, guid: 67750633adf8c644fa376174fabe28e0, type: 3}
-      propertyPath: _minorRadius
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7684042190842062210, guid: 67750633adf8c644fa376174fabe28e0, type: 3}
-      propertyPath: _objectToFollow
-      value: 
-      objectReference: {fileID: 1086286502}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67750633adf8c644fa376174fabe28e0, type: 3}
---- !u!4 &1873329648 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5619079840795979423, guid: 67750633adf8c644fa376174fabe28e0, type: 3}
-  m_PrefabInstance: {fileID: 1873329647}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1921614127
 GameObject:
   m_ObjectHideFlags: 0
