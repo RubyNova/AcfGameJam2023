@@ -54,15 +54,8 @@ namespace Environment
             }
             
             _eyeballIris.transform.localPosition = finalLocalPosition;
-
-
-            var left = _irisLocalOrigin.x - _majorRadius;
-            var right = _irisLocalOrigin.x + _majorRadius;
-            var top = _irisLocalOrigin.y + _minorRadius;
-            var bot = _irisLocalOrigin.y - _minorRadius;
-
+            
             var irisTranslation = finalLocalPosition - _irisLocalOrigin;
-
             var horizontalPercentage = Mathf.Abs(irisTranslation.x) / _majorRadius;
             var verticalPercentage = Mathf.Abs(irisTranslation.y) / _minorRadius;
 
