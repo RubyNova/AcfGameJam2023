@@ -10,9 +10,6 @@ namespace Environment
 
         [SerializeField]
         private AreaState _owningAreaState;
-        
-        [SerializeField]
-        private Confinement _cameraConstraints;
 
         public AreaState OwningAreaState => _owningAreaState;
 
@@ -36,8 +33,6 @@ namespace Environment
             LastReportedPlayerPosition = playerEntryLocation;
             _owningAreaState.IsActiveArea = true;
             NotifyRoomEntities(true);
-            _cameraConstraints = GetChildComponent<Confinement>();
-            CinemachineConfiner confiner = _cameraConstraints.GetComponent<CinemachineConfiner>();
         }
 
         public void BecomeInactiveRoom()
