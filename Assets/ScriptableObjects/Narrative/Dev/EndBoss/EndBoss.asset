@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432ea7e311e77dd4e9f6fbe5b4f9e2e2, type: 3}
+  m_Name: EndBoss
+  m_EditorClassIdentifier: 
+  _nextSequence: {fileID: 0}
+  _musicFiles: []
+  _soundEffectFiles: []
+  _customEffectPrefabs: []
+  _characterDialoguePairs:
+  - _character: {fileID: 11400000, guid: c8f9cfb312378f74f9c5641a1fe05e21, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: Well hello again!
+  - _character: {fileID: 11400000, guid: c8f9cfb312378f74f9c5641a1fe05e21, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "We\u2019ve been here before, haven\u2019t we?"
+  - _character: {fileID: 11400000, guid: c8f9cfb312378f74f9c5641a1fe05e21, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "Many times\u2026"
+  - _character: {fileID: 11400000, guid: c8f9cfb312378f74f9c5641a1fe05e21, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: Do you think this time will be different?
+  - _character: {fileID: 11400000, guid: c8f9cfb312378f74f9c5641a1fe05e21, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "You overcame your feelings, but I\u2019m still here."
+  - _character: {fileID: 11400000, guid: c8f9cfb312378f74f9c5641a1fe05e21, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "You\u2019ll never have what it takes to truly get rid of me!"
+  _choices: []
+  <SourceScript>k__BackingField: "End Boss: Well hello again!\r\n\rWe\u2019ve been
+    here before, haven\u2019t we?\r\n\rMany times\u2026\r\n\rDo you think this time
+    will be different?\r\nYou overcame your feelings, but I\u2019m still here.\r\nYou\u2019ll
+    never have what it takes to truly get rid of me!\r\n\n"

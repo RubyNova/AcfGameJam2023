@@ -22,6 +22,9 @@ namespace Movement
         [SerializeField]
         private string _selfTagName;
 
+        [SerializeField]
+        private Transform _positionToCheckColliderPointFrom;
+
         [Header("Configuration"), SerializeField, Range(0, 1)]
         private float _groundZeroToleranceValue = 1;
 
@@ -36,6 +39,8 @@ namespace Movement
         private bool _inCollision;
         private bool _jumpInput;
         private Dictionary<GameObject, CollisionDirectionDataBuffer> _activeCollisionPointsPerGameObject;
+        private List<Collider2D> _groundColliders;
+        private bool _isJumping;
 
         public bool IsGrounded => _isGrounded;
 
@@ -51,11 +56,38 @@ namespace Movement
             _inCollision = false;
             _jumpInput = false;
             _activeCollisionPointsPerGameObject = new();
+            _groundColliders = new();
+            _isJumping = true;
         }
 
         private void Start()
         {
             _gravityScale = _rigidbody.gravityScale;
+        }
+
+        private void FixedUpdate()
+        {
+            bool newIsGrounded = false;
+
+            if (_isJumping)
+            {
+                //print("I AM JUMPING");
+                _isGrounded = newIsGrounded;
+                return;
+            }
+
+            foreach (var collider in _groundColliders)
+            {
+                bool newState = IsGroundBelowWithinGivenTolerance(collider.ClosestPoint(_positionToCheckColliderPointFrom.position));
+
+                if (newState)
+                {
+                    newIsGrounded = true;
+                    break;
+                }
+            }
+
+            _isGrounded = newIsGrounded;
         }
 
         // Update is called once per frame
@@ -74,6 +106,11 @@ namespace Movement
             {
                 finalSpeed = _horizontalSpeed;
                 directionVector.y *= _jumpForce;
+
+                if (directionVector.y > 0)
+                {
+                    _isJumping = true;
+                }
             }
             else
             {
@@ -118,36 +155,7 @@ namespace Movement
                         }
                     }
                 }
-
                 return false;
-            }
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            _inCollision = true;
-            
-            if (!collision.gameObject.CompareTag(_groundTagName))
-            {
-                return;
-            }
-
-            List<ContactPoint2D> contacts = new();
-            _ = collision.GetContacts(contacts); // TODO: Unity APIs are questionable at best
-
-            foreach (ContactPoint2D contact in contacts)
-            {
-                var down = -transform.up;
-                var directionToPoint = (contact.point - (Vector2)transform.position).normalized;
-
-                if (Vector2.Dot(down, directionToPoint) >= _groundZeroToleranceValue)
-                {
-                    _rigidbody.velocity = Vector2.zero;
-                    _isGrounded = true;
-                    break;
-                }
-
-                _isGrounded = false;
             }
         }
 
@@ -177,25 +185,6 @@ namespace Movement
                 ContactPoint2D contact = contacts[i];
                 buffer.CollisionDirections[i] = (contact.point - (Vector2)transform.position).normalized;
             }
-
-            if (!collision.gameObject.CompareTag(_groundTagName))
-            {
-                return;
-            }
-
-            foreach (ContactPoint2D contact in contacts)
-            {
-                var down = -transform.up;
-                var directionToPoint = (contact.point - (Vector2)transform.position).normalized;
-
-                if (Vector2.Dot(down, directionToPoint) >= _groundZeroToleranceValue)
-                {
-                    _isGrounded = true;
-                    break;
-                }
-
-                _isGrounded = false;
-            }
         }
 
         private void OnCollisionExit2D(Collision2D collision)
@@ -206,16 +195,38 @@ namespace Movement
             {
                 _activeCollisionPointsPerGameObject.Remove(collision.otherCollider.gameObject);
             }
+        }
 
-            if (!collision.gameObject.CompareTag(_groundTagName))
+        private void OnTriggerEnter2D(Collider2D collider)
+        {
+            if (!collider.gameObject.CompareTag(_groundTagName) || _groundColliders.Contains(collider))
             {
                 return;
             }
 
-            _isGrounded = false;
+            _isJumping = false;
+            _groundColliders.Add(collider);
         }
 
-        public void ApplyMove(Vector2 directionInput, float horizontalSpeed, bool jumpInput, float jumpForce, bool forceJump = false)
+        private void OnTriggerExit2D(Collider2D collider)
+        {
+            if (!collider.gameObject.CompareTag(_groundTagName) || !_groundColliders.Contains(collider))
+            {
+                return;
+            }
+
+            _groundColliders.Remove(collider);
+        }
+
+        private bool IsGroundBelowWithinGivenTolerance(Vector2 target)
+        {
+            var down = -transform.up;
+            var directionToPoint = (target - (Vector2)transform.position).normalized;
+
+            return Vector2.Dot(down, directionToPoint) >= _groundZeroToleranceValue;
+        }
+
+        public void ApplyMove(Vector2 directionInput, float horizontalSpeed, bool jumpInput, float jumpForce, bool forceJump = false, bool forceSetVelocity = false)
         {
             _overrideMover = false;
             _rigidbody.gravityScale = _gravityScale;
@@ -224,6 +235,11 @@ namespace Movement
             _horizontalSpeed = horizontalSpeed;
             _jumpInput = jumpInput;
             _jumpForce = jumpForce;
+
+            if (forceSetVelocity)
+            {
+                _speedFromLastFrame = horizontalSpeed;
+            }
         }
 
         public void ApplyRawDirection(Vector2 directionAndSpeed)
