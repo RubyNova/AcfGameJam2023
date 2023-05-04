@@ -22,6 +22,9 @@ namespace Movement
         [SerializeField]
         private string _selfTagName;
 
+        [SerializeField]
+        private Transform _positionToCheckColliderPointFrom;
+
         [Header("Configuration"), SerializeField, Range(0, 1)]
         private float _groundZeroToleranceValue = 1;
 
@@ -66,7 +69,7 @@ namespace Movement
 
             foreach (var collider in _groundColliders)
             {
-                bool newState = IsGroundBelowWithinGivenTolerance(collider.ClosestPoint(transform.position));
+                bool newState = IsGroundBelowWithinGivenTolerance(collider.ClosestPoint(_positionToCheckColliderPointFrom.position));
 
                 if (newState)
                 {

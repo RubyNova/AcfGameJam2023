@@ -227,15 +227,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218706434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.53, z: 0}
+  m_LocalPosition: {x: 0, y: -0.539, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 800616999}
   m_Father: {fileID: 1086286502}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &218706436
-CircleCollider2D:
+--- !u!70 &218706436
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -267,8 +268,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 1
 --- !u!213 &669385548
 Sprite:
   m_ObjectHideFlags: 0
@@ -561,6 +562,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _owningRoom: {fileID: 1068871176}
+--- !u!1 &800616998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 800616999}
+  m_Layer: 7
+  m_Name: Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &800616999
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800616998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.457, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 218706435}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &913991513
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,6 +973,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 1086286499}
   _groundTagName: Ground
   _selfTagName: Player
+  _positionToCheckColliderPointFrom: {fileID: 800616999}
   _groundZeroToleranceValue: 0.95
 --- !u!114 &1086286505
 MonoBehaviour:
@@ -1631,6 +1664,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 1351803679}
   _groundTagName: Ground
   _selfTagName: Enemy
+  _positionToCheckColliderPointFrom: {fileID: 1351803677}
   _groundZeroToleranceValue: 0
 --- !u!114 &1376747864
 MonoBehaviour:
