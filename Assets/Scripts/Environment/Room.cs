@@ -1,4 +1,5 @@
 using UnityEngine;
+using Cinemachine;
 
 namespace Environment
 {
@@ -32,11 +33,27 @@ namespace Environment
             LastReportedPlayerPosition = playerEntryLocation;
             _owningAreaState.IsActiveArea = true;
             NotifyRoomEntities(true);
+            //activate the cinemachine camera child
+            foreach (Transform child in transform)
+            {
+                if (child.GetComponent<CinemachineVirtualCamera>() != null)
+                {
+                    child.gameObject.SetActive(true);
+                }
+            }
         }
 
         public void BecomeInactiveRoom()
         {
             NotifyRoomEntities(false);
+            //deactivate the cinemachine camera child
+            foreach (Transform child in transform)
+            {
+                if (child.GetComponent<CinemachineVirtualCamera>() != null)
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
         }
     }
 }
