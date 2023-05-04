@@ -40,6 +40,7 @@ namespace Movement
         private bool _jumpInput;
         private Dictionary<GameObject, CollisionDirectionDataBuffer> _activeCollisionPointsPerGameObject;
         private List<Collider2D> _groundColliders;
+        private bool _isJumping;
 
         public bool IsGrounded => _isGrounded;
 
@@ -56,6 +57,7 @@ namespace Movement
             _jumpInput = false;
             _activeCollisionPointsPerGameObject = new();
             _groundColliders = new();
+            _isJumping = true;
         }
 
         private void Start()
@@ -66,6 +68,13 @@ namespace Movement
         private void FixedUpdate()
         {
             bool newIsGrounded = false;
+
+            if (_isJumping)
+            {
+                //print("I AM JUMPING");
+                _isGrounded = newIsGrounded;
+                return;
+            }
 
             foreach (var collider in _groundColliders)
             {
@@ -97,6 +106,11 @@ namespace Movement
             {
                 finalSpeed = _horizontalSpeed;
                 directionVector.y *= _jumpForce;
+
+                if (directionVector.y > 0)
+                {
+                    _isJumping = true;
+                }
             }
             else
             {
@@ -141,36 +155,7 @@ namespace Movement
                         }
                     }
                 }
-
                 return false;
-            }
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            _inCollision = true;
-            
-            if (!collision.gameObject.CompareTag(_groundTagName))
-            {
-                return;
-            }
-
-            List<ContactPoint2D> contacts = new();
-            _ = collision.GetContacts(contacts); // TODO: Unity APIs are questionable at best
-
-            foreach (ContactPoint2D contact in contacts)
-            {
-                var down = -transform.up;
-                var directionToPoint = (contact.point - (Vector2)transform.position).normalized;
-
-                if (Vector2.Dot(down, directionToPoint) >= _groundZeroToleranceValue)
-                {
-                    _rigidbody.velocity = Vector2.zero;
-                    _isGrounded = true;
-                    break;
-                }
-
-                _isGrounded = false;
             }
         }
 
@@ -219,6 +204,7 @@ namespace Movement
                 return;
             }
 
+            _isJumping = false;
             _groundColliders.Add(collider);
         }
 
