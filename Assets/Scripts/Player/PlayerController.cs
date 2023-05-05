@@ -117,6 +117,7 @@ namespace Player
                 {
                     finalMovementSpeed = _crawlingSpeed;
                     shouldJump = false;
+                    finalInputData.y = 0;
                 }
 
                 bool forceSetVelocity = false;
