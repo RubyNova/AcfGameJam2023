@@ -29,6 +29,9 @@ namespace Player
         [SerializeField]
         private Inventory _inventory;
 
+        [SerializeField]
+        private Transform _spriteRoot;
+
         [Header("Configuration"), SerializeField]
         private float _walkingSpeed;
 
@@ -118,6 +121,15 @@ namespace Player
                     finalMovementSpeed = _crawlingSpeed;
                     shouldJump = false;
                     finalInputData.y = 0;
+                }
+
+                if (_inputInfo.InputAxes.x > 0)
+                {
+                    _spriteRoot.localRotation = Quaternion.Euler(0, 0, 0);
+                }
+                else if (_inputInfo.InputAxes.x < 0)
+                {
+                    _spriteRoot.localRotation = Quaternion.Euler(0, 180, 0);
                 }
 
                 bool forceSetVelocity = false;
