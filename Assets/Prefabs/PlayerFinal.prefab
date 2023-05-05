@@ -104,11 +104,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8346601642690208859}
+  - {fileID: 5728732740271962719}
   - {fileID: 8869868093877419249}
   - {fileID: 5177123358612245418}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &8195766849758707327
 CapsuleCollider2D:
@@ -142,8 +142,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0, y: -0.051971436}
+  m_Size: {x: 0.7, y: 1.7580185}
   m_Direction: 0
 --- !u!50 &6576590276376702210
 Rigidbody2D:
@@ -157,7 +157,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 1
-  m_Mass: 1.7853982
+  m_Mass: 1.125458
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 7
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 6576590276376702210}
   _mover: {fileID: 1249383329510775940}
-  _animator: {fileID: 6873020418486612058}
+  _animator: {fileID: 7148415801158282846}
 --- !u!114 &4215975904071527455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,7 +621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6063416038497612527, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99963564
+      value: 0.9996355
       objectReference: {fileID: 0}
     - target: {fileID: 6063416038497612527, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_LocalRotation.y
@@ -629,7 +629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6063416038497612527, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.026995432
+      value: -0.026999023
       objectReference: {fileID: 0}
     - target: {fileID: 6279438276530751807, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_RootOrder
@@ -685,15 +685,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7974105760708529336, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99956584
+      value: 0.9995657
       objectReference: {fileID: 0}
     - target: {fileID: 7974105760708529336, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.029464986
+      value: -0.029470038
       objectReference: {fileID: 0}
     - target: {fileID: 8289667291106253394, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.0073289014
+      value: -0.0073339543
       objectReference: {fileID: 0}
     - target: {fileID: 8289667291106253394, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_LocalRotation.z
@@ -701,7 +701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8395691979024075856, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.00092378515
+      value: 0.0009273785
       objectReference: {fileID: 0}
     - target: {fileID: 8395691979024075856, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
       propertyPath: m_LocalRotation.z
@@ -716,13 +716,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
---- !u!95 &6873020418486612058 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8904110730802896190, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
-  m_PrefabInstance: {fileID: 1775974906242282336}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8346601642690208859 stripped
+--- !u!4 &5728732740271962719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6279438276530751807, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
+  m_PrefabInstance: {fileID: 1775974906242282336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7148415801158282846 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8904110730802896190, guid: d19b54881e47f5344871b7d7e1a78436, type: 3}
   m_PrefabInstance: {fileID: 1775974906242282336}
   m_PrefabAsset: {fileID: 0}
