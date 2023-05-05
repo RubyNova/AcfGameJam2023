@@ -1,10 +1,13 @@
 ﻿using System;
 using UnityEngine;
+using TMPro;
 
 namespace Player
 {
     public class Inventory : MonoBehaviour
     {
+        [SerializeField] public TextMeshProUGUI _lightItemsText;
+        [SerializeField] public TextMeshProUGUI _heavyItemsText;
         private int _lightItems;
         private int _heavyItems;
 
@@ -26,6 +29,7 @@ namespace Player
                 }
 
                 LightItemsAmountChanged?.Invoke(_lightItems);
+                LightItemsAmountChanged?.Invoke(UpdateText(_lightItems));
             }
         }
 
@@ -47,10 +51,17 @@ namespace Player
                 }
 
                 HeavyItemsAmountChanged?.Invoke(_heavyItems);
+                HeavyItemsAmountChanged?.Invoke(UpdateText(_heavyItems));
             }
         }
 
         public event Action<int> LightItemsAmountChanged;
         public event Action<int> HeavyItemsAmountChanged;
+        
+        public void UpdateText(int _heavyItemsText, int _lightItemsText)
+        {
+            _lightItemsText = _lightItems;
+            _heavyItemsText = _heavyItems;
+        }
     }
 }
