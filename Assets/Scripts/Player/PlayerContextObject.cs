@@ -11,14 +11,16 @@ namespace Player
         public InputInfo PlayerInput { get; set; }
         public bool ForceJump { get; set; }
         public Dictionary<string, Coroutine> ActiveAbilityCoroutines { get; }
+        public AnimationDataPipe AnimPipe { get; }
 
-        public PlayerContextObject(PlayerController controller, GroundMover mover, InputInfo playerInput, bool forceJump, Dictionary<string, Coroutine> activeAbilityCoroutines)
+        public PlayerContextObject(PlayerController controller, GroundMover mover, InputInfo playerInput, bool forceJump, Dictionary<string, Coroutine> activeAbilityCoroutines, AnimationDataPipe animPipe)
         {
             Controller = controller;
             Mover = mover;
             PlayerInput = playerInput;
             ForceJump = forceJump;
             ActiveAbilityCoroutines = activeAbilityCoroutines;
+            AnimPipe = animPipe;
         }
     }
 }

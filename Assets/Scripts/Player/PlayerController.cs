@@ -84,7 +84,7 @@ namespace Player
         // Update is called once per frame
         private void Update()
         {
-            PlayerContextObject context = new(this, _mover, _inputInfo, false, _activeAbilityCoroutines);
+            PlayerContextObject context = new(this, _mover, _inputInfo, false, _activeAbilityCoroutines, _pipe);
 
             UpdateAimUI();
 

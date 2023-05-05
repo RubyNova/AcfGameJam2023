@@ -31,6 +31,7 @@ namespace Player
         {
             float timeRemaining = _dashDuration;
             _hasBeenUsed = true;
+            context.AnimPipe.PerformDashAnim();
 
             while (timeRemaining > 0)
             {

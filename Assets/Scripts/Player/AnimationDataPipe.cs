@@ -25,7 +25,12 @@ namespace Player
 
         public void PerformDieAnim()
         {
-            _animator.SetBool("IsDead", true);
+            _animator.SetTrigger("Dead");
+        }
+
+        public void PerformDashAnim()
+        {
+            _animator.SetTrigger("Dashing");
         }
     }
 }
