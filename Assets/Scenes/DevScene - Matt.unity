@@ -1477,6 +1477,7 @@ MonoBehaviour:
   _cautionMusicSourceOne: {fileID: 945106200}
   _dangerMusicSourceZero: {fileID: 945106199}
   _dangerMusicSourceOne: {fileID: 945106198}
+  _sfxAnchor: {fileID: 1819070752}
   _crossfadeSpeed: 0.7
 --- !u!58 &945106205
 CircleCollider2D:
@@ -1576,7 +1577,8 @@ Transform:
   m_LocalPosition: {x: -2.66, y: 2.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1819070753}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1594,7 +1596,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controller: {fileID: 945106204}
   _variantData: {fileID: 11400000, guid: 2bc4c4d1189e3154d8e3d4a8fdcb381e, type: 2}
-  _testState: 1
+  _testBank: {fileID: 11400000, guid: 37d0385561dc25244a79881de9b37693, type: 2}
+  _testState: 2
 --- !u!1 &1068871173
 GameObject:
   m_ObjectHideFlags: 0
@@ -4617,6 +4620,37 @@ Transform:
   - {fileID: 1738091765}
   m_Father: {fileID: 0}
   m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1819070752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1819070753}
+  m_Layer: 0
+  m_Name: SFXComps
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1819070753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819070752}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 945106207}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1873329647
 PrefabInstance:

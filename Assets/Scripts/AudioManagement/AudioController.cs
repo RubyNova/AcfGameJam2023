@@ -48,15 +48,18 @@ namespace AudioManagement
         [SerializeField]
         public AudioSource _dangerMusicSourceOne;
 
+        [SerializeField]
+        public GameObject _sfxAnchor;
+
         [Header("Configuration"), SerializeField]
         private float _crossfadeSpeed; 
         
         private AreaSoundtrackVariantData _areaData;
         private SoundtrackVariantState _areaState;
 
-        private int _calmSourceToUseNextIndex;
-        private int _cautionSourceToUseNextIndex;
-        private int _dangerSourceToUseNextIndex;
+        private int _calmSourceToUseCurrentIndex;
+        private int _cautionSourceToUseCurrentIndex;
+        private int _dangerSourceToUseCurrentIndex;
 
         private AudioSource[] _calmSources;
         private AudioSource[] _cautionSources;
@@ -66,6 +69,7 @@ namespace AudioManagement
         private Coroutine _currentRoutine;
         private MonoComponentPool<AudioSource> _soundEffectSources = null; // I removed the default constructor, Unity lifetime weirdness can eat shit
         private List<SoundEffectPlayInfo> _soundEffectPlayInfos;
+        private bool _isMusicPlaying;
 
         private void Awake()
         {
@@ -97,8 +101,9 @@ namespace AudioManagement
             _dangerSources = new AudioSource[]{ _dangerMusicSourceZero, _dangerMusicSourceOne };
             _coroutinesToExecute = new();
             _currentRoutine = null;
-            _soundEffectSources = new(gameObject);
+            _soundEffectSources = new(_sfxAnchor);
             _soundEffectPlayInfos = new();
+            _isMusicPlaying = false;
         }
 
         private void Update()
@@ -113,6 +118,8 @@ namespace AudioManagement
             {
                 return;
             }
+
+            print(_currentRoutine == null);
 
             _currentRoutine = _coroutinesToExecute.Dequeue()();
         }
@@ -133,6 +140,7 @@ namespace AudioManagement
 
         private IEnumerator CrossFade(SoundtrackVariantState newState, AreaSoundtrackVariantData newData, bool terminate)
         {
+            print("EXECUTING CROSSFADE");
             AudioClip clipToUseForTarget = null;
             AudioSource audioSourceForTarget = null;
             AudioSource audioSourceForCurrent = null;
@@ -141,36 +149,21 @@ namespace AudioManagement
             {
                 case SoundtrackVariantState.Calm:
                     {
-                        int index = _calmSourceToUseNextIndex - 1;
-
-                        if (index < 0)
-                        {
-                            index = AudioSourceCount - 1;
-                        }
+                        int index = _calmSourceToUseCurrentIndex;
 
                         audioSourceForCurrent = _calmSources[index];
                         break;
                     }
                 case SoundtrackVariantState.Caution:
                     {
-                        int index = _cautionSourceToUseNextIndex - 1;
-                        
-                        if (index < 0)
-                        {
-                            index = AudioSourceCount - 1;
-                        }
+                        int index = _cautionSourceToUseCurrentIndex;
 
                         audioSourceForCurrent = _cautionSources[index];
                         break;
                     }
                 case SoundtrackVariantState.Danger:
                     {
-                        int index = _dangerSourceToUseNextIndex - 1;
-                        
-                        if (index < 0)
-                        {
-                            index = AudioSourceCount - 1;
-                        }
+                        int index = _dangerSourceToUseCurrentIndex;
 
                         audioSourceForCurrent = _dangerSources[index];
                         break;
@@ -181,12 +174,13 @@ namespace AudioManagement
             {
                 case SoundtrackVariantState.Calm:
                     {
-                        int index = _calmSourceToUseNextIndex++;
+                        int index = _areaState == SoundtrackVariantState.Calm && _isMusicPlaying ? ++_calmSourceToUseCurrentIndex : _calmSourceToUseCurrentIndex;
 
                         if (index >= AudioSourceCount) // redundant greater than but I like being safe
                         {
-                            _calmSourceToUseNextIndex = 0;
+                            _calmSourceToUseCurrentIndex = 0;
                         }
+                        print($"Index: {index}");
 
                         clipToUseForTarget = newData != null ? newData.Calm : _areaData.Calm;
                         audioSourceForTarget = _calmSources[index];
@@ -194,12 +188,13 @@ namespace AudioManagement
                     }
                 case SoundtrackVariantState.Caution:
                     {
-                        int index = _cautionSourceToUseNextIndex++;
+                        int index = _areaState == SoundtrackVariantState.Caution && _isMusicPlaying ? ++_cautionSourceToUseCurrentIndex : _cautionSourceToUseCurrentIndex;
 
                         if (index >= AudioSourceCount) // redundant greater than but I like being safe
                         {
-                            _cautionSourceToUseNextIndex = 0;
+                            _cautionSourceToUseCurrentIndex = 0;
                         }
+                        print($"Index: {index}");
 
                         clipToUseForTarget = newData != null ? newData.Caution : _areaData.Caution;
                         audioSourceForTarget = _cautionSources[index];
@@ -207,12 +202,13 @@ namespace AudioManagement
                     }
                 case SoundtrackVariantState.Danger:
                     {
-                        int index = _dangerSourceToUseNextIndex++;
+                        int index = _areaState == SoundtrackVariantState.Danger && _isMusicPlaying ? ++_dangerSourceToUseCurrentIndex : _dangerSourceToUseCurrentIndex;
 
                         if (index >= AudioSourceCount) // redundant greater than but I like being safe
                         {
-                            _dangerSourceToUseNextIndex = 0;
+                            _dangerSourceToUseCurrentIndex = 0;
                         }
+                        print($"Index: {index}");
 
                         clipToUseForTarget = newData != null ? newData.Danger : _areaData.Danger;
                         audioSourceForTarget = _dangerSources[index];
@@ -224,6 +220,9 @@ namespace AudioManagement
             {
                 _areaData = newData;
             }
+
+            _areaState = newState;
+
 
             if (terminate)
             {
@@ -237,6 +236,8 @@ namespace AudioManagement
                 audioSourceForCurrent.Stop();
                 yield break;
             }
+            
+            _isMusicPlaying = true;
             
             audioSourceForTarget.clip = clipToUseForTarget;
             audioSourceForTarget.time = audioSourceForCurrent.time;
@@ -258,12 +259,15 @@ namespace AudioManagement
                     audioSourceForCurrent.volume -= _crossfadeSpeed * Time.deltaTime;
                     yield return null;
                 }
-            }
 
-            audioSourceForCurrent.volume = 0;
+                audioSourceForCurrent.volume = 0;
+                audioSourceForCurrent.Stop();
+            }
+            
             audioSourceForTarget.volume = 1;
-            audioSourceForCurrent.Stop();
+
             _currentRoutine = null;
+            print("EXITING CROSSFADE");
         }
 
         public void EnqueueNewAreaMusic(AreaSoundtrackVariantData areaData)
@@ -274,6 +278,33 @@ namespace AudioManagement
         public void EnqueueAreaStateChange(SoundtrackVariantState newState)
         {
             _coroutinesToExecute.Enqueue(() => StartCoroutine(CrossFade(newState, null, false)));
+        }
+
+        public void PlaySoundEffect(string name, AudioClip effect, bool loop = false)
+        {
+            var source = _soundEffectSources.Borrow();
+            source.Stop();
+            source.clip = effect;
+            source.loop = loop;
+            source.time = 0;
+            source.volume = 1;
+            source.Play();
+            _soundEffectPlayInfos.Add(new(name, source));
+        }
+
+        public void StopSoundEffect(string name)
+        {
+            for (int i = _soundEffectPlayInfos.Count - 1; i >= 0; i--)
+            {
+                var info = _soundEffectPlayInfos[i];
+
+                if (info.EffectName == name)
+                {
+                    info.Source.Stop();
+                    _soundEffectPlayInfos.RemoveAt(i);
+                    return;
+                }
+            }
         }
     }
 }
