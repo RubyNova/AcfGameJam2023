@@ -123,12 +123,12 @@ namespace ACHNarrativeDriver
 
             if (characterDialogueInfo.PlayMusicIndex is { } playMusicIndex)
             {
-                _audioController.PlayMusic(_currentNarrativeSequence.MusicFiles[playMusicIndex]);
+                //_audioController.PlayMusic(_currentNarrativeSequence.MusicFiles[playMusicIndex]);
             }
 
             if (characterDialogueInfo.PlaySoundEffectIndex is {} soundEffectIndex)
             {
-                _audioController.PlayEffect(_currentNarrativeSequence.SoundEffectFiles[soundEffectIndex]);
+                //_audioController.PlayEffect(_currentNarrativeSequence.SoundEffectFiles[soundEffectIndex]);
             }
             
             _rollingTextRoutine =

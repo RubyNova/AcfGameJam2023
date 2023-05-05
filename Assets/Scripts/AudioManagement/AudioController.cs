@@ -57,18 +57,18 @@ namespace AudioManagement
             _cautionMusicSourceOne.volume = 0;
             _dangerMusicSourceOne.volume = 0;
 
-            _calmSources = { _calmMusicSourceZero, _calmMusicSourceOne };
-            _cautionSources = { _calmMusicSourceZero, _calmMusicSourceOne };
-            _dangerSources = { _calmMusicSourceZero, _calmMusicSourceOne };
+            _calmSources = new AudioSource[]{ _calmMusicSourceZero, _calmMusicSourceOne };
+            _cautionSources = new AudioSource[]{ _calmMusicSourceZero, _calmMusicSourceOne };
+            _dangerSources = new AudioSource[]{ _calmMusicSourceZero, _calmMusicSourceOne };
 
         }
 
+        /*
         private IEnumerator CrossFade(SoundtrackVariantState newState, AreaSoundtrackVariantData newData = null)
         {
             AudioClip clipToUseForTarget = null;
             AudioSource audioSourceForTarget = null;
             AudioSource audioSourceForCurrent = null;
-/*
             switch (_areaState)
             {
                 case SoundtrackVariantState.Calm:
@@ -106,8 +106,8 @@ namespace AudioManagement
             {
 
             }
-*/
         }
+        */
 
         public void PlayAreaMusic(AreaSoundtrackVariantData areaData)
         {
