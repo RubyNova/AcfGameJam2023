@@ -1,7 +1,8 @@
 using AudioManagement.ScriptableObjects;
+using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
+using System.Collections.Generic;
 
 namespace AudioManagement
 {
@@ -13,6 +14,8 @@ namespace AudioManagement
             Caution,
             Danger
         }
+
+        private const int AudioSourceCount = 2;
 
         [Header("Dependencies"), SerializeField]
         public AudioSource _calmMusicSourceZero;
@@ -38,13 +41,16 @@ namespace AudioManagement
         private AreaSoundtrackVariantData _areaData;
         private SoundtrackVariantState _areaState;
 
-        private int _currentCalmSourceIndex;
-        private int _currentCautionSourceIndex;
-        private int _currentDangerSourceIndex;
+        private int _calmSourceToUseNextIndex;
+        private int _cautionSourceToUseNextIndex;
+        private int _dangerSourceToUseNextIndex;
 
         private AudioSource[] _calmSources;
         private AudioSource[] _cautionSources;
         private AudioSource[] _dangerSources;
+
+        private Queue<Func<Coroutine>> _coroutinesToExecute;
+        private Coroutine _currentRoutine;
 
         private void Awake()
         {
@@ -57,70 +63,180 @@ namespace AudioManagement
             _cautionMusicSourceOne.volume = 0;
             _dangerMusicSourceOne.volume = 0;
 
-            _calmSources = new AudioSource[]{ _calmMusicSourceZero, _calmMusicSourceOne };
-            _cautionSources = new AudioSource[]{ _calmMusicSourceZero, _calmMusicSourceOne };
-            _dangerSources = new AudioSource[]{ _calmMusicSourceZero, _calmMusicSourceOne };
+            _calmMusicSourceZero.loop = true;
+            _cautionMusicSourceZero.loop = true;
+            _dangerMusicSourceZero.loop = true;
+            _calmMusicSourceOne.loop = true;
+            _cautionMusicSourceOne.loop = true;
+            _dangerMusicSourceOne.loop = true;
 
+            _calmMusicSourceZero.Stop();
+            _cautionMusicSourceZero.Stop();
+            _dangerMusicSourceZero.Stop();
+            _calmMusicSourceOne.Stop();
+            _cautionMusicSourceOne.Stop();
+            _dangerMusicSourceOne.Stop();
+
+            _calmSources = new AudioSource[]{ _calmMusicSourceZero, _calmMusicSourceOne };
+            _cautionSources = new AudioSource[]{ _cautionMusicSourceZero, _cautionMusicSourceOne };
+            _dangerSources = new AudioSource[]{ _dangerMusicSourceZero, _dangerMusicSourceOne };
+            _coroutinesToExecute = new();
+            _currentRoutine = null;
         }
 
-        /*
-        private IEnumerator CrossFade(SoundtrackVariantState newState, AreaSoundtrackVariantData newData = null)
+        private void Update()
+        {
+            if (_currentRoutine != null || _coroutinesToExecute.Count == 0)
+            {
+                return;
+            }
+
+            _currentRoutine = _coroutinesToExecute.Dequeue()();
+        }
+
+        private IEnumerator CrossFade(SoundtrackVariantState newState, AreaSoundtrackVariantData newData, bool terminate)
         {
             AudioClip clipToUseForTarget = null;
             AudioSource audioSourceForTarget = null;
             AudioSource audioSourceForCurrent = null;
+
             switch (_areaState)
             {
                 case SoundtrackVariantState.Calm:
-                    audioSourceForCurrent = _calmMusicSource;
-                    break;
+                    {
+                        int index = _calmSourceToUseNextIndex - 1;
+
+                        if (index < 0)
+                        {
+                            index = AudioSourceCount - 1;
+                        }
+
+                        audioSourceForCurrent = _calmSources[index];
+                        break;
+                    }
                 case SoundtrackVariantState.Caution:
-                    audioSourceForCurrent = _cautionMusicSource;
-                    break;
+                    {
+                        int index = _cautionSourceToUseNextIndex - 1;
+                        
+                        if (index < 0)
+                        {
+                            index = AudioSourceCount - 1;
+                        }
+
+                        audioSourceForCurrent = _cautionSources[index];
+                        break;
+                    }
                 case SoundtrackVariantState.Danger:
-                    audioSourceForCurrent = _cautionMusicSource;
-                    break;
+                    {
+                        int index = _dangerSourceToUseNextIndex - 1;
+                        
+                        if (index < 0)
+                        {
+                            index = AudioSourceCount - 1;
+                        }
+
+                        audioSourceForCurrent = _dangerSources[index];
+                        break;
+                    }
             }
 
             switch (newState)
             {
                 case SoundtrackVariantState.Calm:
-                    clipToUseForTarget = newData != null ? newData.Calm : _areaData.Calm;
-                    audioSourceForTarget = _calmMusicSource;
-                    break;
+                    {
+                        int index = _calmSourceToUseNextIndex++;
+
+                        if (index >= AudioSourceCount) // redundant greater than but I like being safe
+                        {
+                            _calmSourceToUseNextIndex = 0;
+                        }
+
+                        clipToUseForTarget = newData != null ? newData.Calm : _areaData.Calm;
+                        audioSourceForTarget = _calmSources[index];
+                        break;
+                    }
                 case SoundtrackVariantState.Caution:
-                    clipToUseForTarget = newData != null ? newData.Caution : _areaData.Caution;
-                    audioSourceForTarget = _cautionMusicSource;
-                    break;
+                    {
+                        int index = _cautionSourceToUseNextIndex++;
+
+                        if (index >= AudioSourceCount) // redundant greater than but I like being safe
+                        {
+                            _cautionSourceToUseNextIndex = 0;
+                        }
+
+                        clipToUseForTarget = newData != null ? newData.Caution : _areaData.Caution;
+                        audioSourceForTarget = _cautionSources[index];
+                        break;
+                    }
                 case SoundtrackVariantState.Danger:
-                    clipToUseForTarget = newData != null ? newData.Danger : _areaData.Danger;
-                    audioSourceForTarget = _dangerMusicSource;
-                    break;
+                    {
+                        int index = _dangerSourceToUseNextIndex++;
+
+                        if (index >= AudioSourceCount) // redundant greater than but I like being safe
+                        {
+                            _dangerSourceToUseNextIndex = 0;
+                        }
+
+                        clipToUseForTarget = newData != null ? newData.Danger : _areaData.Danger;
+                        audioSourceForTarget = _dangerSources[index];
+                        break;
+                    }
             }
 
-            if (_areaState == newState)
+            if (newData != null)
             {
-                float curveTime = _crossfadeSpeed * 0.5; // slash it in half 
+                _areaData = newData;
+            }
+
+            if (terminate)
+            {
+                while (!Mathf.Approximately(audioSourceForCurrent.volume, 0))
+                {
+                    audioSourceForCurrent.volume -= _crossfadeSpeed * Time.deltaTime;
+                    yield return null;
+                }
+
+                audioSourceForCurrent.volume = 0;
+                audioSourceForCurrent.Stop();
+                yield break;
+            }
+            
+            audioSourceForTarget.clip = clipToUseForTarget;
+            audioSourceForTarget.time = audioSourceForCurrent.time;
+            audioSourceForTarget.Play();
+
+            if (Mathf.Approximately(audioSourceForCurrent.volume, 0))
+            {
+                while(!Mathf.Approximately(audioSourceForTarget.volume, 1))
+                {
+                    audioSourceForTarget.volume += _crossfadeSpeed * Time.deltaTime;
+                    yield return null;
+                }
             }
             else
             {
-
+                while(!Mathf.Approximately(audioSourceForTarget.volume, 1))
+                {
+                    audioSourceForTarget.volume += _crossfadeSpeed * Time.deltaTime;
+                    audioSourceForCurrent.volume -= _crossfadeSpeed * Time.deltaTime;
+                    yield return null;
+                }
             }
-        }
-        */
 
-        public void PlayAreaMusic(AreaSoundtrackVariantData areaData)
-        {
-
-        }
-
-        public void PlayEffect(AudioClip effect)
-        {
+            audioSourceForCurrent.volume = 0;
+            audioSourceForTarget.volume = 1;
+            audioSourceForCurrent.Stop();
+            _currentRoutine = null;
         }
 
-        public void StopMusic(bool fadeOut = true)
+        public void EnqueueNewAreaMusic(AreaSoundtrackVariantData areaData)
         {
+            _coroutinesToExecute.Enqueue(() => StartCoroutine(CrossFade(SoundtrackVariantState.Calm, areaData, false)));
+        }
 
+        public void EnqueueAreaStateChange(SoundtrackVariantState newState)
+        {
+            _coroutinesToExecute.Enqueue(() => StartCoroutine(CrossFade(newState, null, false)));
         }
     }
 }
