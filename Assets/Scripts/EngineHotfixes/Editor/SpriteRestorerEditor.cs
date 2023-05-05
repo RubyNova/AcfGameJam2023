@@ -36,11 +36,14 @@ namespace EngineHotfixes.Editor
                 restorer.Defaults = newDefaults;
 
                 GenerateTransmitters(restorer);
+                EditorUtility.SetDirty(restorer);
+                EditorUtility.SetDirty(_controller);
             }
 
             if (GUILayout.Button("Restore Sprite Renderer Defaults"))
             {
                 restorer.RestoreSpriteDefaults();
+                EditorUtility.SetDirty(restorer);
             }
         }
 

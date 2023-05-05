@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using Utilities;
 
 namespace AudioManagement
 {
@@ -13,6 +14,18 @@ namespace AudioManagement
             Calm,
             Caution,
             Danger
+        }
+
+        private class SoundEffectPlayInfo
+        {
+            public string EffectName { get; }
+            public AudioSource Source { get; }
+
+            public SoundEffectPlayInfo(string effectName, AudioSource source)
+            {
+                EffectName = effectName;
+                Source = source;
+            }
         }
 
         private const int AudioSourceCount = 2;
@@ -51,6 +64,8 @@ namespace AudioManagement
 
         private Queue<Func<Coroutine>> _coroutinesToExecute;
         private Coroutine _currentRoutine;
+        private MonoComponentPool<AudioSource> _soundEffectSources = null; // I removed the default constructor, Unity lifetime weirdness can eat shit
+        private List<SoundEffectPlayInfo> _soundEffectPlayInfos;
 
         private void Awake()
         {
@@ -82,9 +97,17 @@ namespace AudioManagement
             _dangerSources = new AudioSource[]{ _dangerMusicSourceZero, _dangerMusicSourceOne };
             _coroutinesToExecute = new();
             _currentRoutine = null;
+            _soundEffectSources = new(gameObject);
+            _soundEffectPlayInfos = new();
         }
 
         private void Update()
+        {
+            ProcessCrossFadeQueue();
+            ProcessSoundEffectPlayInfos();
+        }
+
+        private void ProcessCrossFadeQueue()
         {
             if (_currentRoutine != null || _coroutinesToExecute.Count == 0)
             {
@@ -92,6 +115,20 @@ namespace AudioManagement
             }
 
             _currentRoutine = _coroutinesToExecute.Dequeue()();
+        }
+
+        private void ProcessSoundEffectPlayInfos()
+        {
+            for (int i = _soundEffectPlayInfos.Count - 1; i >= 0; i--)
+            {
+                SoundEffectPlayInfo info = _soundEffectPlayInfos[i];
+
+                if (!info.Source.isPlaying)
+                {
+                    _soundEffectPlayInfos.Remove(info);
+                    _soundEffectSources.Return(info.Source);
+                }
+            }
         }
 
         private IEnumerator CrossFade(SoundtrackVariantState newState, AreaSoundtrackVariantData newData, bool terminate)
