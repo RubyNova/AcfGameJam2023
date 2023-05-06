@@ -24,6 +24,11 @@ namespace Player
 
         protected override bool ValidateExecution(PlayerContextObject context)
         {
+            if (context.Mover.IsGrounded)
+            {
+                _hasBeenUsed = false;
+            }
+
             return !_hasBeenUsed;
         }
 
@@ -46,16 +51,6 @@ namespace Player
             _inputTrigger = new InputInfo(Vector2.zero, false, true, false, false);
             _inputTrigger.UpdateInputMonitoringFlags(false, false, false, true, false, false);
             _overridesNormalMovement = true;
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (!collision.gameObject.CompareTag(_groundTagName))
-            {
-                return;
-            }
-
-            _hasBeenUsed = false;
         }
     }
 }
