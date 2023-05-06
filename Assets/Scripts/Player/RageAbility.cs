@@ -56,5 +56,11 @@ namespace Player
                 enemy.AddComponent<DieOnCollision>(); 
             }
         }
+
+        protected override void EnforceInputDefaults()
+        {
+            _inputTrigger = new InputInfo(Vector2.zero, false, false, true, false);
+            _inputTrigger.UpdateInputMonitoringFlags(false, false, false, false, true, false);
+        }
     }
 }

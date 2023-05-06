@@ -67,7 +67,7 @@ namespace Player
 
         private void Awake()
         {
-            _inputInfo = new(Vector2.zero, false, false);
+            _inputInfo = new(Vector2.zero, false, false, false, false);
             _abilities = new();
             _activeAbilityCoroutines = new();
             MovementIsOverridden = false;

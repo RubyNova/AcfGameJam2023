@@ -6,10 +6,10 @@ namespace Player
     public abstract class PlayerAbilityBehaviour : MonoBehaviour
     {
         [Header("Configuration"), SerializeField]
-        private InputInfo _inputTrigger;
+        protected InputInfo _inputTrigger;
 
         [SerializeField]
-        private bool _overridesNormalMovement;
+        protected bool _overridesNormalMovement;
 
         public string Name { get; protected set; }
         public InputInfo InputTrigger
@@ -17,6 +17,13 @@ namespace Player
             get => _inputTrigger;
             protected set => _inputTrigger = value;
         }
+
+        private void Reset()
+        {
+            EnforceInputDefaults();
+        }
+
+        protected abstract void EnforceInputDefaults();
 
         private IEnumerator ExecuteAbilityWithLifetime(PlayerContextObject context)
         {

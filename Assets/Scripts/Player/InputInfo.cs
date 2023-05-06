@@ -68,11 +68,23 @@ namespace Player
             set => _jumpInput = value;
         }
 
-        public InputInfo(Vector2 inputAxes, bool inputSprintModifier, bool inputAbilityTriggerZero)
+        public InputInfo(Vector2 inputAxes, bool inputSprintModifier, bool inputAbilityTriggerZero, bool inputAbilityTriggerOne, bool jumpInput)
         {
             InputAxes = inputAxes;
             InputSprintModifier = inputSprintModifier;
             InputAbilityTriggerZero = inputAbilityTriggerZero;
+            InputAbilityTriggerOne = inputAbilityTriggerOne;
+            JumpInput = jumpInput;
+        }
+
+        public void UpdateInputMonitoringFlags(bool xAxis, bool yAxis, bool inputSprintModifier, bool inputAbilityTriggerZero, bool inputAbilityTriggerOne, bool jumpInput)
+        {
+            _shouldCareAboutXAxis = xAxis;
+            _shouldCareAboutYAxis = yAxis;
+            _shouldCareAboutSprintModifier = inputSprintModifier;
+            _shouldCareAboutAbilityTriggerZero = inputAbilityTriggerZero;
+            _shouldCareAboutAbilityTriggerOne = inputAbilityTriggerOne;
+            _shouldCareAboutJumping = jumpInput;
         }
 
         public bool TestInput(InputInfo incomingInput)

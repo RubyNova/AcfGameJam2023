@@ -9,10 +9,10 @@ namespace Player
         private string _groundTagName;
 
         [Header("Configuration"), SerializeField]
-        private float _dashSpeed;
+        private float _dashSpeed = 30;
 
         [SerializeField]
-        private float _dashDuration;
+        private float _dashDuration = 0.2f;
 
         private bool _hasBeenUsed;
 
@@ -39,6 +39,13 @@ namespace Player
                 yield return null;
                 timeRemaining -= Time.deltaTime;
             }
+        }
+
+        protected override void EnforceInputDefaults()
+        {
+            _inputTrigger = new InputInfo(Vector2.zero, false, true, false, false);
+            _inputTrigger.UpdateInputMonitoringFlags(false, false, false, true, false, false);
+            _overridesNormalMovement = true;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
