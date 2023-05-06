@@ -24,18 +24,18 @@ namespace Player
 
         protected override bool ValidateExecution(PlayerContextObject context)
         {
-            if (context.Mover.IsGrounded)
-            {
-                _hasBeenUsed = false;
-            }
-
             return !_hasBeenUsed;
         }
 
         protected override IEnumerator ExecuteAbility(PlayerContextObject context)
         {
             float timeRemaining = _dashDuration;
-            _hasBeenUsed = true;
+
+            if (!context.Mover.IsGrounded)
+            {
+                _hasBeenUsed = true;
+            }
+
             context.AnimPipe.PerformDashAnim();
 
             while (timeRemaining > 0)
@@ -51,6 +51,16 @@ namespace Player
             _inputTrigger = new InputInfo(Vector2.zero, false, true, false, false);
             _inputTrigger.UpdateInputMonitoringFlags(false, false, false, true, false, false);
             _overridesNormalMovement = true;
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (!collision.gameObject.CompareTag(_groundTagName))
+            {
+                return;
+            }
+
+            _hasBeenUsed = false;
         }
     }
 }

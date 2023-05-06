@@ -31,7 +31,7 @@ namespace Player
             {
                 context.Controller.MovementIsOverridden = true;
             }
-            yield return StartCoroutine(ExecuteAbility(context));
+            yield return ExecuteAbility(context);
             context.ActiveAbilityCoroutines.Remove(Name);
 
             if (_overridesNormalMovement)
