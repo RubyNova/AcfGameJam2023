@@ -17,7 +17,7 @@ namespace Player
         public void InputBasedUpdates(InputInfo input)
         {
             _animator.SetBool("IsGrounded", _mover.IsGrounded);
-            _animator.SetFloat("Speed", Mathf.Abs(input.InputAxes.x));
+            _animator.SetFloat("Speed", input.InputSprintModifier ? 15 : Mathf.Abs(input.InputAxes.x)); // magic numbers lmao rip
             _animator.SetBool("IsJumping", !_mover.IsGrounded);
             _animator.SetBool("IsCrawling", Mathf.Approximately(input.InputAxes.y, -1) && _mover.IsGrounded);
             _animator.SetFloat("YAxisVelocity", _rigidbody.velocity.y);

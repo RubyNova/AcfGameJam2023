@@ -2089,7 +2089,7 @@ MonoBehaviour:
     _shouldCareAboutAbilityTriggerOne: 0
     _shouldCareAboutJumping: 0
   _overridesNormalMovement: 1
-  _groundTagName: Ground
+  _groundTagName: 
   _dashSpeed: 30
   _dashDuration: 0.1
 --- !u!114 &1086286508
@@ -2407,6 +2407,32 @@ MonoBehaviour:
   _groundTagName: Ground
   _dashSpeed: 30
   _dashDuration: 0.1
+--- !u!114 &1393744394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137243745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080b8d89fce1fb242ae3ed724ceca188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputTrigger:
+    _inputAxes: {x: 0, y: 0}
+    _inputSprintModifier: 0
+    _inputAbilityTriggerZero: 0
+    _inputAbilityTriggerOne: 0
+    _jumpInput: 1
+    _shouldCareAboutXAxis: 0
+    _shouldCareAboutYAxis: 0
+    _shouldCareAboutSprintModifier: 0
+    _shouldCareAboutAbilityTriggerZero: 0
+    _shouldCareAboutAbilityTriggerOne: 0
+    _shouldCareAboutJumping: 1
+  _overridesNormalMovement: 0
+  _groundTagName: Ground
 --- !u!1001 &1396988719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5185,6 +5211,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2668497846688375178, guid: c33d3403988d308498ba1c3b8d49e648, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1393744385}
+    - targetCorrespondingSourceObject: {fileID: 2668497846688375178, guid: c33d3403988d308498ba1c3b8d49e648, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1393744394}
   m_SourcePrefab: {fileID: 100100000, guid: c33d3403988d308498ba1c3b8d49e648, type: 3}
 --- !u!1001 &8499681129553890473
 PrefabInstance:
