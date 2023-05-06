@@ -40,7 +40,7 @@ namespace Player
 
         protected override void EnforceInputDefaults()
         {
-            _inputTrigger = new InputInfo(Vector2.zero, false, true, false, false);
+            _inputTrigger = new InputInfo(Vector2.zero, false, false, false, true);
             _inputTrigger.UpdateInputMonitoringFlags(false, false, false, false, false, true);
         }
     }
