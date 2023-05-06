@@ -2,7 +2,7 @@
 
 namespace Utilities
 {
-    public class MonoSingleton<T> : MonoBehaviour where T : Component
+    public abstract class MonoSingleton<T> : MonoBehaviour where T : Component
     {
 		private static T _instance;
 
@@ -34,7 +34,7 @@ namespace Utilities
 			_isInitialised = true;
         }
 
-        private void OnServerInitialized()
+        private void Init()
         {
 			_isInitialised = true;
 			OnInit();
