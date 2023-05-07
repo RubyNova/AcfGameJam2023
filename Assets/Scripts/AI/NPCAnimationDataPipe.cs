@@ -19,6 +19,11 @@ namespace AI
             _animator.SetTrigger("Attack");
         }
 
+        public void PerformKnockbackAnim()
+        {
+            _animator.SetTrigger("Knockback");
+        }
+
         public void PerformDieAnim()
         {
             _animator.SetTrigger("Dead");

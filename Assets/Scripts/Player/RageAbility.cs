@@ -63,6 +63,7 @@ namespace Player
 
                 core.enabled = false;
                 enemy.GetComponent<GroundMover>().ApplyRawDirection(direction * _pushForce);
+                enemy.GetComponent<NPCAnimationDataPipe>().PerformKnockbackAnim();
                 enemy.AddComponent<DieOnCollision>(); 
             }
         }
