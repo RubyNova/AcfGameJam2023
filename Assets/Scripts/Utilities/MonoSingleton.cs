@@ -30,15 +30,17 @@ namespace Utilities
 				return;
 			}
 
+			DontDestroyOnLoad(gameObject);
 			Init();
 			_isInitialised = true;
         }
 
-        private void Init()
+        public void Init()
         {
 			_isInitialised = true;
 			OnInit();
         }
+
         protected abstract void OnInit();
 
     }

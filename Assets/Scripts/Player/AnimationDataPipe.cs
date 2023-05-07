@@ -32,5 +32,10 @@ namespace Player
         {
             _animator.SetTrigger("Dashing");
         }
+
+        public void PerformHurtAnim()
+        {
+            _animator.SetTrigger("Hurt");
+        }
     }
 }

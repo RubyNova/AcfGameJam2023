@@ -17,18 +17,30 @@ namespace Player
         [SerializeField]
         private float _pushForce = 7;
 
-        public bool HasBeenConsumedUntilNextRest { get; set; }
+        [SerializeField]
+        private float _animationWindow = 0.3f;
 
+        private float _animationWindowRemaining;
 
         private void Awake()
         {
+            _animationWindowRemaining = _animationWindow;
             Name = "Rage";
-            HasBeenConsumedUntilNextRest = false;
+        }
+
+        private void Update()
+        {
+            if (_animationWindowRemaining <= 0)
+            {
+                return;
+            }
+
+            _animationWindowRemaining -= Time.deltaTime;
         }
 
         protected override bool ValidateExecution(PlayerContextObject context)
         {
-            return !HasBeenConsumedUntilNextRest;
+            return _animationWindowRemaining <= 0;
         }
 
         protected override IEnumerator ExecuteAbility(PlayerContextObject context)
@@ -39,8 +51,6 @@ namespace Player
             {
                 yield break;
             }
-
-            HasBeenConsumedUntilNextRest = true;
 
             foreach(var enemy in enemies)
             {

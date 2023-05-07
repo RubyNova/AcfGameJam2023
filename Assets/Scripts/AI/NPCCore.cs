@@ -1,6 +1,7 @@
 using Environment;
 using Movement;
 using Player;
+using System.Collections;
 using UnityEngine;
 
 namespace AI
@@ -16,6 +17,9 @@ namespace AI
         [SerializeField]
         private string _playerTag;
 
+        [SerializeField]
+        private NPCAnimationDataPipe _pipe;
+        
         [Header("Configuration"), SerializeField]
         private Vector2[] _patrolRoute;
 
@@ -128,7 +132,7 @@ namespace AI
                     HandleSearchingTick();
                     break;
                 case BehaviourState.Dead:
-                    gameObject.SetActive(false);
+                    StartCoroutine(PerformDie());
                     break;
             }
 
@@ -202,6 +206,7 @@ namespace AI
                     _suspicionTimeRemaining = 0;
                     _currentState = BehaviourState.Chasing;
                     _roomContext.OwningAreaState.IsOnAlert = true;
+                    _pipe.PerformAlertedAnim();
                     return;
                 }
 
@@ -309,6 +314,7 @@ namespace AI
                     {
                         _timeUntilAttackAvailable = _attackCooldown;
                         _foundPlayerController.GetComponent<PlayerHealthController>().AdjustHealth(_attackDamage);
+                        _pipe.PerformAttackAnim();
                     }
                     return;
                 }
@@ -345,7 +351,17 @@ namespace AI
 
                 int walkingDirection = horizontalValue > 0 ? -1 : 1;
 
+                _pipe.IsRunning = run;
+
                 _mover.ApplyMove(new(walkingDirection, 0), run ? _runningSpeed : _walkingSpeed, false, 0);
+            }
+
+
+            IEnumerator PerformDie()
+            {
+                _pipe.PerformDieAnim();
+                yield return new WaitForSeconds(0.3f); // hard coded magic based on animations ftw
+                gameObject.SetActive(false);
             }
         }
 

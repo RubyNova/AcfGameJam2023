@@ -80,6 +80,10 @@ namespace Player
                     _pipe.PerformDieAnim();
                 }    
             }
+            else
+            {
+                _pipe.PerformHurtAnim();
+            }
         }
     }
 }
