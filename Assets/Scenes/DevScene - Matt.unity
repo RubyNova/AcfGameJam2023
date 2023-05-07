@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &137243745 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2668497846688375178, guid: c33d3403988d308498ba1c3b8d49e648, type: 3}
-  m_PrefabInstance: {fileID: 7314731038540937018}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &163059645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2007,6 +2002,8 @@ MonoBehaviour:
   _itemPrefab: {fileID: 0}
   _inventory: {fileID: 0}
   _spriteRoot: {fileID: 0}
+  _crawlColliders: {fileID: 0}
+  _standingCollider: {fileID: 0}
   _walkingSpeed: 7
   _runningSpeed: 15
   _crawlingSpeed: 3
@@ -2208,6 +2205,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d296f45e-2429-4c74-b425-20036eb5e112
     m_ActionName: Player/Ability Trigger One[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f85fb985-e335-4411-a88c-17ba91d33755
+    m_ActionName: UI/Esc[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -2333,60 +2334,6 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 3
   m_ColliderType: 1
---- !u!114 &1393744385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 137243745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e69548a8c5179f44cb9fab5e0bf736b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inputTrigger:
-    _inputAxes: {x: 0, y: 0}
-    _inputSprintModifier: 0
-    _inputAbilityTriggerZero: 1
-    _inputAbilityTriggerOne: 0
-    _jumpInput: 0
-    _shouldCareAboutXAxis: 0
-    _shouldCareAboutYAxis: 0
-    _shouldCareAboutSprintModifier: 0
-    _shouldCareAboutAbilityTriggerZero: 1
-    _shouldCareAboutAbilityTriggerOne: 0
-    _shouldCareAboutJumping: 0
-  _overridesNormalMovement: 1
-  _groundTagName: Ground
-  _dashSpeed: 30
-  _dashDuration: 0.1
---- !u!114 &1393744394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 137243745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 080b8d89fce1fb242ae3ed724ceca188, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inputTrigger:
-    _inputAxes: {x: 0, y: 0}
-    _inputSprintModifier: 0
-    _inputAbilityTriggerZero: 0
-    _inputAbilityTriggerOne: 0
-    _jumpInput: 1
-    _shouldCareAboutXAxis: 0
-    _shouldCareAboutYAxis: 0
-    _shouldCareAboutSprintModifier: 0
-    _shouldCareAboutAbilityTriggerZero: 0
-    _shouldCareAboutAbilityTriggerOne: 0
-    _shouldCareAboutJumping: 1
-  _overridesNormalMovement: 0
-  _groundTagName: Ground
 --- !u!1001 &1396988719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5068,10 +5015,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.000000058291537
       objectReference: {fileID: 0}
-    - target: {fileID: 1496150945948224092, guid: c33d3403988d308498ba1c3b8d49e648, type: 3}
-      propertyPath: _targetCamera
-      value: 
-      objectReference: {fileID: 1477972354}
     - target: {fileID: 2668497846688375178, guid: c33d3403988d308498ba1c3b8d49e648, type: 3}
       propertyPath: m_Name
       value: PlayerFinal
@@ -5132,6 +5075,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.026995532
       objectReference: {fileID: 0}
+    - target: {fileID: 6576590276376702210, guid: c33d3403988d308498ba1c3b8d49e648, type: 3}
+      propertyPath: m_Mass
+      value: 2.453749
+      objectReference: {fileID: 0}
     - target: {fileID: 7759517163383433522, guid: c33d3403988d308498ba1c3b8d49e648, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.0073288362
@@ -5167,13 +5114,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2668497846688375178, guid: c33d3403988d308498ba1c3b8d49e648, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1393744385}
-    - targetCorrespondingSourceObject: {fileID: 2668497846688375178, guid: c33d3403988d308498ba1c3b8d49e648, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1393744394}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c33d3403988d308498ba1c3b8d49e648, type: 3}
 --- !u!1001 &8499681129553890473
 PrefabInstance:

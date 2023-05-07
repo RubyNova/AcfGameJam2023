@@ -33,6 +33,12 @@ namespace Player
         [SerializeField]
         private Transform _spriteRoot;
 
+        [SerializeField]
+        private GameObject _crawlColliders;
+
+        [SerializeField]
+        private Collider2D _standingCollider;
+
         [Header("Configuration"), SerializeField]
         private float _walkingSpeed;
 
@@ -80,6 +86,8 @@ namespace Player
         private void Start()
         {
             _abilities.AddRange(gameObject.GetComponents<PlayerAbilityBehaviour>());
+            _crawlColliders.SetActive(false);
+            _standingCollider.enabled = true;
         }
 
         // Update is called once per frame
@@ -122,6 +130,13 @@ namespace Player
                     finalMovementSpeed = _crawlingSpeed;
                     shouldJump = false;
                     finalInputData.y = 0;
+                    _crawlColliders.SetActive(true);
+                    _standingCollider.enabled = false;
+                }
+                else
+                {
+                    _crawlColliders.SetActive(false);
+                    _standingCollider.enabled = true;
                 }
 
                 if (_inputInfo.InputAxes.x > 0)
@@ -139,10 +154,14 @@ namespace Player
                 {
                     finalMovementSpeed = _walkingSpeed;
                     forceSetVelocity = true;
-                    //print($"finalMovementSped: {finalMovementSpeed} allowMomentumBasedJumping: {_allowMomentumBasedJumping} isGrounded: {_mover.IsGrounded} shouldJump: {shouldJump}");
                 }
 
                 _mover.ApplyMove(finalInputData, finalMovementSpeed, shouldJump, _jumpForce, context.ForceJump, forceSetVelocity);
+            }
+            else
+            {
+                    _crawlColliders.SetActive(false);
+                    _standingCollider.enabled = true;
             }
 
             _inputInfo.JumpInput = false;

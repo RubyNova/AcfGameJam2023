@@ -44,6 +44,7 @@ namespace Utilities
         {
 			DontDestroyOnLoad(gameObject);
 			OnInit();
+			_instance = (T)this;
 			_isInitialised = true;
         }
 
