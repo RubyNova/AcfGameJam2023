@@ -12,22 +12,10 @@ namespace Environment
         private int _damageAmount = 10;
 
         [SerializeField]
-        private float _damageCooldown = 0.7f;
-
-        [SerializeField]
         private bool _useTriggerCollider = false;
 
-        private float _damageCooldownRemaining = 0; // I hate that this is somehow more efficient than using Awake. Cringe.
-
-        private void Update()
-        {
-            if (_damageCooldownRemaining <= 0)
-            {
-                return;
-            }
-
-            _damageCooldownRemaining -= Time.deltaTime;
-        }
+        [SerializeField]
+        private Vector2[] _safetyTeleportLocations;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -37,7 +25,7 @@ namespace Environment
             }
 
             collision.gameObject.GetComponent<PlayerHealthController>().AdjustHealth(_damageAmount);
-            _damageCooldownRemaining = _damageCooldown;
+            ApplySafetyPosition(collision.gameObject.transform);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -48,7 +36,27 @@ namespace Environment
             }
 
             collision.gameObject.GetComponent<PlayerHealthController>().AdjustHealth(_damageAmount);
-            _damageCooldownRemaining = _damageCooldown;
+            ApplySafetyPosition(collision.gameObject.transform);
+        }
+
+        private void ApplySafetyPosition(Transform target)
+        {
+            var closestLocation = _safetyTeleportLocations[0];
+            float currentDistanceTobeat = Vector2.Distance(closestLocation, target.position);
+
+            for (int i = 1; i < _safetyTeleportLocations.Length; i++)
+            {
+                var testPosition = _safetyTeleportLocations[i];
+                float testDistance = Vector2.Distance(testPosition, target.position);
+
+                if (testDistance > currentDistanceTobeat)
+                {
+                    currentDistanceTobeat = testDistance;
+                    closestLocation = testPosition;
+                }
+            }
+
+            target.position = closestLocation;
         }
     }
 }
