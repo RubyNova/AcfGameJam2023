@@ -49,7 +49,7 @@ namespace Environment
                 var testPosition = _safetyTeleportLocations[i];
                 float testDistance = Vector2.Distance(testPosition, target.position);
 
-                if (testDistance > currentDistanceTobeat)
+                if (testDistance < currentDistanceTobeat)
                 {
                     currentDistanceTobeat = testDistance;
                     closestLocation = testPosition;
