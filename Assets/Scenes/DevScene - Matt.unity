@@ -1785,7 +1785,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startingRoom: {fileID: 1068871176}
-  _playerController: {fileID: 1086286503}
 --- !u!114 &1068871176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2334,11 +2333,6 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 3
   m_ColliderType: 1
---- !u!4 &1393744384 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4791465165373957020, guid: c33d3403988d308498ba1c3b8d49e648, type: 3}
-  m_PrefabInstance: {fileID: 7314731038540937018}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1393744385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4690,11 +4684,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6140385346633315495, guid: 67750633adf8c644fa376174fabe28e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.2177496
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6140385346633315495, guid: 67750633adf8c644fa376174fabe28e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.4314868
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6140385346633315495, guid: 67750633adf8c644fa376174fabe28e0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4728,10 +4722,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7684042190842062210, guid: 67750633adf8c644fa376174fabe28e0, type: 3}
-      propertyPath: _objectToFollow
-      value: 
-      objectReference: {fileID: 1393744384}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
