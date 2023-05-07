@@ -8,13 +8,17 @@ public class Menus : MonoBehaviour
     
     bool _isPaused = false;
     
-    void Update()
+    void Update() // I need to fix this later to not use Update but it works for now
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             isPaused = !isPaused;
             _pauseMenu.SetActive(true);
             Time.timeScale = isPaused ? 0 : 1;
+        }
+        if (isPaused == false)
+        {
+            Time.timeScale = 1;
         }
     }
     

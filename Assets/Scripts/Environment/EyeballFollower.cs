@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Player;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Environment
@@ -29,7 +30,17 @@ namespace Environment
         private void Awake()
         {
             _irisLocalOrigin = _eyeballIris.localPosition;
-            _irisGlobalOrigin = _eyeballIris.position;
+            _irisGlobalOrigin = _eyeballIris.position;    
+        }
+
+        private void Start()
+        {
+            if (_objectToFollow != null)
+            {
+                return;
+            }
+
+            _objectToFollow = PlayerController.Instance.transform;
         }
 
         private void Update()
