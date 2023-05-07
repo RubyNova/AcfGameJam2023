@@ -3,10 +3,11 @@ using Movement;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Utilities;
 
 namespace Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoSingleton<PlayerController>
     {
         [Header("Dependencies"), SerializeField]
         private GroundMover _mover;
@@ -65,7 +66,7 @@ namespace Player
 
         public bool MovementIsOverridden { get; set; }
 
-        private void Awake()
+        protected override void OnInit()
         {
             _inputInfo = new(Vector2.zero, false, false, false, false);
             _abilities = new();
