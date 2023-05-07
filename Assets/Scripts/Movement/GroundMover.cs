@@ -42,6 +42,12 @@ namespace Movement
         private List<Collider2D> _groundColliders;
         private bool _isJumping;
 
+        public bool OverrideMover // lmao fuck
+        {
+            get => _overrideMover;
+            set => _overrideMover = value;
+        }
+
         public bool IsGrounded => _isGrounded;
 
         private void Awake()
