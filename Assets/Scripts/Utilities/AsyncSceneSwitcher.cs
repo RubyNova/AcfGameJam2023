@@ -25,7 +25,7 @@ namespace Utilities
             _sceneLoadingCoroutine = null;
         }
 
-        public void SwitchScene(SceneToLoad newScene)
+        public void SwitchScene(SceneToLoad newScene, Action<AsyncOperation> sceneReadyForActivationCallback)
         {
             if (_sceneLoadingCoroutine != null) 
             {
@@ -44,12 +44,7 @@ namespace Utilities
                     yield return null;
                 }
 
-                asyncSceneLoad.allowSceneActivation = true;
-
-                while (!asyncSceneLoad.isDone)
-                {
-                    yield return null;
-                }
+                sceneReadyForActivationCallback(asyncSceneLoad);
 
                 _sceneLoadingCoroutine = null;
             }
