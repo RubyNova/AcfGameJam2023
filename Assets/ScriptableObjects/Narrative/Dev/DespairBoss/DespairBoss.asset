@@ -26,11 +26,49 @@ MonoBehaviour:
     _playSoundEffectIndex: 0
     _hasExecuteCustomEffectIndex: 0
     _executeCustomEffectIndex: 0
-    _text: "Why even fight it? You might win today but you\u2019ll just be back here
-      tomorrow. You\u2019re too weak to get through this on your own and no one loves
-      you enough to help. Just give in, and let me take over\u2026"
+    _text: 'Why even fight it? '
+  - _character: {fileID: 11400000, guid: c8cc589f37da0e44c81995c2d59b852e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "You might win today but you\u2019ll just be back here tomorrow. "
+  - _character: {fileID: 11400000, guid: c8cc589f37da0e44c81995c2d59b852e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "You\u2019re too weak to get through this on your own"
+  - _character: {fileID: 11400000, guid: c8cc589f37da0e44c81995c2d59b852e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: 'and no one loves you enough to help. '
+  - _character: {fileID: 11400000, guid: c8cc589f37da0e44c81995c2d59b852e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "Just give in, and let me take over\u2026"
   _choices: []
-  <SourceScript>k__BackingField: "Despair Boss: Why even fight it? You might win
-    today but you\u2019ll just be back here tomorrow. You\u2019re too weak to get
-    through this on your own and no one loves you enough to help. Just give in, and
-    let me take over\u2026\r\n"
+  <SourceScript>k__BackingField: "Despair Boss: Why even fight it? \nYou might win
+    today but you\u2019ll just be back here tomorrow. \nYou\u2019re too weak to get
+    through this on your own\nand no one loves you enough to help. \nJust give in,
+    and let me take over\u2026\r\n"
