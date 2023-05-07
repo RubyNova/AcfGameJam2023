@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using System;
 
 namespace Utilities
 {
-    public abstract class MonoSingleton<T> : MonoBehaviour where T : Component
+    public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
     {
 		private static T _instance;
 
@@ -13,6 +14,7 @@ namespace Utilities
 				if (_instance == null)
 				{
 					_instance  = new GameObject().AddComponent<T>();
+					_instance.Init();
 				}
 
 				return _instance;
@@ -30,15 +32,19 @@ namespace Utilities
 				return;
 			}
 
-			DontDestroyOnLoad(gameObject);
+			if (HasInstanceCreated)
+			{
+				throw new InvalidOperationException("Multiple instances of a singleton have been instantiated. This is not allowed.");
+			}
+
 			Init();
-			_isInitialised = true;
         }
 
         public void Init()
         {
-			_isInitialised = true;
+			DontDestroyOnLoad(gameObject);
 			OnInit();
+			_isInitialised = true;
         }
 
         protected abstract void OnInit();
