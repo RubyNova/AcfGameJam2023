@@ -6,6 +6,7 @@ using AudioManagement;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace ACHNarrativeDriver
@@ -13,16 +14,8 @@ namespace ACHNarrativeDriver
     public class NarrativeUIController : MonoBehaviour
     {
         [SerializeField] private TMP_Text _narrativeTextBox;
-        //[SerializeField] private TMP_Text _characterNameTextBox;
-        //[SerializeField] private Image _characterRenderer;
-        //[SerializeField] private Image _backgroundRenderer;
-        [SerializeField] private Object _nameplateRenderer;
-        [SerializeField] private Transform _choicesButtonView;
-        [SerializeField] private GameObject _buttonPrefab;
-        [SerializeField] private GameObject _nextButton;
+        [SerializeField] private GameObject[] _dialogueBoxes;
         [SerializeField] private GameObject _dialoguePanel;
-        
-        //private AudioController _audioController; // this is such a hack reeeeeeee
         public UnityEvent sequenceFinishedEvent;
 
         private Coroutine _rollingTextRoutine;
@@ -33,6 +26,7 @@ namespace ACHNarrativeDriver
         private int _currentDialogueIndex;
         private Interpreter _narrativeInterpreter;
         private RuntimeVariables _narrativeRuntimeVariables;
+        private bool _hasFocus;
         
         public NarrativeSequence LastPlayedSequence { get; private set; }
         
@@ -42,7 +36,8 @@ namespace ACHNarrativeDriver
             _currentDialogueIndex = 0;
             _narrativeInterpreter = new();
             _narrativeRuntimeVariables = FindObjectOfType<RuntimeVariables>();
-            //_audioController = FindObjectOfType<AudioController>(); // let the hax continue
+            _hasFocus = false;
+            _dialoguePanel.SetActive(false);
         }
 
         private void Update()
@@ -56,39 +51,13 @@ namespace ACHNarrativeDriver
             {
                 _currentDialogueIndex = 0;
 
-                if (_currentNarrativeSequence.Choices.Count > 0)
-                {
-                    _choicesButtonView.gameObject.SetActive(true);
-                    foreach (Transform child in _choicesButtonView) //explicit variable type here because U N I T Y (TM)
-                    {
-                        Destroy(child.gameObject);
-                    }
-
-                    foreach (var choice in _currentNarrativeSequence.Choices)
-                    {
-                        var go = Instantiate(_buttonPrefab, _choicesButtonView);
-                        go.GetComponentInChildren<TMP_Text>().text = choice.ChoiceText;
-                        go.GetComponent<Button>().onClick.AddListener(() =>
-                        {
-                            _currentNarrativeSequence = choice.NarrativeResponse;
-                            _nextDialogueLineRequested = true;
-                            _choicesButtonView.gameObject.SetActive(false);
-                            _dialoguePanel.SetActive(true);
-                            _nextButton.SetActive(true);
-                        });
-                    }
-
-                    _nextDialogueLineRequested = false;
-                    _choicesButtonView.gameObject.SetActive(true);
-                    _dialoguePanel.SetActive(false);
-                    _nextButton.SetActive(false);
-                    return;
-                }
-
                 if (_currentNarrativeSequence.NextSequence is null)
                 {
+                    _hasFocus = false;
                     LastPlayedSequence = _currentNarrativeSequence;
                     sequenceFinishedEvent.Invoke();
+                    _dialogueBoxes[LastPlayedSequence.DialogueBoxRenderIndex].SetActive(false);
+                    _dialoguePanel.SetActive(false);
                     _isCurrentlyExecuting = false;
                     _currentNarrativeSequence = null;
                     return;
@@ -109,32 +78,6 @@ namespace ACHNarrativeDriver
 
             var characterDialogueInfo = _currentNarrativeSequence.CharacterDialoguePairs[_currentDialogueIndex];
 
-            /*
-             if (characterDialogueInfo.PoseIndex is { } poseIndex)
-            {
-                _characterRenderer.sprite = characterDialogueInfo.Character.Poses[poseIndex];
-                
-                if (!_characterRenderer.enabled && _characterRenderer.sprite != null)
-                {
-                    _characterRenderer.enabled = true;
-                }
-            }
-            */
-            
-            _nameplateRenderer.name = _narrativeInterpreter.ResolveRuntimeVariables(characterDialogueInfo.Character.Name, _narrativeRuntimeVariables.ReadOnlyVariableView);
-            
-            /*
-            if (characterDialogueInfo.PlayMusicIndex is { } playMusicIndex)
-            {
-                //_audioController.PlayMusic(_currentNarrativeSequence.MusicFiles[playMusicIndex]);
-            }
-
-            if (characterDialogueInfo.PlaySoundEffectIndex is {} soundEffectIndex)
-            {
-                //_audioController.PlayEffect(_currentNarrativeSequence.SoundEffectFiles[soundEffectIndex]);
-            }
-            */
-            
             _rollingTextRoutine =
                 StartCoroutine(
                     PerformRollingText(characterDialogueInfo));
@@ -150,9 +93,7 @@ namespace ACHNarrativeDriver
         private IEnumerator PerformRollingText(NarrativeSequence.CharacterDialogueInfo targetDialogueInfo)
         {
             StringBuilder sb = new();
-            //_characterNameTextBox.text = _narrativeInterpreter.ResolveRuntimeVariables(targetDialogueInfo.Character.Name, _narrativeRuntimeVariables.ReadOnlyVariableView);
-
-            var resolvedText = _narrativeInterpreter.ResolveRuntimeVariables(targetDialogueInfo.Text, _narrativeRuntimeVariables.ReadOnlyVariableView);
+            var resolvedText = _narrativeInterpreter.ResolveRuntimeVariables(targetDialogueInfo.Text, _narrativeRuntimeVariables != null ? _narrativeRuntimeVariables.ReadOnlyVariableView : null);
 
             foreach (var character in resolvedText)
             {
@@ -170,12 +111,14 @@ namespace ACHNarrativeDriver
             {
                 ResetRollingTextRoutine();
             }
-
+            
+            _dialoguePanel.SetActive(true);
+            _hasFocus = true;
             _narrativeTextBox.text = string.Empty;
-            //_characterNameTextBox.text = string.Empty;
             _currentNarrativeSequence = targetSequence;
             _nextDialogueLineRequested = true;
             _isCurrentlyExecuting = true;
+            _dialogueBoxes[targetSequence.DialogueBoxRenderIndex].SetActive(true);
         }
 
         public void ExecuteNextDialogueLine()
@@ -186,6 +129,16 @@ namespace ACHNarrativeDriver
             }
 
             _nextDialogueLineRequested = true;
+        }
+
+        public void OnInteractTrigger()
+        {
+            if (!_hasFocus)
+            {
+                return;
+            }
+            
+            ExecuteNextDialogueLine();
         }
     }
 }
