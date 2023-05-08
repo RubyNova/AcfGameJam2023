@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 2054562732422522375}
   - component: {fileID: 1036282547405111122}
   m_Layer: 3
-  m_Name: GroundEnemyFinal
+  m_Name: GroundEnemyFinalInfiniFollow
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,7 +262,7 @@ MonoBehaviour:
   _mover: {fileID: 5316278552901182967}
   _raycastConfig:
     serializedVersion: 2
-    m_Bits: 183
+    m_Bits: 128
   _playerTag: Player
   _pipe: {fileID: 1036282547405111122}
   _patrolRoute:

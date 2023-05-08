@@ -505,16 +505,21 @@ namespace AI
             }
             else
             {
-                SetUpInitialAIState();
-
-                if (roomContext.OwningAreaState.IsOnAlert)
-                {
-                    _currentState = BehaviourState.Searching;
-                    _lastPointOfInterest = playerEntryPosition;
-                }
-
-                gameObject.SetActive(true);
+                Launch(roomContext, playerEntryPosition);
             }
+        }
+
+        private void Launch(Room roomContext, Vector2 playerEntryPosition)
+        {
+            SetUpInitialAIState();
+
+            if (roomContext.OwningAreaState.IsOnAlert)
+            {
+                _currentState = BehaviourState.Searching;
+                _lastPointOfInterest = playerEntryPosition;
+            }
+
+            gameObject.SetActive(true);
         }
 
         public void ForceDeath()

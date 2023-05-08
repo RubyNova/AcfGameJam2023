@@ -37,5 +37,10 @@ namespace Player
         {
             _animator.SetTrigger("Hurt");
         }
+
+        public void PerformAttackAnim()
+        {
+            _animator.SetTrigger("Attack");
+        }
     }
 }
