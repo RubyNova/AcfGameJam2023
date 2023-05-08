@@ -262,7 +262,7 @@ MonoBehaviour:
   _mover: {fileID: 5316278552901182967}
   _raycastConfig:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 183
   _playerTag: Player
   _pipe: {fileID: 1036282547405111122}
   _patrolRoute:
@@ -282,6 +282,7 @@ MonoBehaviour:
   _searchTime: 5
   _attackCooldown: 0.5
   _attackDamage: 25
+  _isFlyingMovement: 0
 --- !u!114 &5316278552901182967
 MonoBehaviour:
   m_ObjectHideFlags: 0
