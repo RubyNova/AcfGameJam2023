@@ -9,9 +9,6 @@ namespace Environment
         [Header("Dependencies"), SerializeField]
         private string _playerTagName = "Player";
 
-        [SerializeField]
-        private Collider2D[] _collidersToToggle;
-
         [Header("Configuration"), SerializeField]
         private int _damageAmount = 10;
 
@@ -23,6 +20,8 @@ namespace Environment
 
         [SerializeField]
         private Vector2[] _safetyTeleportLocations;
+
+        private Coroutine _damageRoutine = null;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -37,18 +36,13 @@ namespace Environment
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!_useTriggerCollider || !collision.gameObject.CompareTag(_playerTagName))
+            if (!_useTriggerCollider || !collision.gameObject.CompareTag(_playerTagName) || _damageRoutine != null)
             {
                 return;
             }
 
-            foreach (var collider in _collidersToToggle)
-            {
-                collider.enabled = false;
-            }
-
             collision.gameObject.GetComponent<PlayerHealthController>().AdjustHealth(_damageAmount);
-            StartCoroutine(ApplySafetyPosition(collision.gameObject.transform));
+            _damageRoutine = StartCoroutine(ApplySafetyPosition(collision.gameObject.transform));
         }
 
         private IEnumerator ApplySafetyPosition(Transform target)
@@ -74,10 +68,7 @@ namespace Environment
 
             yield return null;
 
-            foreach (var collider in _collidersToToggle)
-            {
-                collider.enabled = true;
-            }
+            _damageRoutine = null;
         }
     }
 }
