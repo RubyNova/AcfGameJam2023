@@ -19,7 +19,7 @@ namespace AI
 
         [SerializeField]
         private NPCAnimationDataPipe _pipe;
-        
+
         [Header("Configuration"), SerializeField]
         private Vector2[] _patrolRoute;
 
@@ -65,6 +65,9 @@ namespace AI
         [SerializeField]
         private int _attackDamage;
 
+        [SerializeField]
+        private bool _isFlyingMovement;
+
         private BehaviourState _currentState;
         private PlayerIdentificationState _identificationState;
         private int _currentPatrolRouteIndex;
@@ -108,6 +111,11 @@ namespace AI
             _hasBeenHitByItem = false;
             transform.SetPositionAndRotation(_roomStartPos, Quaternion.Euler(Vector3.zero));
             _timeUntilAttackAvailable = 0;
+
+            if (_isFlyingMovement)
+            {
+                _mover.OverrideMover = true;
+            }
         }
 
         private void Update()
@@ -116,7 +124,7 @@ namespace AI
             {
                 _timeUntilAttackAvailable -= Time.deltaTime;
             }
-            
+
             switch (_currentState)
             {
                 case BehaviourState.IdleOrPatrolling:
@@ -183,7 +191,7 @@ namespace AI
                 if (Mathf.Approximately(distance, 0) || distance < 0.2)
                 {
                     _isCurrentlyMovingToPatrolPoint = false;
-                    _mover.ApplyMove(new(0, 0), 0, false, 0); // stops the NPC
+                    StopNPCMoving();
                     transform.position = target;
                     return;
                 }
@@ -211,7 +219,7 @@ namespace AI
                 }
 
                 bool waitTimeIsDone = Mathf.Approximately(_suspicionTimeRemaining, 0) || _suspicionTimeRemaining < 0;
-                
+
                 switch (_suspicionSubState)
                 {
                     case SuspicionSubState.GracePeriod:
@@ -253,7 +261,7 @@ namespace AI
                             _currentState = BehaviourState.IdleOrPatrolling;
                             return;
                         }
- 
+
                         _suspicionTimeRemaining -= Time.deltaTime;
 
                         var position = transform.position;
@@ -262,7 +270,7 @@ namespace AI
 
                         if (distance < 2)
                         {
-                            _mover.ApplyMove(new(0, 0), 0, false, 0); // stops the NPC
+                            StopNPCMoving();
                             return;
                         }
 
@@ -271,7 +279,7 @@ namespace AI
                 }
             }
 
-            void HandleChasingTick(bool resetSearchTime = true) 
+            void HandleChasingTick(bool resetSearchTime = true)
             {
                 if (resetSearchTime)
                 {
@@ -309,7 +317,7 @@ namespace AI
 
                 if (distance < _proximityLimit)
                 {
-                    _mover.ApplyMove(new(0, 0), 0, false, 0); // stops the NPC and does the attack
+                    StopNPCMoving();
                     if (_timeUntilAttackAvailable <= 0)
                     {
                         _timeUntilAttackAvailable = _attackCooldown;
@@ -347,13 +355,24 @@ namespace AI
                 if ((horizontalValue > 0 && !Mathf.Approximately(transform.right.x, -1)) || (horizontalValue < 0 && !Mathf.Approximately(transform.right.x, 1)))
                 {
                     transform.Rotate(0, 180, 0);
+
                 }
 
-                int walkingDirection = horizontalValue > 0 ? -1 : 1;
+                if (_isFlyingMovement)
+                {
+                    var direction = (target - (Vector2)position).normalized;
+                    var speed = run ? _runningSpeed : _walkingSpeed;
+                    _mover.ApplyRawDirection(direction * speed);
+                }
+                else
+                {
 
-                _pipe.IsRunning = run;
+                    int walkingDirection = horizontalValue > 0 ? -1 : 1;
 
-                _mover.ApplyMove(new(walkingDirection, 0), run ? _runningSpeed : _walkingSpeed, false, 0);
+                    _pipe.IsRunning = run;
+
+                    _mover.ApplyMove(new(walkingDirection, 0), run ? _runningSpeed : _walkingSpeed, false, 0);
+                }
             }
 
 
@@ -362,6 +381,18 @@ namespace AI
                 _pipe.PerformDieAnim();
                 yield return new WaitForSeconds(0.3f); // hard coded magic based on animations ftw
                 gameObject.SetActive(false);
+            }
+        }
+
+        private void StopNPCMoving()
+        {
+            if (_isFlyingMovement)
+            {
+                _mover.ApplyRawDirection(Vector2.zero);
+            }
+            else
+            {
+                _mover.ApplyMove(new(0, 0), 0, false, 0); // stops the NPC
             }
         }
 
