@@ -4,34 +4,34 @@ using UnityEngine.Events;
 
 namespace SetPieceHelpers
 {
-    public class SpecificEntityWaitTrigger : RoomEntityBehaviour
+    public class PlayerWaitTrigger : RoomEntityBehaviour
     {
         [Header("Dependencies"), SerializeField]
-        private RoomEntityBehaviour _target;
+        private string _playerTagName = "Player";
 
-        private bool _active = false;
-        
-        public UnityEvent TargetArrived;
+        private bool _isActive = false;
+
+        public UnityEvent PlayerArrived;
 
         private void Awake()
         {
-            _active = false;
+            _isActive = false;
         }
 
         public override void NotifyActiveStatus(bool isActiveRoom, Room roomContext, Vector2 playerEntryPosition = default)
         {
-            _active = isActiveRoom;
+            _isActive = isActiveRoom;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (_target.gameObject != collision.gameObject)
+            if (!collision.gameObject.CompareTag(_playerTagName))
             {
                 return;
             }
 
-            TargetArrived.Invoke();
-            _active = false;
+            PlayerArrived.Invoke();
+            _isActive = false;
         }
     }
 }
