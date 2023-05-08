@@ -15,15 +15,15 @@ namespace ACHNarrativeDriver
         [SerializeField] private TMP_Text _narrativeTextBox;
         //[SerializeField] private TMP_Text _characterNameTextBox;
         //[SerializeField] private Image _characterRenderer;
-        [SerializeField] private Image _backgroundRenderer;
-        //[SerializeField] private Image _nameplateRenderer;
+        //[SerializeField] private Image _backgroundRenderer;
+        [SerializeField] private Object _nameplateRenderer;
         [SerializeField] private Transform _choicesButtonView;
         [SerializeField] private GameObject _buttonPrefab;
         [SerializeField] private GameObject _nextButton;
         [SerializeField] private GameObject _dialoguePanel;
         
         //private AudioController _audioController; // this is such a hack reeeeeeee
-        public UnityEvent listNextEvent;
+        public UnityEvent sequenceFinishedEvent;
 
         private Coroutine _rollingTextRoutine;
         private readonly WaitForSeconds _rollingCharacterTime = new(0.04f);
@@ -88,7 +88,7 @@ namespace ACHNarrativeDriver
                 if (_currentNarrativeSequence.NextSequence is null)
                 {
                     LastPlayedSequence = _currentNarrativeSequence;
-                    listNextEvent.Invoke();
+                    sequenceFinishedEvent.Invoke();
                     _isCurrentlyExecuting = false;
                     _currentNarrativeSequence = null;
                     return;
@@ -119,9 +119,11 @@ namespace ACHNarrativeDriver
                     _characterRenderer.enabled = true;
                 }
             }
+            */
             
-            _nameplateRenderer.sprite = characterDialogueInfo.Character.NameplateSprite;
+            _nameplateRenderer.name = _narrativeInterpreter.ResolveRuntimeVariables(characterDialogueInfo.Character.Name, _narrativeRuntimeVariables.ReadOnlyVariableView);
             
+            /*
             if (characterDialogueInfo.PlayMusicIndex is { } playMusicIndex)
             {
                 //_audioController.PlayMusic(_currentNarrativeSequence.MusicFiles[playMusicIndex]);

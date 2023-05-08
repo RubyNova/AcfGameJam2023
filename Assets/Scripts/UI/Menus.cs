@@ -8,6 +8,11 @@ public class Menus : MonoBehaviour
     [SerializeField] private GameObject _pauseMenu;
 
     bool _isPaused = false;
+    
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
 
     public void Pause()
     {
