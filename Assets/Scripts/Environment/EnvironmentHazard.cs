@@ -1,4 +1,5 @@
 ﻿using Player;
+using System.Collections;
 using UnityEngine;
 
 namespace Environment
@@ -8,11 +9,17 @@ namespace Environment
         [Header("Dependencies"), SerializeField]
         private string _playerTagName = "Player";
 
+        [SerializeField]
+        private Collider2D[] _collidersToToggle;
+
         [Header("Configuration"), SerializeField]
         private int _damageAmount = 10;
 
         [SerializeField]
         private bool _useTriggerCollider = false;
+
+        [SerializeField]
+        private float _teleportGracePeriod = 0.4f;
 
         [SerializeField]
         private Vector2[] _safetyTeleportLocations;
@@ -35,11 +42,16 @@ namespace Environment
                 return;
             }
 
+            foreach (var collider in _collidersToToggle)
+            {
+                collider.enabled = false;
+            }
+
             collision.gameObject.GetComponent<PlayerHealthController>().AdjustHealth(_damageAmount);
-            ApplySafetyPosition(collision.gameObject.transform);
+            StartCoroutine(ApplySafetyPosition(collision.gameObject.transform));
         }
 
-        private void ApplySafetyPosition(Transform target)
+        private IEnumerator ApplySafetyPosition(Transform target)
         {
             var closestLocation = _safetyTeleportLocations[0];
             float currentDistanceTobeat = Vector2.Distance(closestLocation, target.position);
@@ -56,7 +68,16 @@ namespace Environment
                 }
             }
 
+            yield return new WaitForSeconds(_teleportGracePeriod);
+
             target.position = closestLocation;
+
+            yield return null;
+
+            foreach (var collider in _collidersToToggle)
+            {
+                collider.enabled = true;
+            }
         }
     }
 }

@@ -142,9 +142,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTagName: Player
+  _collidersToToggle:
+  - {fileID: 9174770893493597221}
   _damageAmount: 10
-  _damageCooldown: 0.7
   _useTriggerCollider: 0
+  _teleportGracePeriod: 0.4
+  _safetyTeleportLocations: []
 --- !u!60 &9174770893493597221
 PolygonCollider2D:
   m_ObjectHideFlags: 0
