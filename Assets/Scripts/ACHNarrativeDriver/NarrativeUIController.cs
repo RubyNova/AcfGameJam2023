@@ -13,16 +13,16 @@ namespace ACHNarrativeDriver
     public class NarrativeUIController : MonoBehaviour
     {
         [SerializeField] private TMP_Text _narrativeTextBox;
-        [SerializeField] private TMP_Text _characterNameTextBox;
-        [SerializeField] private Image _characterRenderer;
+        //[SerializeField] private TMP_Text _characterNameTextBox;
+        //[SerializeField] private Image _characterRenderer;
         [SerializeField] private Image _backgroundRenderer;
-        [SerializeField] private Image _nameplateRenderer;
+        //[SerializeField] private Image _nameplateRenderer;
         [SerializeField] private Transform _choicesButtonView;
         [SerializeField] private GameObject _buttonPrefab;
         [SerializeField] private GameObject _nextButton;
         [SerializeField] private GameObject _dialoguePanel;
         
-        private AudioController _audioController; // this is such a hack reeeeeeee
+        //private AudioController _audioController; // this is such a hack reeeeeeee
         public UnityEvent listNextEvent;
 
         private Coroutine _rollingTextRoutine;
@@ -42,7 +42,7 @@ namespace ACHNarrativeDriver
             _currentDialogueIndex = 0;
             _narrativeInterpreter = new();
             _narrativeRuntimeVariables = FindObjectOfType<RuntimeVariables>();
-            _audioController = FindObjectOfType<AudioController>(); // let the hax continue
+            //_audioController = FindObjectOfType<AudioController>(); // let the hax continue
         }
 
         private void Update()
@@ -109,7 +109,8 @@ namespace ACHNarrativeDriver
 
             var characterDialogueInfo = _currentNarrativeSequence.CharacterDialoguePairs[_currentDialogueIndex];
 
-            if (characterDialogueInfo.PoseIndex is { } poseIndex)
+            /*
+             if (characterDialogueInfo.PoseIndex is { } poseIndex)
             {
                 _characterRenderer.sprite = characterDialogueInfo.Character.Poses[poseIndex];
                 
@@ -120,7 +121,7 @@ namespace ACHNarrativeDriver
             }
             
             _nameplateRenderer.sprite = characterDialogueInfo.Character.NameplateSprite;
-
+            
             if (characterDialogueInfo.PlayMusicIndex is { } playMusicIndex)
             {
                 //_audioController.PlayMusic(_currentNarrativeSequence.MusicFiles[playMusicIndex]);
@@ -130,6 +131,7 @@ namespace ACHNarrativeDriver
             {
                 //_audioController.PlayEffect(_currentNarrativeSequence.SoundEffectFiles[soundEffectIndex]);
             }
+            */
             
             _rollingTextRoutine =
                 StartCoroutine(
@@ -146,7 +148,7 @@ namespace ACHNarrativeDriver
         private IEnumerator PerformRollingText(NarrativeSequence.CharacterDialogueInfo targetDialogueInfo)
         {
             StringBuilder sb = new();
-            _characterNameTextBox.text = _narrativeInterpreter.ResolveRuntimeVariables(targetDialogueInfo.Character.Name, _narrativeRuntimeVariables.ReadOnlyVariableView);
+            //_characterNameTextBox.text = _narrativeInterpreter.ResolveRuntimeVariables(targetDialogueInfo.Character.Name, _narrativeRuntimeVariables.ReadOnlyVariableView);
 
             var resolvedText = _narrativeInterpreter.ResolveRuntimeVariables(targetDialogueInfo.Text, _narrativeRuntimeVariables.ReadOnlyVariableView);
 
@@ -168,7 +170,7 @@ namespace ACHNarrativeDriver
             }
 
             _narrativeTextBox.text = string.Empty;
-            _characterNameTextBox.text = string.Empty;
+            //_characterNameTextBox.text = string.Empty;
             _currentNarrativeSequence = targetSequence;
             _nextDialogueLineRequested = true;
             _isCurrentlyExecuting = true;
