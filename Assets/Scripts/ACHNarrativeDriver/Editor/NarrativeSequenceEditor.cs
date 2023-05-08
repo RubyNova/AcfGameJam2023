@@ -41,7 +41,10 @@ namespace ACHNarrativeDriver.Editor
             _predefinedVariables = (PredefinedVariables)EditorGUILayout.ObjectField(
                 "Predefined Variables", _predefinedVariables, typeof(PredefinedVariables),
                 false);
- 
+
+            _currentNarrativeSequence.DialogueBoxRenderIndex = EditorGUILayout.IntField("Dialogue Box Render Index",
+                _currentNarrativeSequence.DialogueBoxRenderIndex);
+
             GUILayout.Label("Music files", EditorStyles.label);
 
             bool musicCollectionModified = false;

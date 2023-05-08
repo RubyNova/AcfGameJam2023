@@ -133,6 +133,7 @@ namespace ACHNarrativeDriver.ScriptableObjects
         [SerializeField] private List<GameObject> _customEffectPrefabs;
         [SerializeField] private List<CharacterDialogueInfo> _characterDialoguePairs;
         [SerializeField] private List<ChoiceInfo> _choices;
+        [SerializeField] private int _dialogueBoxRenderIndex;
 
         public List<ChoiceInfo> Choices
         {
@@ -168,6 +169,12 @@ namespace ACHNarrativeDriver.ScriptableObjects
         {
             get => _characterDialoguePairs;
             set => _characterDialoguePairs = value;
+        }
+        
+        public int DialogueBoxRenderIndex
+        {
+            get => _dialogueBoxRenderIndex;
+            set => _dialogueBoxRenderIndex = value;
         }
 
         [field: SerializeField, HideInInspector]
