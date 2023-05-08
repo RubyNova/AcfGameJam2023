@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ba1e8e817edcd4094783ebc24064c3, type: 3}
+  m_Name: FinalBossSoundtrackVariantData
+  m_EditorClassIdentifier: 
+  _calm: {fileID: 8300000, guid: f55ec41c1a1ae564087c7b49be7107f9, type: 3}
+  _caution: {fileID: 8300000, guid: 6a9bf322a6d561740925d8c6ff4dc40b, type: 3}
+  _danger: {fileID: 8300000, guid: 7315912a1e7ca0d4b84c7ede7ff14b1e, type: 3}
+  _treatCalmAsSoloVariant: 0

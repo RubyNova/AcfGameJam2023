@@ -6,19 +6,21 @@ namespace SetPieceHelpers
 {
     public class SpecificEntityWaitTrigger : RoomEntityBehaviour
     {
-        [SerializeField]
+        [Header("Dependencies"), SerializeField]
         private RoomEntityBehaviour _target;
 
+        private bool _active = false;
+        
         public UnityEvent TargetArrived;
 
         private void Awake()
         {
-            enabled = false;
+            _active = false;
         }
 
         public override void NotifyActiveStatus(bool isActiveRoom, Room roomContext, Vector2 playerEntryPosition = default)
         {
-            enabled = isActiveRoom;
+            _active = isActiveRoom;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -29,6 +31,7 @@ namespace SetPieceHelpers
             }
 
             TargetArrived.Invoke();
+            _active = false;
         }
     }
 }
