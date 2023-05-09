@@ -7,7 +7,7 @@ namespace DevHelpers
     {
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            AsyncSceneSwitcher.Instance.SwitchScene(AsyncSceneSwitcher.SceneToLoad.AnxietyGameWorld, _ => print("Scene ready!"));
+            AsyncSceneSwitcher.Instance.SwitchScene(AsyncSceneSwitcher.SceneToLoad.AnxietyGameWorld, operation => operation.allowSceneActivation = true);
         }
     }
 }

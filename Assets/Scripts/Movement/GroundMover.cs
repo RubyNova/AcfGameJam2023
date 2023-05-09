@@ -77,13 +77,20 @@ namespace Movement
 
             if (_isJumping)
             {
-                //print("I AM JUMPING");
                 _isGrounded = newIsGrounded;
                 return;
             }
 
-            foreach (var collider in _groundColliders)
+            for (int i = _groundColliders.Count - 1; i >= 0; i--)
             {
+                Collider2D collider = _groundColliders[i];
+
+                if (collider == null)
+                {
+                    _groundColliders.Remove(collider);
+                    continue;
+                }
+
                 bool newState = IsGroundBelowWithinGivenTolerance(collider.ClosestPoint(_positionToCheckColliderPointFrom.position));
 
                 if (newState)

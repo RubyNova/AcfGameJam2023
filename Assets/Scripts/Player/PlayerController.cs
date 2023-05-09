@@ -3,6 +3,7 @@ using Movement;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Utilities;
 
 namespace Player
@@ -81,6 +82,13 @@ namespace Player
             _aimData = Vector2.zero;
             _isMouse = true;
             _heavyItemSelected = false;
+
+            if (_targetCamera == null)
+            {
+                _targetCamera = Camera.main;
+            }
+
+            SceneManager.activeSceneChanged += (_, _) => _targetCamera = Camera.main;
         }
 
         private void Start()
