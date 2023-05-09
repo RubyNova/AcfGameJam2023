@@ -31,7 +31,7 @@ namespace Environment
             }
 
             collision.gameObject.GetComponent<PlayerHealthController>().AdjustHealth(_damageAmount);
-            ApplySafetyPosition(collision.gameObject.transform);
+            _damageRoutine = StartCoroutine(ApplySafetyPosition(collision.gameObject.transform));
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
