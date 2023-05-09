@@ -1,23 +1,31 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Diary_Pages : MonoBehaviour
 {
-    [SerializeField] private GameObject _diaryPage;
-
-    private List<GameObject> _pages = new List<GameObject>();
+    [SerializeField] private List<GameObject> _pages;
     
+    private static Diary_Pages _instance;
+
     public void AddPage(GameObject page)
     {
-        // how to do this? 
-        // What are the pages, and where is their textual data stored?
-        
-        // Should also unlock the button that opens the diary page
+        _pages.Add(page);
     }
     
-    public void OpenDiary()
+    public void OpenPage(int index)
     {
-        _diaryPage.SetActive(true);
+        //make the child object named "entry" visible, and the rest invisible
+        for (int i = 0; i < _pages.Count; i++)
+        {
+            if (i == index)
+            {
+                _pages[i].SetActive(true);
+            }
+            else
+            {
+                _pages[i].SetActive(false);
+            }
+        }
     }
 }
