@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace SetPieceHelpers
 {
-    public class InputStreamer : RoomEntityBehaviour
+    public class DummyInputConstant : RoomEntityBehaviour
     {
         [Header("Dependencies"), SerializeField]
         private GroundMover _targetMover;
