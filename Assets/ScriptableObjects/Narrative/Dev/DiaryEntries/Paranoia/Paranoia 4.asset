@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432ea7e311e77dd4e9f6fbe5b4f9e2e2, type: 3}
+  m_Name: Paranoia 4
+  m_EditorClassIdentifier: 
+  _nextSequence: {fileID: 0}
+  _musicFiles: []
+  _soundEffectFiles: []
+  _customEffectPrefabs: []
+  _characterDialoguePairs:
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "09/09/2022 \u2013 Work have opened a new team leader position that I\u2019d
+      have been perfect for, but now I feel like if I apply, they\u2019ll know what
+      happened with Alex and it\u2019ll go against me. "
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "Amy said she\u2019s thinking of applying for it too, and \u2018joked\u2019
+      about us competing. But I feel like she did this on purpose to undermine my
+      chances because she knows I\u2019m more experienced than her!"
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: ' '
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "She has turned the whole team against me, they see me as one big joke.
+      The woman who humiliated herself. I can\u2019t put myself forward to lead a
+      team who think I\u2019m pathetic. "
+  _choices: []
+  _dialogueBoxRenderIndex: 4
+  <SourceScript>k__BackingField: "Diary: 09/09/2022 \u2013 Work have opened a new
+    team leader position that I\u2019d have been perfect for, but now I feel like
+    if I apply, they\u2019ll know what happened with Alex and it\u2019ll go against
+    me. \r\n\r\nAmy said she\u2019s thinking of applying for it too, and \u2018joked\u2019
+    about us competing. But I feel like she did this on purpose to undermine my chances
+    because she knows I\u2019m more experienced than her!\r\n \r\nShe has turned
+    the whole team against me, they see me as one big joke. The woman who humiliated
+    herself. I can\u2019t put myself forward to lead a team who think I\u2019m pathetic.
+    \r\n"

@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432ea7e311e77dd4e9f6fbe5b4f9e2e2, type: 3}
+  m_Name: Anxiety 1
+  m_EditorClassIdentifier: 
+  _nextSequence: {fileID: 0}
+  _musicFiles: []
+  _soundEffectFiles: []
+  _customEffectPrefabs: []
+  _characterDialoguePairs:
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "05/09/22 \u2013 I feel like work is changing so much right now! The team
+      is expanding and the new account managers seem a lot more experienced than
+      me! "
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: 'Amy has immediately started saying that one of them seems to like me.
+      I hate this kind of office gossip! '
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: 'They did sit next to me for 3 hours today asking questions and seemed
+      really interested in what I was saying. '
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "She said I should invite them out for a coffee but I really don\u2019t
+      think that\u2019s appropriate. If she\u2019s wrong it\u2019ll make things so
+      awkward! "
+  _choices: []
+  _dialogueBoxRenderIndex: 0
+  <SourceScript>k__BackingField: "Diary: 05/09/22 \u2013 I feel like work is changing
+    so much right now! The team is expanding and the new account managers seem a
+    lot more experienced than me! \r\n\r\nAmy has immediately started saying that
+    one of them seems to like me. I hate this kind of office gossip! \r\n\r\nThey
+    did sit next to me for 3 hours today asking questions and seemed really interested
+    in what I was saying. \r\n\r\nShe said I should invite them out for a coffee
+    but I really don\u2019t think that\u2019s appropriate. If she\u2019s wrong it\u2019ll
+    make things so awkward! \r\n"
