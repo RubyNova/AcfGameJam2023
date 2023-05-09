@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432ea7e311e77dd4e9f6fbe5b4f9e2e2, type: 3}
+  m_Name: Despair 2
+  m_EditorClassIdentifier: 
+  _nextSequence: {fileID: 0}
+  _musicFiles: []
+  _soundEffectFiles: []
+  _customEffectPrefabs: []
+  _characterDialoguePairs:
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "07/09/22 - Well Amy was wrong\u2026"
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "I made everything so incredibly awkward I could die. I told her they
+      weren\u2019t interested in me like that, and she couldn\u2019t drop it. "
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "She kept nudging me and nudging me so I asked them if they fancied a
+      coffee after work. They didn\u2019t know what to say and just told me their
+      wife was picking them up. "
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: 'The silence was deafening. I heard someone laugh nearby and I just ran
+      out of the room crying. '
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "I wasn\u2019t ready for this. "
+  _choices: []
+  _dialogueBoxRenderIndex: 2
+  <SourceScript>k__BackingField: "Diary: 07/09/22 - Well Amy was wrong\u2026\r\n\r\nI
+    made everything so incredibly awkward I could die. I told her they weren\u2019t
+    interested in me like that, and she couldn\u2019t drop it. \r\n\r\nShe kept nudging
+    me and nudging me so I asked them if they fancied a coffee after work. They didn\u2019t
+    know what to say and just told me their wife was picking them up. \r\n\r\nThe
+    silence was deafening. I heard someone laugh nearby and I just ran out of the
+    room crying. \r\n\nI wasn\u2019t ready for this. \r\n"

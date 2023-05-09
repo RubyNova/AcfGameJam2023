@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432ea7e311e77dd4e9f6fbe5b4f9e2e2, type: 3}
+  m_Name: Despair 3
+  m_EditorClassIdentifier: 
+  _nextSequence: {fileID: 0}
+  _musicFiles: []
+  _soundEffectFiles: []
+  _customEffectPrefabs: []
+  _characterDialoguePairs:
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "17/05/2013 \u2013 Neither mum or dad were talking to me today, it\u2019s
+      like being a teenager again. I really think I hurt their feelings with what
+      I said. But they keep pushing me about how lame my life is and it isn\u2019t
+      fair."
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: 'No one wants to go out with someone like me for more than five minutes,
+      let alone live with me.  They never seem to see how awful I am. I guess they
+      know a bit better now though? '
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "I don\u2019t know how to fix this. They\u2019re right, I need to leave.
+      They can\u2019t put up with me any longer, so I just need to go. "
+  _choices: []
+  _dialogueBoxRenderIndex: 2
+  <SourceScript>k__BackingField: "Diary: 17/05/2013 \u2013 Neither mum or dad were
+    talking to me today, it\u2019s like being a teenager again. I really think I
+    hurt their feelings with what I said. But they keep pushing me about how lame
+    my life is and it isn\u2019t fair.\r\n\r\nNo one wants to go out with someone
+    like me for more than five minutes, let alone live with me.  They never seem
+    to see how awful I am. I guess they know a bit better now though? \r\n\r\nI don\u2019t
+    know how to fix this. They\u2019re right, I need to leave. They can\u2019t put
+    up with me any longer, so I just need to go. \r\n"
