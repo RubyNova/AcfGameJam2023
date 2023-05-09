@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432ea7e311e77dd4e9f6fbe5b4f9e2e2, type: 3}
+  m_Name: Rage 3
+  m_EditorClassIdentifier: 
+  _nextSequence: {fileID: 0}
+  _musicFiles: []
+  _soundEffectFiles: []
+  _customEffectPrefabs: []
+  _characterDialoguePairs:
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "08/09/22 \u2013 It just goes from bad to worse! I arrived at work this
+      morning and Alex has moved to another team. "
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: 'Amy said it was probably because I made them feel uncomfortable, but
+      it was Her Fault! I should never have listened to her; she always gets carried
+      away like this. '
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: 'I feel humiliated! I trusted her and now I have to deal with the consequences
+      of her nonsense. '
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "I felt like everyone was whispering about it. I\u2019ve been seething
+      all day."
+  - _character: {fileID: 11400000, guid: f95bc519219209d4eba7c9393996c04e, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: 'I hope karma catches up with her soon! '
+  _choices: []
+  _dialogueBoxRenderIndex: 6
+  <SourceScript>k__BackingField: "Diary: 08/09/22 \u2013 It just goes from bad to
+    worse! I arrived at work this morning and Alex has moved to another team. \r\n\r\nAmy
+    said it was probably because I made them feel uncomfortable, but it was Her Fault!
+    I should never have listened to her; she always gets carried away like this.
+    \r\n\r\nI feel humiliated! I trusted her and now I have to deal with the consequences
+    of her nonsense. \r\n\r\nI felt like everyone was whispering about it. I\u2019ve
+    been seething all day.\r\n\r\nI hope karma catches up with her soon! \r\n"
