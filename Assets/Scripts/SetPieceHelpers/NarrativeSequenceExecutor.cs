@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace SetPieceHelpers
 {
-    internal class NarrativeSequenceExecuter : RoomEntityBehaviour
+    internal class NarrativeSequenceExecutor : RoomEntityBehaviour
     {
         [Header("Dependencies"), SerializeField]
         private NarrativeSequence _sequenceToExecute;

@@ -7,7 +7,7 @@ using Utilities;
 
 namespace AudioManagement
 {
-    public class AudioController : MonoBehaviour
+    public class AudioController : MonoSingleton<AudioController> 
     {
         public enum SoundtrackVariantState
         {
@@ -70,10 +70,8 @@ namespace AudioManagement
         private MonoComponentPool<AudioSource> _soundEffectSources = null; // I removed the default constructor, Unity lifetime weirdness can eat shit
         private List<SoundEffectPlayInfo> _soundEffectPlayInfos;
         private bool _isMusicPlaying;
-
-        private void Awake()
+        protected override void OnInit()
         {
-            DontDestroyOnLoad(gameObject);
             _areaState = SoundtrackVariantState.Calm;
             _calmMusicSourceZero.volume = 0;
             _cautionMusicSourceZero.volume = 0;
@@ -140,7 +138,6 @@ namespace AudioManagement
 
         private IEnumerator CrossFade(SoundtrackVariantState newState, AreaSoundtrackVariantData newData, bool terminate)
         {
-            print("EXECUTING CROSSFADE");
             AudioClip clipToUseForTarget = null;
             AudioSource audioSourceForTarget = null;
             AudioSource audioSourceForCurrent = null;
@@ -234,6 +231,9 @@ namespace AudioManagement
 
                 audioSourceForCurrent.volume = 0;
                 audioSourceForCurrent.Stop();
+                _areaData = null;
+                _areaState = SoundtrackVariantState.Calm;
+                _isMusicPlaying = false;
                 yield break;
             }
             
@@ -267,18 +267,52 @@ namespace AudioManagement
             audioSourceForTarget.volume = 1;
 
             _currentRoutine = null;
-            print("EXITING CROSSFADE");
         }
 
-        public void EnqueueNewAreaMusic(AreaSoundtrackVariantData areaData)
+        public void EnqueueNewAreaMusic(AreaSoundtrackVariantData areaData, SoundtrackVariantState newState = SoundtrackVariantState.Calm)
         {
-            _coroutinesToExecute.Enqueue(() => StartCoroutine(CrossFade(SoundtrackVariantState.Calm, areaData, false)));
+            _coroutinesToExecute.Enqueue(() => StartCoroutine(CrossFade(newState, areaData, false)));
         }
 
         public void EnqueueAreaStateChange(SoundtrackVariantState newState)
         {
             _coroutinesToExecute.Enqueue(() => StartCoroutine(CrossFade(newState, null, false)));
         }
+
+        public void EnqueueStopMusic(bool immediateTerminate = false)
+        {
+            if (immediateTerminate)
+            {
+                _coroutinesToExecute.Enqueue(() => StartCoroutine(ImmediateTerminate()));
+
+                IEnumerator ImmediateTerminate()
+                {
+                    switch (_areaState)
+                    {
+                        case SoundtrackVariantState.Calm:
+                            _calmSources[_calmSourceToUseCurrentIndex].Stop();
+                            _calmSourceToUseCurrentIndex = 0;
+                            break;
+                        case SoundtrackVariantState.Caution:
+                            _cautionSources[_cautionSourceToUseCurrentIndex].Stop();
+                            _cautionSourceToUseCurrentIndex = 0;
+                            break;
+                        case SoundtrackVariantState.Danger:
+                            _dangerSources[_dangerSourceToUseCurrentIndex].Stop();
+                            _dangerSourceToUseCurrentIndex = 0;
+                            break;
+                    }
+
+                    _isMusicPlaying = false;
+                    yield break;
+                }
+            }
+            else
+            {
+                _coroutinesToExecute.Enqueue(() => StartCoroutine(CrossFade(SoundtrackVariantState.Calm, null, true)));
+            }
+        }
+
 
         public void PlaySoundEffect(string name, AudioClip effect, bool loop = false)
         {
