@@ -92,7 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99003e77a8393b54395b25a88cde642c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomToEnter: {fileID: 0}
+  _owningRoom: {fileID: 0}
+  _connectedEntrance: {fileID: 0}
 --- !u!212 &2424205804192858037
 SpriteRenderer:
   m_ObjectHideFlags: 0
