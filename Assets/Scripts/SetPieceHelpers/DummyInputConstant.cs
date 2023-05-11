@@ -67,11 +67,11 @@ namespace SetPieceHelpers
         {
             if (_useOverrideMovement)
             {
-                _targetMover.ApplyMove(_inputToStream.InputAxes, _movementSpeed, _inputToStream.JumpInput, _jumpForce);
+                _targetMover.ApplyRawDirection(_inputToStream.InputAxes * _movementSpeed);
             }
             else
             {
-                _targetMover.ApplyRawDirection(_inputToStream.InputAxes * _movementSpeed);
+                _targetMover.ApplyMove(_inputToStream.InputAxes, _movementSpeed, _inputToStream.JumpInput, _jumpForce);
             }
 
             if (_hasPlayerAnimations)
