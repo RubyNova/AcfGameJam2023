@@ -33,7 +33,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Drama Queen
+  m_Name: Drama Queen 1
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -167,10 +167,13 @@ AnimatorStateMachine:
     m_Position: {x: 340, y: 480, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8423364926469990886}
-    m_Position: {x: 375, y: 545, z: 0}
+    m_Position: {x: 340, y: 530, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8757467213428230265}
-    m_Position: {x: 410, y: 610, z: 0}
+    m_Position: {x: 340, y: 580, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 8721011685260816829}
+    m_Position: {x: 340, y: 630, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 7573917666870559362}
@@ -657,7 +660,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player thinking
+  m_Name: Thinking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -789,7 +792,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player Point
+  m_Name: Point
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -2071,6 +2074,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &8721011685260816829
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Drama Queen 2
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 493a6a4464ec7ac4fb91849eca40c8b1, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!114 &8814786827444373815
 MonoBehaviour:
   m_ObjectHideFlags: 1
