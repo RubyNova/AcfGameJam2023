@@ -16,8 +16,18 @@ MonoBehaviour:
   _musicFiles: []
   _soundEffectFiles: []
   _customEffectPrefabs: []
-  _characterDialoguePairs: []
+  _characterDialoguePairs:
+  - _character: {fileID: 11400000, guid: 0a6d795de484e794da9ddc66c579a87a, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "Trust me, you don\u2019t want to touch that..."
   _choices: []
-  _dialogueBoxRenderIndex: 0
-  <SourceScript>k__BackingField: "Silhouette:\n\nTrust me, you don\u2019t want to
-    touch that..."
+  _dialogueBoxRenderIndex: 8
+  <SourceScript>k__BackingField: "Silhouette: Trust me, you don\u2019t want to touch
+    that..."
