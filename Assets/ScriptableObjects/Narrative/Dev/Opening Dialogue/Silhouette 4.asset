@@ -16,9 +16,59 @@ MonoBehaviour:
   _musicFiles: []
   _soundEffectFiles: []
   _customEffectPrefabs: []
-  _characterDialoguePairs: []
+  _characterDialoguePairs:
+  - _character: {fileID: 11400000, guid: 0a6d795de484e794da9ddc66c579a87a, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "Fool! You\u2019re so easy to control."
+  - _character: {fileID: 11400000, guid: 0a6d795de484e794da9ddc66c579a87a, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: Your thoughts belong to me now.
+  - _character: {fileID: 11400000, guid: 0a6d795de484e794da9ddc66c579a87a, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: Run away if you want to!
+  - _character: {fileID: 11400000, guid: 0a6d795de484e794da9ddc66c579a87a, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "You can\u2019t escape them!"
+  - _character: {fileID: 11400000, guid: 0a6d795de484e794da9ddc66c579a87a, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: You only have one option!
   _choices: []
-  _dialogueBoxRenderIndex: 0
-  <SourceScript>k__BackingField: "Silhouette:\n\r\nFool! You\u2019re so easy to control.\r\n\r\nYour
+  _dialogueBoxRenderIndex: 8
+  <SourceScript>k__BackingField: "Silhouette: Fool! You\u2019re so easy to control.\r\n\r\nYour
     thoughts belong to me now.\r\n\r\nRun away if you want to!\r\n\r\nYou can\u2019t
     escape them!\r\n\r\nYou only have one option!\r\n\r"
