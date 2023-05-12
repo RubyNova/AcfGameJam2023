@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 namespace Utilities
 {
-    class AsyncSceneSwitcher : MonoSingleton<AsyncSceneSwitcher>
+    public class AsyncSceneSwitcher : MonoSingleton<AsyncSceneSwitcher>
     {
-        public enum SceneToLoad
+        public enum SceneAsEnum
         {
             MainMenu,
             AnxietyGameWorld,
@@ -20,17 +20,17 @@ namespace Utilities
 
         private Coroutine _sceneLoadingCoroutine;
 
-        public SceneToLoad? PreviousScene { get; private set; }
-        public SceneToLoad CurrentScene { get; private set; }
+        public SceneAsEnum? PreviousScene { get; private set; }
+        public SceneAsEnum CurrentScene { get; private set; }
 
         protected override void OnInit()
         {
             _sceneLoadingCoroutine = null;
             PreviousScene = null;
-            CurrentScene = (SceneToLoad)SceneManager.GetActiveScene().buildIndex;
+            CurrentScene = (SceneAsEnum)SceneManager.GetActiveScene().buildIndex;
         }
 
-        public void SwitchScene(SceneToLoad newScene, Action<AsyncOperation> sceneReadyForActivationCallback)
+        public void SwitchScene(SceneAsEnum newScene, Action<AsyncOperation> sceneReadyForActivationCallback)
         {
             if (_sceneLoadingCoroutine != null) 
             {

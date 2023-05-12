@@ -9,9 +9,9 @@ namespace Environment
         private RoomEntityBehaviour[] _ownedEntities;
 
         [SerializeField]
-        private AreaState _owningAreaState;
+        private AreaController _owningAreaState;
 
-        public AreaState OwningAreaState => _owningAreaState;
+        public AreaController OwningAreaState => _owningAreaState;
 
         public Vector2 LastReportedPlayerPosition { get; set; }
 

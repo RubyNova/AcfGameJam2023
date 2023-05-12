@@ -2,6 +2,7 @@ using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utilities;
 
 namespace Environment
 {
@@ -12,6 +13,12 @@ namespace Environment
 
         [SerializeField]
         private Entrance _connectedEntrance;
+
+        [Header("Configuration"), SerializeField]
+        private bool _goesToAnotherArea;
+
+        [SerializeField]
+        private AsyncSceneSwitcher.SceneAsEnum _targetArea;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -26,8 +33,16 @@ namespace Environment
                 _owningRoom.OwningAreaState.IsOnAlert = false;
             }
 
-            _connectedEntrance.MovePlayerIntoRoom(controller);
             _owningRoom.BecomeInactiveRoom();
+
+            if (!_goesToAnotherArea)
+            {
+                _connectedEntrance.MovePlayerIntoRoom(controller);
+            }
+            else
+            {
+                AsyncSceneSwitcher.Instance.SwitchScene(_targetArea, x => x.allowSceneActivation = true);
+            }
         }
     }
 }

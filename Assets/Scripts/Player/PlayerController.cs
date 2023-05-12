@@ -70,8 +70,8 @@ namespace Player
         private bool _heavyItemSelected;
 
         public bool HasItemEquipped => _item != null;
-
         public bool MovementIsOverridden { get; set; }
+        public bool CanCrawl { get; set; }
 
         protected override void OnInit()
         {
@@ -223,6 +223,11 @@ namespace Player
             var input = context.ReadValue<Vector2>();
             
             if (Mathf.Approximately(input.y, 1))
+            {
+                input.y = 0;
+            }
+
+            if (!CanCrawl && Mathf.Approximately(input.y, -1))
             {
                 input.y = 0;
             }

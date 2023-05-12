@@ -11,6 +11,9 @@ namespace Player
         [SerializeField]
         protected bool _overridesNormalMovement;
 
+        [SerializeField]
+        protected bool _isPassiveAbility;
+
         public string Name { get; protected set; }
         public InputInfo InputTrigger
         { 
@@ -49,10 +52,9 @@ namespace Player
 
         public bool TryExecute(PlayerContextObject context, out Coroutine outCoroutine)
         {
-            outCoroutine = null;
-
-            if (context.ActiveAbilityCoroutines.ContainsKey(Name) || !_inputTrigger.TestInput(context.PlayerInput) || !ValidateExecution(context))
+            if (_isPassiveAbility || context.ActiveAbilityCoroutines.ContainsKey(Name) || !_inputTrigger.TestInput(context.PlayerInput) || !ValidateExecution(context))
             {
+                outCoroutine = null;
                 return false;
             }
 
