@@ -54,6 +54,13 @@ namespace SetPieceHelpers
             }
             else
             {
+                var filteredAxes = _currentInput.InputAxes;
+
+                if (Mathf.Approximately(-1, filteredAxes.y))
+                {
+                    filteredAxes.y = 0;
+                }
+
                 _mover.ApplyMove(_currentInput.InputAxes, _movementSpeed, _currentInput.JumpInput, _jumpForce);
             }
         }
