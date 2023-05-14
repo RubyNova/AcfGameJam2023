@@ -8,11 +8,14 @@ namespace SetPieceHelpers
         [Header("Dependencies"), SerializeField]
         private Transform _targetTransform;
 
-        [SerializeField]
+        [Header("Configuration"), SerializeField]
         private Vector2 _positionDiff;
 
         [SerializeField]
         private Vector3 _rotationDiff;
+
+        [SerializeField]
+        private bool _isDirectModification = false;
 
         private bool _isActive = false;
 
@@ -28,8 +31,16 @@ namespace SetPieceHelpers
                 return;
             }
 
-            _targetTransform.Translate(_positionDiff.x, _positionDiff.y, 0);
-            _targetTransform.Rotate(_rotationDiff);
+            if (_isDirectModification)
+            {
+                _targetTransform.position = _positionDiff;
+                _targetTransform.rotation = Quaternion.Euler(_rotationDiff);
+            }
+            else
+            {
+                _targetTransform.Translate(_positionDiff.x, _positionDiff.y, 0);
+                _targetTransform.Rotate(_rotationDiff);
+            }
         }
     }
 }
