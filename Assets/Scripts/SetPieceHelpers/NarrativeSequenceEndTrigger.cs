@@ -9,24 +9,46 @@ namespace SetPieceHelpers
     {
         public UnityEvent onSequenceEnd;
 
-        private UnityAction onSequenceEndAction;
+        private UnityAction _onSequenceEndAction;
 
         private bool _subscribed = false;
 
+        private bool _isActive = false;
+
+        private void Awake()
+        {
+            _onSequenceEndAction = new UnityAction(() =>
+            {
+                onSequenceEnd.Invoke();
+                UnhookFromNarrativeControls();
+            });
+        }
+
+        private void UnhookFromNarrativeControls()
+        {
+            _subscribed = false;
+            MenuController.Instance.NarrativeMenu.sequenceFinishedEvent.RemoveListener(_onSequenceEndAction);
+        }
+
         public override void NotifyActiveStatus(bool isActiveRoom, Room roomContext, Vector2 playerEntryPosition = default)
         {
-            onSequenceEndAction ??= new UnityAction(() => onSequenceEnd.Invoke());
+            _isActive = isActiveRoom;
 
-            if (isActiveRoom)
+            if (!_isActive && _subscribed)
             {
-                _subscribed = true;
-                MenuController.Instance.NarrativeMenu.sequenceFinishedEvent.AddListener(onSequenceEndAction);
+                UnhookFromNarrativeControls();
             }
-            else if (_subscribed)
+        }
+
+        public void WaitForNextSequenceEnd()
+        {
+            if (!_isActive || _subscribed)
             {
-                _subscribed = false;
-                MenuController.Instance.NarrativeMenu.sequenceFinishedEvent.RemoveListener(onSequenceEndAction);
+                return;
             }
+
+            _subscribed = true;
+            MenuController.Instance.NarrativeMenu.sequenceFinishedEvent.AddListener(_onSequenceEndAction);
         }
     }
 }
