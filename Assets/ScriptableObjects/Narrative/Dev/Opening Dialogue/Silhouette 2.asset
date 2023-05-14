@@ -26,7 +26,7 @@ MonoBehaviour:
     _playSoundEffectIndex: 0
     _hasExecuteCustomEffectIndex: 0
     _executeCustomEffectIndex: 0
-    _text: "You can\u2019t ignore me. You\u2019ve tried that, remember?"
+    _text: "You can\u2019t escape me. You\u2019ve tried that, remember?"
   - _character: {fileID: 11400000, guid: 0a6d795de484e794da9ddc66c579a87a, type: 2}
     _hasPoseIndex: 0
     _poseIndex: 0
@@ -37,7 +37,28 @@ MonoBehaviour:
     _hasExecuteCustomEffectIndex: 0
     _executeCustomEffectIndex: 0
     _text: "You\u2019re stuck with me. I\u2019m part of you."
+  - _character: {fileID: 11400000, guid: 0a6d795de484e794da9ddc66c579a87a, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "I\u2019m getting stronger too\u2026"
+  - _character: {fileID: 11400000, guid: 0a6d795de484e794da9ddc66c579a87a, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: "This can\u2019t protect you any more!"
   _choices: []
   _dialogueBoxRenderIndex: 8
-  <SourceScript>k__BackingField: "Silhouette: You can\u2019t ignore me. You\u2019ve
-    tried that, remember?\r\n\r\nYou\u2019re stuck with me. I\u2019m part of you.\r"
+  <SourceScript>k__BackingField: "Silhouette: You can\u2019t escape me. You\u2019ve
+    tried that, remember?\r\n\rYou\u2019re stuck with me. I\u2019m part of you.\r\nI\u2019m
+    getting stronger too\u2026\r\nThis can\u2019t protect you any more!\r\n"
