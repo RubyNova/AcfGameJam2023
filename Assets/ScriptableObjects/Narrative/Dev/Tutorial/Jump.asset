@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432ea7e311e77dd4e9f6fbe5b4f9e2e2, type: 3}
+  m_Name: Jump
+  m_EditorClassIdentifier: 
+  _nextSequence: {fileID: 0}
+  _musicFiles: []
+  _soundEffectFiles: []
+  _customEffectPrefabs: []
+  _characterDialoguePairs:
+  - _character: {fileID: 11400000, guid: 42d6935fb18a7c74d92f8dc436ef938d, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: 'Press Space Bar to jump! '
+  _choices: []
+  _dialogueBoxRenderIndex: 0
+  <SourceScript>k__BackingField: 'Tutorial: Press Space Bar to jump! '
