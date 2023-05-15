@@ -16,7 +16,17 @@ MonoBehaviour:
   _musicFiles: []
   _soundEffectFiles: []
   _customEffectPrefabs: []
-  _characterDialoguePairs: []
+  _characterDialoguePairs:
+  - _character: {fileID: 11400000, guid: 42d6935fb18a7c74d92f8dc436ef938d, type: 2}
+    _hasPoseIndex: 0
+    _poseIndex: 0
+    _hasPlayMusicIndex: 0
+    _playMusicIndex: 0
+    _hasPlaySoundEffectIndex: 0
+    _playSoundEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 0
+    _executeCustomEffectIndex: 0
+    _text: Press E to close text boxes!
   _choices: []
   _dialogueBoxRenderIndex: 0
-  <SourceScript>k__BackingField: 
+  <SourceScript>k__BackingField: 'Tutorial: Press E to close text boxes!'
