@@ -3909,9 +3909,9 @@ MonoBehaviour:
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6493569894391424302}
-        m_TargetAssemblyTypeName: ACHNarrativeDriver.NarrativeUIController, Assembly-CSharp
-        m_MethodName: ExecuteNextDialogueLine
+      - m_Target: {fileID: 1312197840509844625}
+        m_TargetAssemblyTypeName: UI.MenuController, Assembly-CSharp
+        m_MethodName: Pause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3919,7 +3919,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_ActionId: f7061c46-9a53-459c-9cc7-eaf1304aba72
     m_ActionName: Player/Esc[/Keyboard/escape]
@@ -5056,8 +5056,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.0041, y: 6.392}
-  m_SizeDelta: {x: 1839.4, y: 1035.003}
+  m_AnchoredPosition: {x: 2.0013, y: 0.29103}
+  m_SizeDelta: {x: 1843.4, y: 1022.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2008756732165295732
 CanvasRenderer:
@@ -7937,8 +7937,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.0026, y: 6.3918}
-  m_SizeDelta: {x: 1839.4, y: 1010.6}
+  m_AnchoredPosition: {x: 2.0017, y: 0.29137}
+  m_SizeDelta: {x: 1843.4, y: 1022.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2309072454588776455
 CanvasRenderer:
@@ -11079,7 +11079,6 @@ GameObject:
   - component: {fileID: 1087730727617391035}
   - component: {fileID: 6211313182894273765}
   - component: {fileID: 3539491794181381023}
-  - component: {fileID: 2682132271315515033}
   m_Layer: 5
   m_Name: 1
   m_TagString: Untagged
@@ -11189,19 +11188,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6211313182894273765}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &2682132271315515033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7970440244881720455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 2d76e03cc01bfaf44ab79ed81e56bbf5, type: 2}
+        m_TargetAssemblyTypeName: ACHNarrativeDriver.ScriptableObjects.NarrativeSequence,
+          Assembly-CSharp
+        m_MethodName: set_DialogueBoxRenderIndex
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8007337035590139351
 GameObject:
   m_ObjectHideFlags: 0

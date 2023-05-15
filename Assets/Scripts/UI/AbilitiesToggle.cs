@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Abilities_toggle : MonoBehaviour
+public class AbilitiesToggle : MonoBehaviour
 {
     [System.Serializable] public class Abilities
     {

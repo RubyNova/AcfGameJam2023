@@ -2,7 +2,7 @@ using Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HUD_Health : MonoBehaviour
+public class HUDHealth : MonoBehaviour
 {
     [SerializeField] private Image _healthBarMask;
     [SerializeField] private Image _healthBarMask2;
