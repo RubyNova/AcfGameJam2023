@@ -544,6 +544,7 @@ GameObject:
   - component: {fileID: 918490154101608546}
   - component: {fileID: 7083490965789332851}
   - component: {fileID: 3196360815658269900}
+  - component: {fileID: 2832846368985077584}
   m_Layer: 5
   m_Name: 12
   m_TagString: Untagged
@@ -653,7 +654,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7083490965789332851}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2832846368985077584}
+        m_TargetAssemblyTypeName: DevHelpers.DiaryPages, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2832846368985077584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478854709775137197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6493569894391424302}
+  _pauseMenu: {fileID: 8222593877312810983}
+  _targetDiaryPage: {fileID: 11400000, guid: 788d209ba15480b458c5ade8bb79548a, type: 2}
 --- !u!1 &673149489355867807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,6 +1366,7 @@ GameObject:
   - component: {fileID: 606489159020393712}
   - component: {fileID: 3682591889436810224}
   - component: {fileID: 6180836875406469247}
+  - component: {fileID: 9217693292585433635}
   m_Layer: 5
   m_Name: 16
   m_TagString: Untagged
@@ -1447,7 +1476,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3682591889436810224}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9217693292585433635}
+        m_TargetAssemblyTypeName: DevHelpers.DiaryPages, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &9217693292585433635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162660075903317800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6493569894391424302}
+  _pauseMenu: {fileID: 8222593877312810983}
+  _targetDiaryPage: {fileID: 11400000, guid: 78fc8110ab5e69941b3a5a4dd09ed486, type: 2}
 --- !u!1 &1308067564272506783
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,6 +1904,7 @@ GameObject:
   - component: {fileID: 4310015139334640882}
   - component: {fileID: 4330689890624267820}
   - component: {fileID: 2282110840519557833}
+  - component: {fileID: 4631107445303917772}
   m_Layer: 5
   m_Name: 15
   m_TagString: Untagged
@@ -1957,7 +2014,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4330689890624267820}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4631107445303917772}
+        m_TargetAssemblyTypeName: DevHelpers.DiaryPages, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4631107445303917772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564368372534735394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6493569894391424302}
+  _pauseMenu: {fileID: 8222593877312810983}
+  _targetDiaryPage: {fileID: 11400000, guid: 658459257471a8340a0a9858d3f2864a, type: 2}
 --- !u!1 &1596478794177942601
 GameObject:
   m_ObjectHideFlags: 0
@@ -4350,7 +4434,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 157.534, y: 57.615}
+  m_AnchoredPosition: {x: 162.9, y: 57}
   m_SizeDelta: {x: 33.325, y: 55.278}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1200047087328944402
@@ -4462,6 +4546,7 @@ GameObject:
   - component: {fileID: 9214724890102011182}
   - component: {fileID: 6634422953729018517}
   - component: {fileID: 6444608676507376067}
+  - component: {fileID: 3266688985334174259}
   m_Layer: 5
   m_Name: 6
   m_TagString: Untagged
@@ -4571,7 +4656,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6634422953729018517}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3266688985334174259}
+        m_TargetAssemblyTypeName: DevHelpers.DiaryPages, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3266688985334174259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2583328735243910232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6493569894391424302}
+  _pauseMenu: {fileID: 8222593877312810983}
+  _targetDiaryPage: {fileID: 11400000, guid: f8979b590d4f7694fa61022480e34cca, type: 2}
 --- !u!1 &2851791396689480340
 GameObject:
   m_ObjectHideFlags: 0
@@ -4584,6 +4696,7 @@ GameObject:
   - component: {fileID: 7695635699244080109}
   - component: {fileID: 3140613066049842912}
   - component: {fileID: 1397934625920190576}
+  - component: {fileID: 4173681384209036519}
   m_Layer: 5
   m_Name: 13
   m_TagString: Untagged
@@ -4693,7 +4806,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3140613066049842912}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4173681384209036519}
+        m_TargetAssemblyTypeName: DevHelpers.DiaryPages, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4173681384209036519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2851791396689480340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6493569894391424302}
+  _pauseMenu: {fileID: 8222593877312810983}
+  _targetDiaryPage: {fileID: 11400000, guid: c8b9177b080000d4c838661111d38820, type: 2}
 --- !u!1 &2899361593536920774
 GameObject:
   m_ObjectHideFlags: 0
@@ -5434,6 +5574,7 @@ GameObject:
   - component: {fileID: 3262276657549207255}
   - component: {fileID: 3015519263361185386}
   - component: {fileID: 4037444315707817804}
+  - component: {fileID: 2449994476598664423}
   m_Layer: 5
   m_Name: 5
   m_TagString: Untagged
@@ -5543,7 +5684,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3015519263361185386}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2449994476598664423}
+        m_TargetAssemblyTypeName: DevHelpers.DiaryPages, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2449994476598664423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3377386290894510134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6493569894391424302}
+  _pauseMenu: {fileID: 8222593877312810983}
+  _targetDiaryPage: {fileID: 11400000, guid: 924c6d78daf7bb24e8eafd88e1f85bf7, type: 2}
 --- !u!1 &3418817007460800876
 GameObject:
   m_ObjectHideFlags: 0
@@ -5727,6 +5895,7 @@ GameObject:
   - component: {fileID: 3866311176313373049}
   - component: {fileID: 5511216679249942890}
   - component: {fileID: 8862147402925006195}
+  - component: {fileID: 3626491270226056533}
   m_Layer: 5
   m_Name: 14
   m_TagString: Untagged
@@ -5836,7 +6005,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5511216679249942890}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3626491270226056533}
+        m_TargetAssemblyTypeName: DevHelpers.DiaryPages, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3626491270226056533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583518869116792760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6493569894391424302}
+  _pauseMenu: {fileID: 8222593877312810983}
+  _targetDiaryPage: {fileID: 11400000, guid: 41ca0839c07bca7468547bac958a91f7, type: 2}
 --- !u!1 &3624877475793010215
 GameObject:
   m_ObjectHideFlags: 0
@@ -6967,6 +7163,7 @@ GameObject:
   - component: {fileID: 4920446293038337522}
   - component: {fileID: 9198837784317643663}
   - component: {fileID: 751210831724470701}
+  - component: {fileID: 5045459737177390189}
   m_Layer: 5
   m_Name: 10
   m_TagString: Untagged
@@ -7076,7 +7273,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9198837784317643663}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5045459737177390189}
+        m_TargetAssemblyTypeName: DevHelpers.DiaryPages, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5045459737177390189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4250378321256893780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6493569894391424302}
+  _pauseMenu: {fileID: 8222593877312810983}
+  _targetDiaryPage: {fileID: 11400000, guid: 2d399e41f160aea4d82f64346fed1835, type: 2}
 --- !u!1 &4429224110823971965
 GameObject:
   m_ObjectHideFlags: 0
@@ -7792,6 +8016,7 @@ GameObject:
   - component: {fileID: 992471974008108972}
   - component: {fileID: 4201364845528475164}
   - component: {fileID: 7187983670080635952}
+  - component: {fileID: 8638372646227441954}
   m_Layer: 5
   m_Name: 8
   m_TagString: Untagged
@@ -7901,7 +8126,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4201364845528475164}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8638372646227441954}
+        m_TargetAssemblyTypeName: DevHelpers.DiaryPages, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8638372646227441954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4880201167852993596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6493569894391424302}
+  _pauseMenu: {fileID: 8222593877312810983}
+  _targetDiaryPage: {fileID: 11400000, guid: 57231ff2aa1ca7745aef961fcede45fc, type: 2}
 --- !u!1 &4886731292656408083
 GameObject:
   m_ObjectHideFlags: 0
@@ -8260,6 +8512,7 @@ GameObject:
   - component: {fileID: 423235804875190383}
   - component: {fileID: 2958436318019708645}
   - component: {fileID: 166987083486908221}
+  - component: {fileID: 3540541025990150058}
   m_Layer: 5
   m_Name: 7
   m_TagString: Untagged
@@ -8369,7 +8622,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2958436318019708645}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3540541025990150058}
+        m_TargetAssemblyTypeName: DevHelpers.DiaryPages, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3540541025990150058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5136026220057020199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6493569894391424302}
+  _pauseMenu: {fileID: 8222593877312810983}
+  _targetDiaryPage: {fileID: 11400000, guid: 3741bafb8dd1de34c94d94bcce8f1dee, type: 2}
 --- !u!1 &5152354176698446099
 GameObject:
   m_ObjectHideFlags: 0
@@ -9204,6 +9484,7 @@ GameObject:
   - component: {fileID: 7069044657134669619}
   - component: {fileID: 8345790641639062975}
   - component: {fileID: 6399219078678921470}
+  - component: {fileID: 871556600545735458}
   m_Layer: 5
   m_Name: 11
   m_TagString: Untagged
@@ -9313,7 +9594,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8345790641639062975}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 871556600545735458}
+        m_TargetAssemblyTypeName: DevHelpers.DiaryPages, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &871556600545735458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5912453411570665876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6493569894391424302}
+  _pauseMenu: {fileID: 8222593877312810983}
+  _targetDiaryPage: {fileID: 11400000, guid: 15a91ad572dfb8948b344ec5298e85d7, type: 2}
 --- !u!1 &5912739652918136499
 GameObject:
   m_ObjectHideFlags: 0
@@ -9402,6 +9710,7 @@ GameObject:
   - component: {fileID: 5323205747337335188}
   - component: {fileID: 1731653507111072824}
   - component: {fileID: 1155064992659513946}
+  - component: {fileID: 1491345316680134309}
   m_Layer: 5
   m_Name: 2
   m_TagString: Untagged
@@ -9511,7 +9820,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1731653507111072824}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1491345316680134309}
+        m_TargetAssemblyTypeName: DevHelpers.DiaryPages, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1491345316680134309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093347389593162243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6493569894391424302}
+  _pauseMenu: {fileID: 8222593877312810983}
+  _targetDiaryPage: {fileID: 11400000, guid: 56c8e0f185816974da6f2b24748a0b2f, type: 2}
 --- !u!1 &6372050398871862271
 GameObject:
   m_ObjectHideFlags: 0
@@ -10576,6 +10912,7 @@ GameObject:
   - component: {fileID: 6266464668569465677}
   - component: {fileID: 8813371606025077880}
   - component: {fileID: 1143258614657633138}
+  - component: {fileID: 8317760721687115881}
   m_Layer: 5
   m_Name: 3
   m_TagString: Untagged
@@ -10685,7 +11022,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8813371606025077880}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8317760721687115881}
+        m_TargetAssemblyTypeName: DevHelpers.DiaryPages, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8317760721687115881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7348260921840277759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6493569894391424302}
+  _pauseMenu: {fileID: 8222593877312810983}
+  _targetDiaryPage: {fileID: 11400000, guid: 2c86897d92033a1459568d0687c6f72d, type: 2}
 --- !u!1 &7389352913559202886
 GameObject:
   m_ObjectHideFlags: 0
@@ -11079,6 +11443,7 @@ GameObject:
   - component: {fileID: 1087730727617391035}
   - component: {fileID: 6211313182894273765}
   - component: {fileID: 3539491794181381023}
+  - component: {fileID: 8704068082513107742}
   m_Layer: 5
   m_Name: 1
   m_TagString: Untagged
@@ -11189,19 +11554,33 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 2d76e03cc01bfaf44ab79ed81e56bbf5, type: 2}
-        m_TargetAssemblyTypeName: ACHNarrativeDriver.ScriptableObjects.NarrativeSequence,
-          Assembly-CSharp
-        m_MethodName: set_DialogueBoxRenderIndex
-        m_Mode: 3
+      - m_Target: {fileID: 8704068082513107742}
+        m_TargetAssemblyTypeName: DevHelpers.DiaryPages, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8704068082513107742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7970440244881720455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6493569894391424302}
+  _pauseMenu: {fileID: 8222593877312810983}
+  _targetDiaryPage: {fileID: 11400000, guid: 9c3e6c66852a47047aeeb13858367a74, type: 2}
 --- !u!1 &8007337035590139351
 GameObject:
   m_ObjectHideFlags: 0
@@ -11214,6 +11593,7 @@ GameObject:
   - component: {fileID: 8442328096045037736}
   - component: {fileID: 5332871099899251177}
   - component: {fileID: 9173328033827661605}
+  - component: {fileID: 8244829205520394186}
   m_Layer: 5
   m_Name: 9
   m_TagString: Untagged
@@ -11323,7 +11703,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5332871099899251177}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8244829205520394186}
+        m_TargetAssemblyTypeName: DevHelpers.DiaryPages, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8244829205520394186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8007337035590139351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6493569894391424302}
+  _pauseMenu: {fileID: 8222593877312810983}
+  _targetDiaryPage: {fileID: 11400000, guid: 2d76e03cc01bfaf44ab79ed81e56bbf5, type: 2}
 --- !u!1 &8222593877312810983
 GameObject:
   m_ObjectHideFlags: 0
@@ -11767,6 +12174,7 @@ GameObject:
   - component: {fileID: 7383885413181353364}
   - component: {fileID: 8541539604837939707}
   - component: {fileID: 6484591260523958156}
+  - component: {fileID: 1187357116350025709}
   m_Layer: 5
   m_Name: 4
   m_TagString: Untagged
@@ -11876,7 +12284,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8541539604837939707}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1187357116350025709}
+        m_TargetAssemblyTypeName: DevHelpers.DiaryPages, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1187357116350025709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8523965691426883954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e72201d1ac13a49bb2d8b7bc954448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6493569894391424302}
+  _pauseMenu: {fileID: 8222593877312810983}
+  _targetDiaryPage: {fileID: 11400000, guid: 99f9c7f372dfd0d47b5d79c930e05cf9, type: 2}
 --- !u!1 &8792732060897712625
 GameObject:
   m_ObjectHideFlags: 0

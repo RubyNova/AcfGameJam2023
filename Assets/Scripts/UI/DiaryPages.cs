@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using ACHNarrativeDriver;
+using ACHNarrativeDriver.ScriptableObjects;
 using UnityEngine;
 
-public class DiaryPages : MonoBehaviour
+namespace DevHelpers
 {
-    // Start is called before the first frame update
-    void Start()
+    public class DiaryPages : MonoBehaviour
     {
+        [SerializeField] private NarrativeUIController _target;
+        [SerializeField] private GameObject _pauseMenu;
+        [SerializeField] private NarrativeSequence _targetDiaryPage;
         
-    }
+        public void OnClick()
+        {
+            //resume the game
+            _pauseMenu.SetActive(false);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            //Now we can play the diary page
+            _target.ExecuteSequence(_targetDiaryPage);
+        }
     }
 }
