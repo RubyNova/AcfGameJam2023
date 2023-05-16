@@ -19,8 +19,8 @@ namespace SetPieceHelpers
         {
             _onSequenceEndAction = new UnityAction(() =>
             {
-                onSequenceEnd.Invoke();
                 UnhookFromNarrativeControls();
+                onSequenceEnd.Invoke();
             });
         }
 

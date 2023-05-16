@@ -55,11 +55,11 @@ namespace ACHNarrativeDriver
                 {
                     _hasFocus = false;
                     LastPlayedSequence = _currentNarrativeSequence;
-                    sequenceFinishedEvent.Invoke();
                     _dialogueBoxes[LastPlayedSequence.DialogueBoxRenderIndex].SetActive(false);
                     _dialoguePanel.SetActive(false);
                     _isCurrentlyExecuting = false;
                     _currentNarrativeSequence = null;
+                    sequenceFinishedEvent.Invoke();
                     return;
                 }
 
