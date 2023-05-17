@@ -22,7 +22,7 @@ namespace UI
 
         protected override void OnInit()
         {
-            IsPaused = false;
+            Resume();
             SceneManager.activeSceneChanged += (_, _) => _rootCanvas.worldCamera = Camera.main;
         }
 

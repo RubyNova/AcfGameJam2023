@@ -29,6 +29,8 @@ namespace ACHNarrativeDriver
         private bool _hasFocus;
         
         public NarrativeSequence LastPlayedSequence { get; private set; }
+
+        public bool IsCurrentlyExecuting => _isCurrentlyExecuting;
         
         private void Awake()
         {
@@ -131,14 +133,17 @@ namespace ACHNarrativeDriver
             _nextDialogueLineRequested = true;
         }
 
-        public void OnInteractTrigger()
+        public void OnInteractTrigger(InputAction.CallbackContext context)
         {
             if (!_hasFocus)
             {
                 return;
             }
             
-            ExecuteNextDialogueLine();
+            if (!context.ReadValueAsButton())
+            {
+                ExecuteNextDialogueLine();
+            }
         }
     }
 }
