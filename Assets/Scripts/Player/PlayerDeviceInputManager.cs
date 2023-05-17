@@ -6,9 +6,10 @@ using Utilities;
 
 namespace Player
 {
-    internal class PlayerDeviceInputManager : MonoSingleton<PlayerDeviceInputManager>
+    public class PlayerDeviceInputManager : MonoSingleton<PlayerDeviceInputManager>
     {
-        private bool _filterInputs = false;
+        [Header("Dependencies"), SerializeField]
+        private PlayerInput _inputComponent;
 
         protected override void OnInit()
         {
@@ -16,85 +17,36 @@ namespace Player
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            var input = context.ReadValue<Vector2>();
-
-            if (_filterInputs && input != Vector2.zero)
-            {
-                return;
-            }
-
             PlayerController.Instance.OnMove(context);
         }
 
         public void OnSprint(InputAction.CallbackContext context)
         {
-            bool input = context.ReadValueAsButton();
-
-            if (_filterInputs && input)
-            {
-                return;
-            }
-
             PlayerController.Instance.OnSprint(context);
         }
         
         public void OnAbilityTriggerZero(InputAction.CallbackContext context)
         {
-            bool input = context.ReadValueAsButton();
-
-            if (_filterInputs && input)
-            {
-                return;
-            }
-
             PlayerController.Instance.OnAbilityTriggerZero(context);
         }
 
         public void OnAbilityTriggerOne(InputAction.CallbackContext context)
         {
-            bool input = context.ReadValueAsButton();
-
-            if (_filterInputs && input)
-            {
-                return;
-            }
-
             PlayerController.Instance.OnAbilityTriggerOne(context);
         }
 
         public void OnAim(InputAction.CallbackContext context)
         {
-            var input = context.ReadValue<Vector2>();
-
-            if (_filterInputs && input != Vector2.zero)
-            {
-                return;
-            }
-
             PlayerController.Instance.OnAim(context);
         }
 
         public void OnFire(InputAction.CallbackContext context)
         {
-            bool input = context.ReadValueAsButton();
-
-            if (_filterInputs && input)
-            {
-                return;
-            }
-
             PlayerController.Instance.OnFire(context);
         }
 
         public void OnJump(InputAction.CallbackContext context)
         {
-            bool input = context.ReadValueAsButton();
-
-            if (_filterInputs && input)
-            {
-                return;
-            }
-
             PlayerController.Instance.OnJump(context);
         }
 
@@ -140,12 +92,12 @@ namespace Player
 
         public void DisableFiltering()
         {
-            _filterInputs = false;
+            _inputComponent.ActivateInput();
         }
 
         public void EnableFiltering()
         {
-            _filterInputs = true;
+            _inputComponent.DeactivateInput();
         }
     }
 }
