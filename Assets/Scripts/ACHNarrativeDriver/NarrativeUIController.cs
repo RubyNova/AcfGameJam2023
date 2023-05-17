@@ -139,8 +139,9 @@ namespace ACHNarrativeDriver
             {
                 return;
             }
-            
-            if (!context.ReadValueAsButton())
+            bool pushedDown = context.ReadValueAsButton();
+
+            if (!pushedDown)
             {
                 ExecuteNextDialogueLine();
             }

@@ -100,10 +100,12 @@ namespace Player
 
         public void OnInteract(InputAction.CallbackContext context)
         {
+            /*
             if (!context.performed)
             {
                 return;
             }
+            */
 
             var controller = MenuController.Instance;
 
