@@ -90,6 +90,13 @@ namespace Player
         public void EnableFiltering()
         {
             _isFiltered = true;
+            var controller = PlayerController.Instance;
+            controller.OnMove(Vector2.zero);
+            controller.OnSprint(false);
+            controller.OnAbilityTriggerZero(false);
+            controller.OnAbilityTriggerOne(false);
+            controller.OnFire(false);
+            controller.OnJump(false);
         }
     }
 }
