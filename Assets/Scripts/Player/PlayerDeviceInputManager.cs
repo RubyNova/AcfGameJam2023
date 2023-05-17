@@ -8,8 +8,7 @@ namespace Player
 {
     public class PlayerDeviceInputManager : MonoSingleton<PlayerDeviceInputManager>
     {
-        [Header("Dependencies"), SerializeField]
-        private PlayerInput _inputComponent;
+        private bool _isFiltered = false;
 
         protected override void OnInit()
         {
@@ -17,48 +16,41 @@ namespace Player
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            PlayerController.Instance.OnMove(context);
+            PlayerController.Instance.OnMove(_isFiltered ? Vector2.zero : context.ReadValue<Vector2>());
         }
 
         public void OnSprint(InputAction.CallbackContext context)
         {
-            PlayerController.Instance.OnSprint(context);
+            PlayerController.Instance.OnSprint(!_isFiltered && context.ReadValueAsButton());
         }
         
         public void OnAbilityTriggerZero(InputAction.CallbackContext context)
         {
-            PlayerController.Instance.OnAbilityTriggerZero(context);
+            PlayerController.Instance.OnAbilityTriggerZero(!_isFiltered && context.ReadValueAsButton());
         }
 
         public void OnAbilityTriggerOne(InputAction.CallbackContext context)
         {
-            PlayerController.Instance.OnAbilityTriggerOne(context);
+            PlayerController.Instance.OnAbilityTriggerOne(!_isFiltered && context.ReadValueAsButton());
         }
 
         public void OnAim(InputAction.CallbackContext context)
         {
-            PlayerController.Instance.OnAim(context);
+            PlayerController.Instance.OnAim(context.ReadValue<Vector2>());
         }
 
         public void OnFire(InputAction.CallbackContext context)
         {
-            PlayerController.Instance.OnFire(context);
+            PlayerController.Instance.OnFire(!_isFiltered && context.ReadValueAsButton());
         }
 
         public void OnJump(InputAction.CallbackContext context)
         {
-            PlayerController.Instance.OnJump(context);
+            PlayerController.Instance.OnJump(!_isFiltered && context.ReadValueAsButton());
         }
 
         public void OnInteract(InputAction.CallbackContext context)
         {
-            /*
-            if (!context.performed)
-            {
-                return;
-            }
-            */
-
             var controller = MenuController.Instance;
 
             if (controller.NarrativeMenu.IsCurrentlyExecuting)
@@ -92,12 +84,12 @@ namespace Player
 
         public void DisableFiltering()
         {
-            _inputComponent.ActivateInput();
+            _isFiltered = false;
         }
 
         public void EnableFiltering()
         {
-            _inputComponent.DeactivateInput();
+            _isFiltered = true;
         }
     }
 }
