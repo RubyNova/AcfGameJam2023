@@ -218,9 +218,9 @@ namespace Player
             }
         }
 
-        public void OnMove(InputAction.CallbackContext context)
+        public void OnMove(Vector2 axes)
         { 
-            var input = context.ReadValue<Vector2>();
+            var input = axes;
             
             if (Mathf.Approximately(input.y, 1))
             {
@@ -235,39 +235,29 @@ namespace Player
             _inputInfo.InputAxes = input;
         }
 
-        public void OnSprint(InputAction.CallbackContext context)
+        public void OnSprint(bool button)
         {
-            _inputInfo.InputSprintModifier = context.ReadValueAsButton();
+            _inputInfo.InputSprintModifier = button;
         }
         
-        public void OnAbilityTriggerZero(InputAction.CallbackContext context)
+        public void OnAbilityTriggerZero(bool button)
         {
-            _inputInfo.InputAbilityTriggerZero = context.ReadValueAsButton();
+            _inputInfo.InputAbilityTriggerZero = button;
         }
 
-        public void OnAbilityTriggerOne(InputAction.CallbackContext context)
+        public void OnAbilityTriggerOne(bool button)
         {
-            _inputInfo.InputAbilityTriggerOne = context.ReadValueAsButton();
+            _inputInfo.InputAbilityTriggerOne = button;
         }
 
-        public void OnAim(InputAction.CallbackContext context)
+        public void OnAim(Vector2 point)
         {
-            // TODO: I hate this SO much
-            if (context.control.device is Gamepad)
-            {
-                _isMouse = false;
-                _aimData = context.ReadValue<Vector2>();
-            }
-            else if (context.control.device is Mouse)
-            {
-                _isMouse = true;
-                _aimData = _targetCamera.ScreenToWorldPoint(context.ReadValue<Vector2>());
-            }
+            _aimData = _targetCamera.ScreenToWorldPoint(point);
         }
 
-        public void OnFire(InputAction.CallbackContext context)
+        public void OnFire(bool button)
         {
-            if (!context.ReadValueAsButton() || _item == null)
+            if (!button || _item == null)
             {
                 return;
             }
@@ -307,9 +297,9 @@ namespace Player
 
         }
 
-        public void OnJump(InputAction.CallbackContext context)
+        public void OnJump(bool button)
         {
-             _inputInfo.JumpInput = context.ReadValueAsButton();
+             _inputInfo.JumpInput = button;
         }
 
         public void RegisterAbility<TAbility>() where TAbility : PlayerAbilityBehaviour
