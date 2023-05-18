@@ -223,7 +223,7 @@ namespace AI
                 switch (_suspicionSubState)
                 {
                     case SuspicionSubState.GracePeriod:
-                        _mover.ApplyMove(new(0, 0), 0, false, 0); // stops the NPC
+                        StopNPCMoving();
                         if (!waitTimeIsDone)
                         {
                             _suspicionTimeRemaining -= Time.deltaTime;
