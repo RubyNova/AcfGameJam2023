@@ -15,7 +15,8 @@ MonoBehaviour:
   _nextSequence: {fileID: 0}
   _musicFiles: []
   _soundEffectFiles: []
-  _customEffectPrefabs: []
+  _customEffectPrefabs:
+  - {fileID: 0}
   _characterDialoguePairs:
   - _character: {fileID: 11400000, guid: 7de6c9e27c5b850458b52803e8d76cd4, type: 2}
     _hasPoseIndex: 0
