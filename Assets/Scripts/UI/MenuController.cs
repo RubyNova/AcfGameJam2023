@@ -16,7 +16,11 @@ namespace UI
         [SerializeField]
         private NarrativeUIController _narrativeMenu;
 
+        [SerializeField]
+        private DiaryPagesUnlocker _unlockerControl;
+
         public NarrativeUIController NarrativeMenu => _narrativeMenu;
+        public DiaryPagesUnlocker UnlockerControl => _unlockerControl;
 
         public bool IsPaused { get; private set; }
 
