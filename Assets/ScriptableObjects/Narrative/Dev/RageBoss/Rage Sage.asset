@@ -15,7 +15,8 @@ MonoBehaviour:
   _nextSequence: {fileID: 0}
   _musicFiles: []
   _soundEffectFiles: []
-  _customEffectPrefabs: []
+  _customEffectPrefabs:
+  - {fileID: 3179932708060074001, guid: c29adc782352339479d15c6dd703a728, type: 3}
   _characterDialoguePairs:
   - _character: {fileID: 11400000, guid: 7de6c9e27c5b850458b52803e8d76cd4, type: 2}
     _hasPoseIndex: 0
@@ -44,7 +45,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: Holding it all in burns you from the inside.
   - _character: {fileID: 11400000, guid: 7de6c9e27c5b850458b52803e8d76cd4, type: 2}
@@ -64,7 +65,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: Suppressing your rage makes you vulnerable, not strong.
   - _character: {fileID: 11400000, guid: 7de6c9e27c5b850458b52803e8d76cd4, type: 2}
@@ -84,12 +85,13 @@ MonoBehaviour:
     Rage is like a
     fire.
 
-    Holding it all in burns you from the inside.
+    Rage Boss: %%0: Holding it all in burns you from the inside.
 
-    Keep feeding it
-    and it''ll consume you.
+    Keep
+    feeding it and it''ll consume you.
 
-    Suppressing your rage makes you vulnerable, not
-    strong.
+    Rage boss: %%0: Suppressing your rage
+    makes you vulnerable, not strong.
 
-    Have the courage to face it, control it, and release it when necessary.'
+    Have the courage to face it, control it,
+    and release it when necessary.'

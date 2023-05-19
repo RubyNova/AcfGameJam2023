@@ -80,6 +80,11 @@ namespace ACHNarrativeDriver
 
             var characterDialogueInfo = _currentNarrativeSequence.CharacterDialoguePairs[_currentDialogueIndex];
 
+            if(characterDialogueInfo.ExecuteCustomEffectIndex is { } customEffectIndex)
+            {
+                Instantiate(_currentNarrativeSequence.CustomEffectPrefabs[customEffectIndex]);
+            }
+
             _rollingTextRoutine =
                 StartCoroutine(
                     PerformRollingText(characterDialogueInfo));

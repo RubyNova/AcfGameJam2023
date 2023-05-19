@@ -193,7 +193,7 @@ namespace ACHNarrativeDriver.Editor
             if (GUILayout.Button("Save Source Script"))
             {
                 compiledScriptChanged = true;
-                var listOfStuff = _interpreter.Interpret(_currentNarrativeSequence.SourceScript, _predefinedVariables, _currentNarrativeSequence.MusicFiles.Count, _currentNarrativeSequence.SoundEffectFiles.Count, 0); //TODO: Change the 0 with the actual count
+                var listOfStuff = _interpreter.Interpret(_currentNarrativeSequence.SourceScript, _predefinedVariables, _currentNarrativeSequence.MusicFiles.Count, _currentNarrativeSequence.SoundEffectFiles.Count, _currentNarrativeSequence.CustomEffectPrefabs.Count); //TODO: Change the 0 with the actual count
                 _currentNarrativeSequence.CharacterDialoguePairs = listOfStuff;
 
                 if (_currentNarrativeSequence.Choices is not null && _predefinedVariables is not null)
