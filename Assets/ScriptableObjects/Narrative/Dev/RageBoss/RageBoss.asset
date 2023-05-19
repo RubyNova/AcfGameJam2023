@@ -16,7 +16,7 @@ MonoBehaviour:
   _musicFiles: []
   _soundEffectFiles: []
   _customEffectPrefabs:
-  - {fileID: 0}
+  - {fileID: 3179932708060074001, guid: c29adc782352339479d15c6dd703a728, type: 3}
   _characterDialoguePairs:
   - _character: {fileID: 11400000, guid: 7de6c9e27c5b850458b52803e8d76cd4, type: 2}
     _hasPoseIndex: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: THINK ABOUT WHAT THEY'VE DONE!
   - _character: {fileID: 11400000, guid: 7de6c9e27c5b850458b52803e8d76cd4, type: 2}
@@ -82,15 +82,15 @@ MonoBehaviour:
   _dialogueBoxRenderIndex: 6
   <SourceScript>k__BackingField: 'Rage Boss:  WE HAVE EVERY RIGHT TO BE ANGRY!
 
-    THINK
-    ABOUT WHAT THEY''VE DONE!
+    Rage
+    Boss: %%0: THINK ABOUT WHAT THEY''VE DONE!
 
-    THINK ABOUT ALL THE TIMES THEY''VE HURT US.
+    THINK ABOUT ALL THE TIMES THEY''VE
+    HURT US.
 
-    THEY
-    DESERVE TO FEEL OUR PAIN.
+    THEY DESERVE TO FEEL OUR PAIN.
 
-    THEY DESERVE TO KNOW WHAT SUFFERING IS LIKE.
+    THEY DESERVE TO KNOW WHAT SUFFERING
+    IS LIKE.
 
-    THEY
-    SHOULD PAY!'
+    THEY SHOULD PAY!'

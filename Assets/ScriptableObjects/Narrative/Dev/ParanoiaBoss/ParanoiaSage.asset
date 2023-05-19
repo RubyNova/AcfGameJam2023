@@ -15,7 +15,8 @@ MonoBehaviour:
   _nextSequence: {fileID: 0}
   _musicFiles: []
   _soundEffectFiles: []
-  _customEffectPrefabs: []
+  _customEffectPrefabs:
+  - {fileID: 3179932708060074001, guid: c29adc782352339479d15c6dd703a728, type: 3}
   _characterDialoguePairs:
   - _character: {fileID: 11400000, guid: 96175294303c46d4c98e4da04510cdc3, type: 2}
     _hasPoseIndex: 0
@@ -34,7 +35,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: No, everyone hates me!
   - _character: {fileID: 11400000, guid: 96175294303c46d4c98e4da04510cdc3, type: 2}
@@ -44,7 +45,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: They have to hate me, because I hate myself!
   - _character: {fileID: 11400000, guid: 96175294303c46d4c98e4da04510cdc3, type: 2}
@@ -54,7 +55,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: ... ... ...
   - _character: {fileID: 11400000, guid: 96175294303c46d4c98e4da04510cdc3, type: 2}
@@ -72,11 +73,12 @@ MonoBehaviour:
   <SourceScript>k__BackingField: 'Paranoia Boss: What do you mean they weren''t looking
     at me?
 
-    No, everyone hates me!
+    Paranoia Boss: %%0: No, everyone hates me!
 
-    They have to hate me, because I hate
-    myself!
+    Paranoia Boss: %%0:
+    They have to hate me, because I hate myself!
 
-    ... ... ...
+    Paranoia Boss: %%0: ... ...
+    ...
 
     Maybe that''s the only truth in all of this...'
