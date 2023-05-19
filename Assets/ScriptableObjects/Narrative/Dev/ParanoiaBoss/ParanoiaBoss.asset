@@ -35,7 +35,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: Don't tell me you don't see it!
   - _character: {fileID: 11400000, guid: 96175294303c46d4c98e4da04510cdc3, type: 2}
@@ -65,7 +65,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: "They\u2019ve been putting us down for years! "
   - _character: {fileID: 11400000, guid: 96175294303c46d4c98e4da04510cdc3, type: 2}
@@ -75,13 +75,13 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: 'It''s time to rise up! '
   _choices: []
   _dialogueBoxRenderIndex: 4
   <SourceScript>k__BackingField: "Paranoia Boss: The judgment and hatred in their
-    eyes... \nDon't tell me you don't see it!\r\nIt's not paranoia when it\u2019s
-    the truth. Everyone hates us! \nThey're watching so intently, waiting for us
-    to falter!\nThey\u2019ve been putting us down for years! \nIt's time to rise
-    up! \r\n"
+    eyes... \nParanoia Boss: %%0: Don't tell me you don't see it!\r\nIt's not paranoia
+    when it\u2019s the truth. Everyone hates us! \nThey're watching so intently,
+    waiting for us to falter!\nParanoia Boss: %%0: They\u2019ve been putting us down
+    for years! \nParanoia Boss: %%0: It's time to rise up! \r\n"
