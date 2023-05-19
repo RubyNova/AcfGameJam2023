@@ -107,8 +107,8 @@ namespace ACHNarrativeDriver.Api
                 
                 if (!string.IsNullOrWhiteSpace(executeCustomEffectIndexString))
                 {
-                    playSoundEffectIndexString = ResolvePredefinedVariables(executeCustomEffectIndexString, predefinedVariables);
-                    playSoundEffectIndex = int.Parse(playSoundEffectIndexString.Replace("%%", string.Empty));
+                    executeCustomEffectIndexString = ResolvePredefinedVariables(executeCustomEffectIndexString, predefinedVariables);
+                    executeCustomEffectIndex = int.Parse(executeCustomEffectIndexString.Replace("%%", string.Empty));
                 }
 
                 if (executeCustomEffectIndex != null && executeCustomEffectIndex >= customEffectsCount)
