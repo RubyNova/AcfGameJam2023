@@ -41,6 +41,7 @@ namespace Movement
         private Dictionary<GameObject, CollisionDirectionDataBuffer> _activeCollisionPointsPerGameObject;
         private List<Collider2D> _groundColliders;
         private bool _isJumping;
+        private bool _rawVelocityApplied;
 
         public bool OverrideMover // lmao fuck
         {
@@ -64,6 +65,7 @@ namespace Movement
             _activeCollisionPointsPerGameObject = new();
             _groundColliders = new();
             _isJumping = true;
+            _rawVelocityApplied = false;
         }
 
         private void Start()
@@ -219,6 +221,12 @@ namespace Movement
 
             _isJumping = false;
             _groundColliders.Add(collider);
+
+            if (_rawVelocityApplied)
+            {
+                _rawVelocityApplied = false;
+                _overrideMover = false;
+            }
         }
 
         private void OnTriggerExit2D(Collider2D collider)
@@ -260,6 +268,13 @@ namespace Movement
             _overrideMover = true;
             _rigidbody.gravityScale = 0;
             _rigidbody.velocity = directionAndSpeed;
+        }
+
+        public void ApplyRawVelocity(Vector2 velocity)
+        {
+            _overrideMover = true;
+            _rigidbody.velocity = velocity;
+            _rawVelocityApplied = true;
         }
     }
 }
