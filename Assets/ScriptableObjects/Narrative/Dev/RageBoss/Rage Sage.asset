@@ -55,7 +55,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: Keep feeding it and it'll consume you.
   - _character: {fileID: 11400000, guid: 7de6c9e27c5b850458b52803e8d76cd4, type: 2}
@@ -75,7 +75,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: Have the courage to face it, control it, and release it when necessary.
   _choices: []
@@ -87,11 +87,11 @@ MonoBehaviour:
 
     Rage Boss: %%0: Holding it all in burns you from the inside.
 
-    Keep
-    feeding it and it''ll consume you.
+    Rage
+    Boss: %%0: Keep feeding it and it''ll consume you.
 
-    Rage Boss: %%0: Suppressing your rage
-    makes you vulnerable, not strong.
+    Rage Boss: %%0: Suppressing
+    your rage makes you vulnerable, not strong.
 
-    Have the courage to face it, control it,
-    and release it when necessary.'
+    Rage Boss: %%0: Have the courage
+    to face it, control it, and release it when necessary.'
