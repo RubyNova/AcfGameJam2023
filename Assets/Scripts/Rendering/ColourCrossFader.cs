@@ -22,19 +22,19 @@ namespace Rendering
 
 
         [field: SerializeField, HideInInspector]
-        public Material Material
+        public Material[] Materials
         {
             get; set;
         }
 
         [field: SerializeField, HideInInspector]
-        public SpriteRenderer SpriteRenderer
+        public SpriteRenderer[] SpriteRenderers
         {
             get; set;
         }
 
         [field: SerializeField, HideInInspector]
-        public Image UIImage
+        public Image[] UIImages
         {
             get; set;
         }
@@ -65,13 +65,22 @@ namespace Rendering
             switch (ComponentType)
             {
                 case TargetType.Material:
-                    Material.color = _colourNodeA;
+                    foreach (var material in Materials)
+                    {
+                        material.color = _colourNodeA;
+                    }
                     break;
                 case TargetType.SpriteRenderer:
-                    SpriteRenderer.color = _colourNodeA;
+                    foreach (var spriteRenderer in SpriteRenderers)
+                    {
+                        spriteRenderer.color = _colourNodeA;
+                    }
                     break;
                 case TargetType.UIImage:
-                    UIImage.color = _colourNodeA;
+                    foreach (var image in UIImages)
+                    {
+                        image.color = _colourNodeA;
+                    }
                     break;
             }
         }
@@ -111,13 +120,31 @@ namespace Rendering
             switch (ComponentType)
             {
                 case TargetType.Material:
-                    _updateFuncValue = x => Material.color = x;
+                    _updateFuncValue = x => 
+                    {
+                        foreach (var material in Materials)
+                        {
+                            material.color = x;
+                        }
+                    };
                     break;
                 case TargetType.SpriteRenderer:
-                    _updateFuncValue = x => SpriteRenderer.color = x;
+                    _updateFuncValue = x => 
+                    {
+                        foreach (var spriteRenderer in SpriteRenderers)
+                        {
+                            spriteRenderer.color = x;
+                        }
+                    };
                     break;
                 case TargetType.UIImage:
-                    _updateFuncValue = x => UIImage.color = x;
+                    _updateFuncValue = x => 
+                    {
+                        foreach (var image in UIImages)
+                        {
+                            image.color = x;
+                        }
+                    };
                     break;
             }
         }

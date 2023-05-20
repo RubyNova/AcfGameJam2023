@@ -1,14 +1,27 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities.Editor;
 
 namespace Rendering.Editor
 {
     [CustomEditor(typeof(ColourCrossFader))]
-    public class COlourCrossFaderEditor : UnityEditor.Editor
+    public class ColourCrossFaderEditor : UnityEditor.Editor
     {
-        public override void OnInspectorGUI()
+        private EditorArrayViewExtensions.EditorArrayViewSettings _materialSettings;
+        private EditorArrayViewExtensions.EditorArrayViewSettings _spriteRendererSettings;
+        private EditorArrayViewExtensions.EditorArrayViewSettings _uiImageSettings;
+
+        public ColourCrossFaderEditor()
         {
+            _materialSettings = new("Materials", false);
+            _spriteRendererSettings = new("Sprite Renderers", false);
+            _uiImageSettings = new("UI Images", false);
+        }
+
+        public override void OnInspectorGUI()
+        { 
             var crossFader = (ColourCrossFader)target;
             GUILayout.Label("Dependencies & Configuration");
 
@@ -17,13 +30,13 @@ namespace Rendering.Editor
             switch (crossFader.ComponentType)
             {
                 case ColourCrossFader.TargetType.Material:
-                crossFader.Material = (Material)EditorGUILayout.ObjectField("Material", crossFader.Material, typeof(Material), false);
+                crossFader.Materials = EditorArrayViewExtensions.UnityObjectArrayField(_materialSettings, crossFader.Materials);
                     break;
                 case ColourCrossFader.TargetType.SpriteRenderer:
-                crossFader.SpriteRenderer = (SpriteRenderer)EditorGUILayout.ObjectField("Sprite Renderer", crossFader.SpriteRenderer, typeof(SpriteRenderer), false);
+                crossFader.SpriteRenderers = EditorArrayViewExtensions.UnityObjectArrayField(_spriteRendererSettings, crossFader.SpriteRenderers);
                     break;
                 case ColourCrossFader.TargetType.UIImage:
-                crossFader.UIImage = (Image)EditorGUILayout.ObjectField("UI Image", crossFader.UIImage, typeof(Image), false);
+                crossFader.UIImages =  EditorArrayViewExtensions.UnityObjectArrayField(_uiImageSettings, crossFader.UIImages);
                     break;
             }
 
