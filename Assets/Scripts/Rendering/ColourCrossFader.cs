@@ -138,7 +138,6 @@ namespace Rendering
                         foreach (var spriteRenderer in SpriteRenderers)
                         {
                             spriteRenderer.color = x;
-                            print($"{spriteRenderer.gameObject.name}: {spriteRenderer.color}");
                         }
                     };
                     break;
