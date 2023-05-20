@@ -18,9 +18,13 @@ namespace UI
 
         [SerializeField]
         private DiaryPagesUnlocker _diaryPageUnlockerControl;
+        
+        [SerializeField]
+        private DialoguePlayer _dialoguePlayer;
 
         public NarrativeUIController NarrativeMenu => _narrativeMenu;
         public DiaryPagesUnlocker DiaryPageUnlockerControl => _diaryPageUnlockerControl;
+        public DialoguePlayer DialoguePlayer => _dialoguePlayer;
 
         public bool IsPaused { get; private set; }
 
@@ -42,6 +46,11 @@ namespace UI
             _pauseMenu.SetActive(false);
             Time.timeScale = 1f;
             IsPaused = false;
+        }
+        
+        public void Quit()
+        {
+            Application.Quit();
         }
     }
 }
