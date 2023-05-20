@@ -24,6 +24,8 @@ namespace Rendering.Editor
         { 
             var crossFader = (ColourCrossFader)target;
             GUILayout.Label("Dependencies & Configuration");
+            
+            base.OnInspectorGUI();
 
             crossFader.ComponentType = (ColourCrossFader.TargetType)EditorGUILayout.EnumPopup("Component Type", crossFader.ComponentType);
 
@@ -39,8 +41,6 @@ namespace Rendering.Editor
                 crossFader.UIImages =  EditorArrayViewExtensions.UnityObjectArrayField(_uiImageSettings, crossFader.UIImages);
                     break;
             }
-
-            base.OnInspectorGUI();
         }
     }
 }
