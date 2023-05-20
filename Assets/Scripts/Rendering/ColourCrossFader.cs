@@ -104,6 +104,10 @@ namespace Rendering
 
                 while (timePassed < _timeForCrossFade)
                 {
+                    if (Mathf.Approximately(_colourA.a, _colourB.a))
+                    {
+                        throw new Exception("FUCK");
+                    }
                     _updateFuncValue(Color.Lerp(_colourA, _colourB, timePassed / _timeForCrossFade));
                     timePassed += Time.deltaTime;
                     yield return null;
@@ -134,6 +138,7 @@ namespace Rendering
                         foreach (var spriteRenderer in SpriteRenderers)
                         {
                             spriteRenderer.color = x;
+                            print($"{spriteRenderer.gameObject.name}: {spriteRenderer.color}");
                         }
                     };
                     break;

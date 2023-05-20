@@ -19,6 +19,11 @@ namespace Utilities.Editor
 
         public static T[] UnityObjectArrayField<T>(EditorArrayViewSettings settings, T[] targetArray) where T : UnityEngine.Object
         {
+            if (targetArray == null)
+            {
+                targetArray = new T[0];
+            }
+
             settings.IsOpen = EditorGUILayout.Foldout(settings.IsOpen, settings.Label);
             int newSize = targetArray.Length;
 
@@ -34,7 +39,7 @@ namespace Utilities.Editor
 
                 for (int i = 0; i < newSize; i++)
                 {
-                    targetArray[i] = (T)EditorGUILayout.ObjectField($"Value {i}", targetArray[i], typeof(T), false);
+                    targetArray[i] = (T)EditorGUILayout.ObjectField($"Value {i}", targetArray[i], typeof(T), true);
                 }
             }
 
