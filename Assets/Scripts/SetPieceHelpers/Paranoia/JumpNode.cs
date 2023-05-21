@@ -10,33 +10,32 @@ namespace SetPieceHelpers.Paranoia
 
         public JumpNode[] RelatedNodes => _relatedNodes;
 
-        public Vector2 CalculateJumpForce(Vector3 origin)
+        public Vector2 CalculateJumpForce(Vector2 origin)
         {
-            Vector3 p = origin;
-            Vector3 direction = origin - transform.position;
-            float initialAngle = Vector3.Angle(direction, transform.right);
+            Vector2 displacement = (Vector2)transform.position - origin;
+            float gravity = Physics2D.gravity.magnitude;
 
-            float gravity = Physics.gravity.magnitude;
-            // Selected angle in radians
-            float angle = initialAngle * Mathf.Deg2Rad;
+            /* Calculate time of flight to reach the target
+             * 
+             * This value is calculated based on the equation for vertical motion for a projectile
+             * under the influence of gravity. Original formula is like so:
+             * 
+             * y = v0y * t - (1/2) * g * t^2
+             * 
+             * By rearranging this formula, we can get an approximation of the time the
+             * parabolic arc will take. As such, we can use the time to calculate the velocity components
+             * on both axes.
+             * 
+             * I'm really lucky I like algebra, and just needed the formula. - Matt
+             */
+            float time = Mathf.Sqrt((2f * displacement.magnitude) / gravity);
 
-            // Positions of this object and the target on the same plane
-            Vector3 planarTarget = new Vector3(p.x, 0, p.z);
-            Vector3 planarPostion = new Vector3(transform.position.x, 0, transform.position.z);
+            // Calculate the initial X and Y velocities
+            float initialVelocityX = displacement.x / time;
+            float initialVelocityY = (displacement.y + 0.5f * gravity * Mathf.Pow(time, 2)) / time;
 
-            // Planar distance between objects
-            float distance = Vector3.Distance(planarTarget, planarPostion);
-            // Distance along the y axis between objects
-            float yOffset = transform.position.y - p.y;
-
-            float initialVelocity = (1 / Mathf.Cos(angle)) * Mathf.Sqrt((0.5f * gravity * Mathf.Pow(distance, 2)) / (distance * Mathf.Tan(angle) + yOffset));
-
-            Vector3 velocity = new Vector3(0, initialVelocity * Mathf.Sin(angle), initialVelocity * Mathf.Cos(angle));
-
-            // Rotate our velocity to match the direction between the two objects
-            float angleBetweenObjects = Vector3.Angle(Vector3.forward, planarTarget - planarPostion) * (p.x > transform.position.x ? 1 : -1); Vector3 finalVelocity = Quaternion.AngleAxis(angleBetweenObjects, Vector3.up) * velocity;
-
-            return (Vector2)finalVelocity;
+            // Create and return the launch velocity vector
+            return new Vector2(initialVelocityX, initialVelocityY);
         }
     }
 }
