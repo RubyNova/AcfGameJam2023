@@ -25,7 +25,7 @@ namespace Environment
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (_useTriggerCollider || !collision.gameObject.CompareTag(_playerTagName))
+            if (_useTriggerCollider || !collision.gameObject.CompareTag(_playerTagName) || _damageRoutine != null)
             {
                 return;
             }
