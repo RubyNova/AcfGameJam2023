@@ -1,4 +1,5 @@
 ﻿using Environment;
+using Player;
 using System;
 using UnityEngine;
 
@@ -48,6 +49,9 @@ namespace SetPieceHelpers
         private Animator _target;
 
         [Header("Configuration"), SerializeField]
+        private bool _targetPlayerAnimator = false;
+
+        [SerializeField]
         private string[] _triggerFlagNames;
 
         [SerializeField]
@@ -61,6 +65,16 @@ namespace SetPieceHelpers
         public override void NotifyActiveStatus(bool isActiveRoom, Room roomContext, Vector2 playerEntryPosition = default)
         {
             _isActive = isActiveRoom;
+
+            if (_targetPlayerAnimator)
+            {
+                _target = PlayerController.Instance.GetComponentInChildren<Animator>();
+
+                if (_target == null)
+                {
+                    throw new Exception("Player animator not found.");
+                }
+            }
         }
 
         public void ApplyFlags()
