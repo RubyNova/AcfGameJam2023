@@ -8,7 +8,11 @@ namespace Environment
         [Header("Dependencies"), SerializeField]
         private Room _owningRoom;
 
+        [Header("Configuration"), SerializeField]
+        private int _entranceExitId;
+
         public Room OwningRoom => _owningRoom;
+        public int EntranceExitId => _entranceExitId;
 
         public void MovePlayerIntoRoom(PlayerController player)
         {

@@ -1,6 +1,7 @@
 ﻿using Player;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Utilities;
 
@@ -17,13 +18,18 @@ namespace Environment
             [SerializeField]
             private Entrance _targetEntrance;
 
+            [SerializeField]
+            private int _entranceExitId = 0;
+
             public AsyncSceneSwitcher.SceneAsEnum LinkedArea => _linkedArea;
             public Entrance Entrance => _targetEntrance;
+            public int EntranceExitId => _entranceExitId;
 
-            public void Deconstruct(out AsyncSceneSwitcher.SceneAsEnum linkedArea, out Entrance targetEntrance)
+            public void Deconstruct(out AsyncSceneSwitcher.SceneAsEnum linkedArea, out Entrance targetEntrance, out int entranceExitId)
             {
                 linkedArea = _linkedArea;
                 targetEntrance = _targetEntrance;
+                entranceExitId = _entranceExitId;
             }
         }
 
@@ -129,11 +135,11 @@ namespace Environment
             {
                 var previousScene = AsyncSceneSwitcher.Instance.PreviousScene.Value;
 
-                foreach (var (linkedScene, entrnaceObject) in _startingEntrances)
+                foreach (var (linkedScene, entranceObject, entranceExitId) in _startingEntrances)
                 {
-                    if (linkedScene == previousScene)
+                    if (linkedScene == previousScene && entranceObject.EntranceExitId == entranceExitId)
                     {
-                        entrnaceObject.MovePlayerIntoRoom(PlayerController.Instance);
+                        entranceObject.MovePlayerIntoRoom(PlayerController.Instance);
                         return;
                     }
                 }
