@@ -1,6 +1,7 @@
 ﻿using Environment;
 using Movement;
 using Player;
+using SetPieceHelpers.BossFightHelpers;
 using System;
 using UnityEngine;
 
@@ -9,6 +10,9 @@ namespace SetPieceHelpers.Paranoia
     public class ParanoiaNPCCore : RoomEntityBehaviour
     {
         [Header("Dependencies"), SerializeField]
+        private string _playerTag = "Player";
+
+        [SerializeField]
         private GroundMover _mover;
 
         [SerializeField]
@@ -22,6 +26,9 @@ namespace SetPieceHelpers.Paranoia
 
         [SerializeField]
         private float _movementCooldownPeriod;
+
+        [SerializeField]
+        private int _damageToDealOnHit;
 
         private PlayerController _playerController;
         private PlatformNode _platformNode;
@@ -208,6 +215,18 @@ namespace SetPieceHelpers.Paranoia
         public void NotifyPlatformChanged(PlatformNode platform)
         {
             _platformNode = platform;
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (!collision.gameObject.CompareTag(_playerTag) || !Mathf.Approximately(_movementCooldownRemaining, 0))
+            {
+                return;
+            }
+
+            PlayerController.Instance.GetComponent<PlayerHealthController>().AdjustHealth(_damageToDealOnHit);
+
+            _movementCooldownRemaining = _movementCooldownPeriod;
         }
     }
 }

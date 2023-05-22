@@ -1,6 +1,6 @@
 ﻿using Environment;
 using Movement;
-using SetPieceHelpers.Paranoia;
+using SetPieceHelpers.BossFightHelpers;
 using UnityEngine;
 
 namespace DevHelpers

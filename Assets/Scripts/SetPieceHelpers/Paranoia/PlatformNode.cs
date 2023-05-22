@@ -1,5 +1,4 @@
-﻿using Environment;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using SetPieceHelpers.BossFightHelpers;
 using UnityEngine;
 
 namespace SetPieceHelpers.Paranoia

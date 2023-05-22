@@ -1,7 +1,6 @@
-﻿using Environment;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace SetPieceHelpers.Paranoia
+namespace SetPieceHelpers.BossFightHelpers
 {
     public class JumpNode : MonoBehaviour 
     {

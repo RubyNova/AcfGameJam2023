@@ -1,4 +1,5 @@
 ﻿using Environment;
+using SetPieceHelpers.BossFightHelpers;
 using UnityEngine;
 
 namespace SetPieceHelpers.Paranoia
