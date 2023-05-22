@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5984367464991075324}
   - component: {fileID: 8129838182874921385}
   - component: {fileID: 5746523262176890516}
-  - component: {fileID: 6463008473482356306}
   - component: {fileID: 4514285841533145710}
   m_Layer: 0
   m_Name: Diary Page Unlocker
@@ -132,19 +131,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.8828125}
   m_EdgeRadius: 0
---- !u!114 &6463008473482356306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4360117686385495868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e29c6201ad4e0774487006640e983b04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _diaryPageIndexToUnlock: 3
 --- !u!114 &4514285841533145710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,10 +147,10 @@ MonoBehaviour:
   PlayerArrived:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6463008473482356306}
-        m_TargetAssemblyTypeName: SetPieceHelpers.DiaryPageUnlocker, Assembly-CSharp
-        m_MethodName: UnlockPage
-        m_Mode: 1
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DiaryPagesUnlocker, Assembly-CSharp
+        m_MethodName: EnableDiaryPage
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
