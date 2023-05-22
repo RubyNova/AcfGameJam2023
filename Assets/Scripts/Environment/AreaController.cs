@@ -154,7 +154,6 @@ namespace Environment
         public void InitialiseFromSave(int saveRoomIndex)
         {
             _isInitialisedFromSave = true;
-
         }
     }
 }
