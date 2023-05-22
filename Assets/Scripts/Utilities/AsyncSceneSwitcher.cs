@@ -22,6 +22,7 @@ namespace Utilities
 
         public SceneAsEnum? PreviousScene { get; private set; }
         public SceneAsEnum CurrentScene { get; private set; }
+        public int? EntranceExitId { get; set; }
 
         protected override void OnInit()
         {

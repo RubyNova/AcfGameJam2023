@@ -18,18 +18,13 @@ namespace Environment
             [SerializeField]
             private Entrance _targetEntrance;
 
-            [SerializeField]
-            private int _entranceExitId = 0;
-
             public AsyncSceneSwitcher.SceneAsEnum LinkedArea => _linkedArea;
             public Entrance Entrance => _targetEntrance;
-            public int EntranceExitId => _entranceExitId;
 
-            public void Deconstruct(out AsyncSceneSwitcher.SceneAsEnum linkedArea, out Entrance targetEntrance, out int entranceExitId)
+            public void Deconstruct(out AsyncSceneSwitcher.SceneAsEnum linkedArea, out Entrance targetEntrance)
             {
                 linkedArea = _linkedArea;
                 targetEntrance = _targetEntrance;
-                entranceExitId = _entranceExitId;
             }
         }
 
@@ -134,9 +129,17 @@ namespace Environment
             else
             {
                 var previousScene = AsyncSceneSwitcher.Instance.PreviousScene.Value;
+                bool cameFromGameScene = AsyncSceneSwitcher.Instance.EntranceExitId != null;
+                int entranceExitId = cameFromGameScene ? AsyncSceneSwitcher.Instance.EntranceExitId.Value : 0;
 
-                foreach (var (linkedScene, entranceObject, entranceExitId) in _startingEntrances)
+                foreach (var (linkedScene, entranceObject) in _startingEntrances)
                 {
+
+                    if (!cameFromGameScene)
+                    {
+                        entranceExitId = entranceObject.EntranceExitId; // give us the first entrance for this scene type
+                    }
+
                     if (linkedScene == previousScene && entranceObject.EntranceExitId == entranceExitId)
                     {
                         entranceObject.MovePlayerIntoRoom(PlayerController.Instance);

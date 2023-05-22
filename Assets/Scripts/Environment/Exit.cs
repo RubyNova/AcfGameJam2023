@@ -14,6 +14,9 @@ namespace Environment
         [SerializeField]
         private Entrance _connectedEntrance;
 
+        [SerializeField]
+        private int _entranceExitId;
+
         [Header("Configuration"), SerializeField]
         private bool _goesToAnotherArea;
 
@@ -37,6 +40,7 @@ namespace Environment
             {
                 _owningRoom.OwningAreaState.IsActiveArea = false;
                 _owningRoom.OwningAreaState.IsOnAlert = false;
+                AsyncSceneSwitcher.Instance.EntranceExitId = _entranceExitId;
                 AsyncSceneSwitcher.Instance.SwitchScene(_targetArea, x => x.allowSceneActivation = true);
             }
         }
