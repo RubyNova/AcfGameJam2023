@@ -27,12 +27,6 @@ namespace Environment
                 return;
             }
 
-            if (_connectedEntrance.OwningRoom.OwningAreaState != _owningRoom.OwningAreaState)
-            {
-                _owningRoom.OwningAreaState.IsActiveArea = false;
-                _owningRoom.OwningAreaState.IsOnAlert = false;
-            }
-
             _owningRoom.BecomeInactiveRoom();
 
             if (!_goesToAnotherArea)
@@ -41,6 +35,8 @@ namespace Environment
             }
             else
             {
+                _owningRoom.OwningAreaState.IsActiveArea = false;
+                _owningRoom.OwningAreaState.IsOnAlert = false;
                 AsyncSceneSwitcher.Instance.SwitchScene(_targetArea, x => x.allowSceneActivation = true);
             }
         }
