@@ -1,3 +1,4 @@
+using Rendering;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,22 @@ public class DialoguePlayer : MonoBehaviour
     
     public void EnableDialoguePage(int pageNumber)
     {
-        _dialoguePages[pageNumber].SetActive(true);
+        var target = _dialoguePages[pageNumber];
+        target.SetActive(true);
+        StartCoroutine(WaitForFrameBeforeCrossFade(target));
     }
     
     public void DisableDialoguePage(int pageNumber)
     {
-        _dialoguePages[pageNumber].SetActive(false);
+        var target = _dialoguePages[pageNumber];
+        target.SetActive(false);
+        StartCoroutine(WaitForFrameBeforeCrossFade(target));
+    }
+
+
+    IEnumerator WaitForFrameBeforeCrossFade(GameObject target)
+    {
+        yield return null;
+        target.GetComponent<ColourCrossFader>().DoCrossFade();
     }
 }
