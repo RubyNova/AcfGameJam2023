@@ -205,16 +205,9 @@ namespace SetPieceHelpers.Paranoia
             transform.position = detector.transform.position;
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        public void NotifyPlatformChanged(PlatformNode platform)
         {
-            if (!collision.TryGetComponent<PlatformNode>(out var _))
-            {
-                return;
-            }
-
-            _jumpNode = null;
-            _platformNode = null;
-            _selfPlatformResolved = true; // TODO: revise after nap
+            _platformNode = platform;
         }
     }
 }

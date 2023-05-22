@@ -74,22 +74,32 @@ namespace SetPieceHelpers.Paranoia
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!collision.CompareTag(_playerTag))
+            if (collision.CompareTag(_playerTag))
             {
+                PlayerIsHere = true;
                 return;
             }
-            
-            PlayerIsHere = true;
+
+            if (collision.gameObject.TryGetComponent<ParanoiaNPCCore>(out var core))
+            {
+                core.NotifyPlatformChanged(this);
+                return;
+            }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (!collision.CompareTag(_playerTag))
+            if (collision.CompareTag(_playerTag))
             {
+                PlayerIsHere = false;
                 return;
             }
 
-            PlayerIsHere = false;
+            if (collision.gameObject.TryGetComponent<ParanoiaNPCCore>(out var core))
+            {
+                core.NotifyPlatformChanged(null);
+                return;
+            }
         }
     }
 }
