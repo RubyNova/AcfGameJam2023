@@ -94,29 +94,29 @@ namespace Rendering
 
         public void DoCrossFade()
         {
+            _crossfadeRoutine = StartCoroutine(DoCrossfadeCoroutine());
+        }
+
+        public IEnumerator DoCrossfadeCoroutine()
+        {
             UpdateColourUpdateLambda();
 
-            _crossfadeRoutine = StartCoroutine(CrossFadeLogicInternal());
+            float timePassed = 0;
 
-            IEnumerator CrossFadeLogicInternal()
+            while (timePassed < _timeForCrossFade)
             {
-                float timePassed = 0;
-
-                while (timePassed < _timeForCrossFade)
+                if (Mathf.Approximately(_colourA.a, _colourB.a))
                 {
-                    if (Mathf.Approximately(_colourA.a, _colourB.a))
-                    {
-                        throw new Exception("FUCK");
-                    }
-                    _updateFuncValue(Color.Lerp(_colourA, _colourB, timePassed / _timeForCrossFade));
-                    timePassed += Time.deltaTime;
-                    yield return null;
+                    throw new Exception("FUCK");
                 }
-
-                _updateFuncValue(_colourB);
-                SwapColours();
-                _crossfadeRoutine = null;
+                _updateFuncValue(Color.Lerp(_colourA, _colourB, timePassed / _timeForCrossFade));
+                timePassed += Time.deltaTime;
+                yield return null;
             }
+
+            _updateFuncValue(_colourB);
+            SwapColours();
+            _crossfadeRoutine = null;
         }
 
         private void UpdateColourUpdateLambda()

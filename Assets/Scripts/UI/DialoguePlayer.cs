@@ -11,20 +11,30 @@ public class DialoguePlayer : MonoBehaviour
     {
         var target = _dialoguePages[pageNumber];
         target.SetActive(true);
-        StartCoroutine(WaitForFrameBeforeCrossFade(target));
+        StartCoroutine(WaitForFrameBeforeCrossFade(target, false));
     }
     
     public void DisableDialoguePage(int pageNumber)
     {
         var target = _dialoguePages[pageNumber];
-        target.SetActive(false);
-        StartCoroutine(WaitForFrameBeforeCrossFade(target));
+        StartCoroutine(WaitForFrameBeforeCrossFade(target, true));
     }
 
 
-    IEnumerator WaitForFrameBeforeCrossFade(GameObject target)
+    IEnumerator WaitForFrameBeforeCrossFade(GameObject target, bool disableGameObject)
     {
+        if (!disableGameObject)
+        {
+            target.SetActive(true);
+        }
+
         yield return null;
-        target.GetComponent<ColourCrossFader>().DoCrossFade();
+        yield return target.GetComponent<ColourCrossFader>().DoCrossfadeCoroutine();
+
+
+        if (disableGameObject)
+        {
+            target.SetActive(false);
+        }
     }
 }
