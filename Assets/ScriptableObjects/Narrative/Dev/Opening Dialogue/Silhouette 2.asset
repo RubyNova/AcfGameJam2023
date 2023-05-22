@@ -15,7 +15,8 @@ MonoBehaviour:
   _nextSequence: {fileID: 0}
   _musicFiles: []
   _soundEffectFiles: []
-  _customEffectPrefabs: []
+  _customEffectPrefabs:
+  - {fileID: 3179932708060074001, guid: c29adc782352339479d15c6dd703a728, type: 3}
   _characterDialoguePairs:
   - _character: {fileID: 11400000, guid: 0a6d795de484e794da9ddc66c579a87a, type: 2}
     _hasPoseIndex: 0
@@ -44,7 +45,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: "I\u2019m getting stronger too\u2026"
   - _character: {fileID: 11400000, guid: 0a6d795de484e794da9ddc66c579a87a, type: 2}
@@ -60,5 +61,5 @@ MonoBehaviour:
   _choices: []
   _dialogueBoxRenderIndex: 8
   <SourceScript>k__BackingField: "Silhouette: You can\u2019t escape me. You\u2019ve
-    tried that, remember?\r\n\rYou\u2019re stuck with me. I\u2019m part of you.\r\nI\u2019m
-    getting stronger too\u2026\r\nThis can\u2019t protect you any more!\r\n"
+    tried that, remember?\r\n\rYou\u2019re stuck with me. I\u2019m part of you.\r\nSilhouette:
+    %%0: I\u2019m getting stronger too\u2026\r\nThis can\u2019t protect you any more!\r\n"
