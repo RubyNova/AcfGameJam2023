@@ -15,7 +15,8 @@ MonoBehaviour:
   _nextSequence: {fileID: 0}
   _musicFiles: []
   _soundEffectFiles: []
-  _customEffectPrefabs: []
+  _customEffectPrefabs:
+  - {fileID: 3179932708060074001, guid: c29adc782352339479d15c6dd703a728, type: 3}
   _characterDialoguePairs:
   - _character: {fileID: 11400000, guid: faabd2373c700964391f1bdcfcca7ace, type: 2}
     _hasPoseIndex: 0
@@ -34,7 +35,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: 'Maybe I underestimated you. '
   - _character: {fileID: 11400000, guid: faabd2373c700964391f1bdcfcca7ace, type: 2}
@@ -44,7 +45,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: Which means maybe I underestimated myself...
   - _character: {fileID: 11400000, guid: faabd2373c700964391f1bdcfcca7ace, type: 2}
@@ -54,7 +55,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: Ok I'll give you what you need, ready?
   - _character: {fileID: 11400000, guid: faabd2373c700964391f1bdcfcca7ace, type: 2}
@@ -64,7 +65,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: When anxiety is building, you need comfort.
   - _character: {fileID: 11400000, guid: faabd2373c700964391f1bdcfcca7ace, type: 2}
@@ -74,7 +75,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: 'Find a safe space, and take a break. '
   - _character: {fileID: 11400000, guid: faabd2373c700964391f1bdcfcca7ace, type: 2}
@@ -88,7 +89,10 @@ MonoBehaviour:
     _executeCustomEffectIndex: 0
     _text: Take some time to clear your mind...
   _choices: []
-  <SourceScript>k__BackingField: "Anxiety Boss: You're a lot stronger than I thought.\nMaybe
-    I underestimated you. \nWhich means maybe I underestimated myself...\nOk I'll
-    give you what you need, ready?\nWhen anxiety is building, you need comfort.\nFind
-    a safe space, and take a break. \nTake some time to clear your mind..."
+  _dialogueBoxRenderIndex: 0
+  <SourceScript>k__BackingField: "Anxiety Boss: You're a lot stronger than I thought.\nAnxiety
+    Boss: %%0: Maybe I underestimated you. \nAnxiety Boss: %%0: Which means maybe
+    I underestimated myself...\nAnxiety Boss: %%0: Ok I'll give you what you need,
+    ready?\nAnxiety Boss: %%0: When anxiety is building, you need comfort.\nAnxiety
+    Boss: %%0: Find a safe space, and take a break. \nTake some time to clear your
+    mind..."

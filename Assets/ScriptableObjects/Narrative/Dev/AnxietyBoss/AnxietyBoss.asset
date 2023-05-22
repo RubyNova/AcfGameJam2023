@@ -15,7 +15,8 @@ MonoBehaviour:
   _nextSequence: {fileID: 0}
   _musicFiles: []
   _soundEffectFiles: []
-  _customEffectPrefabs: []
+  _customEffectPrefabs:
+  - {fileID: 3179932708060074001, guid: c29adc782352339479d15c6dd703a728, type: 3}
   _characterDialoguePairs:
   - _character: {fileID: 11400000, guid: faabd2373c700964391f1bdcfcca7ace, type: 2}
     _hasPoseIndex: 0
@@ -34,7 +35,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: Don't look at me!
   - _character: {fileID: 11400000, guid: faabd2373c700964391f1bdcfcca7ace, type: 2}
@@ -44,7 +45,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: I don't want your help!
   - _character: {fileID: 11400000, guid: faabd2373c700964391f1bdcfcca7ace, type: 2}
@@ -54,7 +55,7 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: 'You''re just going to fail again! '
   - _character: {fileID: 11400000, guid: faabd2373c700964391f1bdcfcca7ace, type: 2}
@@ -74,11 +75,12 @@ MonoBehaviour:
     _playMusicIndex: 0
     _hasPlaySoundEffectIndex: 0
     _playSoundEffectIndex: 0
-    _hasExecuteCustomEffectIndex: 0
+    _hasExecuteCustomEffectIndex: 1
     _executeCustomEffectIndex: 0
     _text: 'Get away from me! '
   _choices: []
   _dialogueBoxRenderIndex: 0
-  <SourceScript>k__BackingField: "Anxiety Boss:  No! Stay away from me!\nDon't look
-    at me!\nI don't want your help!\nYou're just going to fail again! \nYou'll end
-    up hurting both of us!\nGet away from me! \n"
+  <SourceScript>k__BackingField: "Anxiety Boss:  No! Stay away from me!\nAnxiety
+    Boss: %%0: Don't look at me!\nAnxiety Boss: %%0: I don't want your help!\nAnxiety
+    Boss: %%0: You're just going to fail again! \nYou'll end up hurting both of us!\nAnxiety
+    Boss: %%0: Get away from me! \n"
