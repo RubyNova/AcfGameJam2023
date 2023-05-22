@@ -217,6 +217,11 @@ namespace SetPieceHelpers.Paranoia
             _platformNode = platform;
         }
 
+        public void ForceMovementCooldown()
+        {
+            _movementCooldownRemaining = _movementCooldownPeriod;
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (!collision.gameObject.CompareTag(_playerTag) || !Mathf.Approximately(_movementCooldownRemaining, 0))
