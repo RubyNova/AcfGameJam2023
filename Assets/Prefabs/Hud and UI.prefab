@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2850978365809713571}
   - component: {fileID: 5517644122050924923}
   - component: {fileID: 4702089764962707528}
+  - component: {fileID: 3898984264057560108}
   m_Layer: 5
   m_Name: Diary Updated
   m_TagString: Untagged
@@ -76,6 +77,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3898984264057560108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56031760921351958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ba0de9e31fbd04ea18ae6bc109bd57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ComponentType>k__BackingField: 2
+  <Materials>k__BackingField: []
+  <SpriteRenderers>k__BackingField: []
+  <UIImages>k__BackingField:
+  - {fileID: 4702089764962707528}
+  _colourNodeA: {r: 1, g: 1, b: 1, a: 0}
+  _colourNodeB: {r: 1, g: 1, b: 1, a: 1}
+  _timeForCrossFade: 0.5
 --- !u!1 &66290584175859161
 GameObject:
   m_ObjectHideFlags: 0
@@ -3181,6 +3202,7 @@ GameObject:
   - component: {fileID: 4865962807177049389}
   - component: {fileID: 6744103016957860455}
   - component: {fileID: 4029825228242353916}
+  - component: {fileID: 3107140715025348362}
   m_Layer: 5
   m_Name: Heavy Heart
   m_TagString: Untagged
@@ -3246,6 +3268,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3107140715025348362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915268836826018242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ba0de9e31fbd04ea18ae6bc109bd57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ComponentType>k__BackingField: 2
+  <Materials>k__BackingField: []
+  <SpriteRenderers>k__BackingField: []
+  <UIImages>k__BackingField:
+  - {fileID: 4029825228242353916}
+  _colourNodeA: {r: 1, g: 1, b: 1, a: 0}
+  _colourNodeB: {r: 1, g: 1, b: 1, a: 1}
+  _timeForCrossFade: 0.5
 --- !u!1 &1933060042952960217
 GameObject:
   m_ObjectHideFlags: 0
@@ -4059,8 +4101,8 @@ MonoBehaviour:
   _pauseMenu: {fileID: 8222593877312810983}
   _rootCanvas: {fileID: 7651108371752716512}
   _narrativeMenu: {fileID: 6493569894391424302}
-  _diaryPageUnlockerControl: {fileID: 0}
-  _dialoguePlayer: {fileID: 0}
+  _diaryPageUnlockerControl: {fileID: 8166837355475399559}
+  _dialoguePlayer: {fileID: 4108090168799510463}
 --- !u!114 &8166837355475399559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5290,6 +5332,7 @@ GameObject:
   - component: {fileID: 8257673348850532378}
   - component: {fileID: 4678842299745943906}
   - component: {fileID: 1116340348897721028}
+  - component: {fileID: 1373009365074582981}
   m_Layer: 5
   m_Name: E
   m_TagString: Untagged
@@ -5355,6 +5398,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1373009365074582981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2981817328837283999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ba0de9e31fbd04ea18ae6bc109bd57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ComponentType>k__BackingField: 2
+  <Materials>k__BackingField: []
+  <SpriteRenderers>k__BackingField: []
+  <UIImages>k__BackingField:
+  - {fileID: 4702089764962707528}
+  _colourNodeA: {r: 1, g: 1, b: 1, a: 0}
+  _colourNodeB: {r: 1, g: 1, b: 1, a: 1}
+  _timeForCrossFade: 0.5
 --- !u!1 &3006180794420563623
 GameObject:
   m_ObjectHideFlags: 0
@@ -8490,6 +8553,7 @@ GameObject:
   - component: {fileID: 297781639355770412}
   - component: {fileID: 1271259620548214522}
   - component: {fileID: 4561796588928486999}
+  - component: {fileID: 5010313948127427577}
   m_Layer: 5
   m_Name: Jump
   m_TagString: Untagged
@@ -8555,6 +8619,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5010313948127427577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5058304685408181305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ba0de9e31fbd04ea18ae6bc109bd57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ComponentType>k__BackingField: 2
+  <Materials>k__BackingField: []
+  <SpriteRenderers>k__BackingField: []
+  <UIImages>k__BackingField:
+  - {fileID: 4561796588928486999}
+  _colourNodeA: {r: 1, g: 1, b: 1, a: 0}
+  _colourNodeB: {r: 1, g: 1, b: 1, a: 1}
+  _timeForCrossFade: 0.5
 --- !u!1 &5136026220057020199
 GameObject:
   m_ObjectHideFlags: 0
@@ -9835,6 +9919,7 @@ GameObject:
   - component: {fileID: 6829999102182735541}
   - component: {fileID: 5614123323293285523}
   - component: {fileID: 8953623179130737404}
+  - component: {fileID: 4848785068356641308}
   m_Layer: 5
   m_Name: Faint Hope
   m_TagString: Untagged
@@ -9900,6 +9985,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4848785068356641308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197179486446915009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ba0de9e31fbd04ea18ae6bc109bd57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ComponentType>k__BackingField: 2
+  <Materials>k__BackingField: []
+  <SpriteRenderers>k__BackingField: []
+  <UIImages>k__BackingField:
+  - {fileID: 8953623179130737404}
+  _colourNodeA: {r: 1, g: 1, b: 1, a: 0}
+  _colourNodeB: {r: 1, g: 1, b: 1, a: 1}
+  _timeForCrossFade: 0.5
 --- !u!1 &6337157014041575621
 GameObject:
   m_ObjectHideFlags: 0
@@ -9911,6 +10016,7 @@ GameObject:
   - component: {fileID: 1157595802046883136}
   - component: {fileID: 7609990453489642721}
   - component: {fileID: 7530169442548791171}
+  - component: {fileID: 3302688086701320792}
   m_Layer: 5
   m_Name: Item Switching
   m_TagString: Untagged
@@ -9976,6 +10082,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3302688086701320792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6337157014041575621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ba0de9e31fbd04ea18ae6bc109bd57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ComponentType>k__BackingField: 2
+  <Materials>k__BackingField: []
+  <SpriteRenderers>k__BackingField: []
+  <UIImages>k__BackingField:
+  - {fileID: 7530169442548791171}
+  _colourNodeA: {r: 1, g: 1, b: 1, a: 0}
+  _colourNodeB: {r: 1, g: 1, b: 1, a: 1}
+  _timeForCrossFade: 0.5
 --- !u!1 &6372050398871862271
 GameObject:
   m_ObjectHideFlags: 0
@@ -11112,6 +11238,7 @@ GameObject:
   - component: {fileID: 1459051042227481163}
   - component: {fileID: 4273535406382989255}
   - component: {fileID: 3525665372400810525}
+  - component: {fileID: 3084143968670823391}
   m_Layer: 5
   m_Name: Enamy Sound Sensitivity
   m_TagString: Untagged
@@ -11177,6 +11304,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3084143968670823391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7350582659215827794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ba0de9e31fbd04ea18ae6bc109bd57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ComponentType>k__BackingField: 2
+  <Materials>k__BackingField: []
+  <SpriteRenderers>k__BackingField: []
+  <UIImages>k__BackingField:
+  - {fileID: 3525665372400810525}
+  _colourNodeA: {r: 1, g: 1, b: 1, a: 0}
+  _colourNodeB: {r: 1, g: 1, b: 1, a: 1}
+  _timeForCrossFade: 0.5
 --- !u!1 &7389352913559202886
 GameObject:
   m_ObjectHideFlags: 0
@@ -12447,6 +12594,7 @@ GameObject:
   - component: {fileID: 6484066179433516195}
   - component: {fileID: 1254882491130545936}
   - component: {fileID: 2867369815439480489}
+  - component: {fileID: 2561192753094096913}
   m_Layer: 5
   m_Name: Item Throwing
   m_TagString: Untagged
@@ -12512,6 +12660,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2561192753094096913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619156537584987450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ba0de9e31fbd04ea18ae6bc109bd57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ComponentType>k__BackingField: 2
+  <Materials>k__BackingField: []
+  <SpriteRenderers>k__BackingField: []
+  <UIImages>k__BackingField:
+  - {fileID: 2867369815439480489}
+  _colourNodeA: {r: 1, g: 1, b: 1, a: 0}
+  _colourNodeB: {r: 1, g: 1, b: 1, a: 1}
+  _timeForCrossFade: 0.5
 --- !u!1 &8761265943909871238
 GameObject:
   m_ObjectHideFlags: 0
@@ -12523,6 +12691,7 @@ GameObject:
   - component: {fileID: 3215181347489522063}
   - component: {fileID: 5938391580390518520}
   - component: {fileID: 3921844708173865184}
+  - component: {fileID: 5923117039419695225}
   m_Layer: 5
   m_Name: Sprint
   m_TagString: Untagged
@@ -12588,6 +12757,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5923117039419695225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8761265943909871238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ba0de9e31fbd04ea18ae6bc109bd57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ComponentType>k__BackingField: 2
+  <Materials>k__BackingField: []
+  <SpriteRenderers>k__BackingField: []
+  <UIImages>k__BackingField:
+  - {fileID: 3921844708173865184}
+  _colourNodeA: {r: 1, g: 1, b: 1, a: 0}
+  _colourNodeB: {r: 1, g: 1, b: 1, a: 1}
+  _timeForCrossFade: 0.5
 --- !u!1 &8792732060897712625
 GameObject:
   m_ObjectHideFlags: 0
