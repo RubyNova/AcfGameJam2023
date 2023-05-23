@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 1469906661289960656}
   - component: {fileID: 4257168796823656527}
   - component: {fileID: 5256503085372693699}
+  - component: {fileID: 118358232528427968}
   m_Layer: 0
   m_Name: Actual Camera
   m_TagString: Untagged
@@ -110,7 +111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4589232777172607232}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 97.38122, y: 71.59062, z: -4.596387}
+  m_LocalPosition: {x: -0.7113182, y: 0.00000023841858, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -156,9 +157,9 @@ MonoBehaviour:
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 2668497846688375178, guid: c33d3403988d308498ba1c3b8d49e648, type: 3}
           m_TargetAssemblyTypeName: Rendering.ColourCrossFader, Assembly-CSharp
-          m_MethodName: DoCrossFade
+          m_MethodName: 
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -185,6 +186,20 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 0}
   m_Damping: 0.5
   m_MaxWindowSize: -1
+--- !u!114 &118358232528427968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589232777172607232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ed8fa251f0ec04c8e32a7194556dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tPlayer: {fileID: 0}
+  tFollowTarget: {fileID: 0}
 --- !u!1 &8329501082403753055
 GameObject:
   m_ObjectHideFlags: 0
