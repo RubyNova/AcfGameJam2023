@@ -24,7 +24,7 @@ A clear and concise description of what you expected to happen.
 
 
 **Please tell us about your environment:**  
-  - Configuration: [Release | Debug | Other (please specify)]
+  - Configuration: [Release Build | Debug Build | In-editor]
   - OS Version: [Windows 10 Version XXXX | Ubuntu 20.04 | macOS 12.0]
 
 
